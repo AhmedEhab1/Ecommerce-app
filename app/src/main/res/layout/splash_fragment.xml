@@ -16,15 +16,18 @@
         <!-- TODO: Update blank fragment layout -->
         <LinearLayout
             android:layout_width="match_parent"
+            android:background="@drawable/auth_mask"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="vertical">
 
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/halloweenLottie"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="150dp"
+                android:layout_height="110dp"
                 app:lottie_autoPlay="true"
+                android:layout_gravity="center"
                 app:lottie_fileName="splash.json"
                 app:lottie_loop="false" />
 

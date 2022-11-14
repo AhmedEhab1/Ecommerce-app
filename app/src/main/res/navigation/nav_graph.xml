@@ -9,5 +9,14 @@
         android:id="@+id/splashFragment"
         android:name="com.macaria.app.SplashFragment"
         android:label="splash_fragment"
-        tools:layout="@layout/splash_fragment" />
+        tools:layout="@layout/splash_fragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.macaria.app.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" />
 </navigation>
