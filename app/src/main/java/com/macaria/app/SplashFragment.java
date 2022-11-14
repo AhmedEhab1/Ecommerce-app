@@ -26,10 +26,10 @@ public class SplashFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = SplashFragmentBinding.inflate(inflater, container, false);
         // Inflate the layout for this fragment
-
-        Glide.with(this)
-                .load(R.raw.splash)
-                .into(binding.imageView);
+//
+//        Glide.with(this)
+//                .load(R.raw.splash)
+//                .into(binding.imageView);
 
         return binding.getRoot();
     }
