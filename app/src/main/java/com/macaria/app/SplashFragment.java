@@ -28,7 +28,7 @@ public class SplashFragment extends Fragment {
         // Inflate the layout for this fragment
 
         Glide.with(this)
-                .load(R.raw.animation_logo)
+                .load(R.raw.splash)
                 .into(binding.imageView);
 
         return binding.getRoot();
