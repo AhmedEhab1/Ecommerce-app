@@ -10,7 +10,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#5E5E5E"
+        android:background="#000000"
         tools:context=".SplashFragment">
 
         <!-- TODO: Update blank fragment layout -->
@@ -26,14 +26,9 @@
                 android:layout_height="match_parent"
                 app:lottie_autoPlay="true"
                 app:lottie_fileName="splash.json"
-                app:lottie_loop="true" />
+                app:lottie_loop="false" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
 
-              />
         </LinearLayout>
 
     </FrameLayout>
