@@ -20,7 +20,9 @@ import com.macaria.app.ui.login.vm.LoginViewModel;
 
 import java.util.List;
 
+import dagger.hilt.android.AndroidEntryPoint;
 
+@AndroidEntryPoint
 public class LoginFragment extends Fragment {
     private LoginFragmentBinding binding;
     private LoginViewModel viewModel;
@@ -47,9 +49,9 @@ public class LoginFragment extends Fragment {
     private void loginRequest() {
         String mobile = binding.phoneNumber.getText().toString();
         String password = binding.password.getText().toString();
-        if (mobile.length() > 10) {
+        if (mobile.length() != 11) {
             Toast.makeText(getActivity(), getString(R.string.add_valid_mobile), Toast.LENGTH_SHORT).show();
-        } else if (password.length() > 5) {
+        } else if (password.length() < 6) {
             Toast.makeText(getActivity(), getString(R.string.add_valid_password), Toast.LENGTH_SHORT).show();
         } else {
             LoginRequest request = new LoginRequest();

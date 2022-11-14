@@ -27,7 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitModule {
     @Provides
     @Singleton
-    public static ApiService provideProductsApisService() {
+    public static ApiService provideApisService() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(new PrettyLogger());
         interceptor.level(HttpLoggingInterceptor.Level.BODY);
 
