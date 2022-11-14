@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#5E5E5E"
-    tools:context=".SplashFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <data>
+
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/auth_mask"
-        android:orientation="vertical">
+        android:background="#5E5E5E"
+        tools:context=".SplashFragment">
 
-
-        <ImageView
-            android:id="@+id/imageView"
+        <!-- TODO: Update blank fragment layout -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/auth_mask" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:background="@drawable/auth_mask"
+            android:orientation="vertical">
 
-</FrameLayout>
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/auth_mask" />
+        </LinearLayout>
+
+    </FrameLayout>
+</layout>

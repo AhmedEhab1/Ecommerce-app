@@ -8,7 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+import com.macaria.app.databinding.SplashFragmentBinding;
+
 public class SplashFragment extends Fragment {
+    private SplashFragmentBinding binding;
 
 
     public SplashFragment() {
@@ -20,6 +24,13 @@ public class SplashFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.splash_fragment, container, false);
+        binding = SplashFragmentBinding.inflate(inflater, container, false);
+        // Inflate the layout for this fragment
+
+        Glide.with(this)
+                .load(R.raw.animation_logo)
+                .into(binding.imageView);
+
+        return binding.getRoot();
     }
 }
