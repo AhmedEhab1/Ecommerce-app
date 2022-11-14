@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.macaria.app.SplashFragment"
+        android:name="com.macaria.app.ui.splash.SplashFragment"
         android:label="splash_fragment"
         tools:layout="@layout/splash_fragment" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.macaria.app.LoginFragment"
+        android:name="com.macaria.app.ui.login.LoginFragment"
         android:label="login_fragment"
         tools:layout="@layout/login_fragment" />
 </navigation>

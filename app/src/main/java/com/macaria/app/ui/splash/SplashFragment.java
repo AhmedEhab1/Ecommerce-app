@@ -1,4 +1,4 @@
-package com.macaria.app;
+package com.macaria.app.ui.splash;
 
 import android.os.Bundle;
 
@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
+import com.macaria.app.R;
 import com.macaria.app.databinding.SplashFragmentBinding;
 
 import javax.inject.Inject;
@@ -34,7 +35,7 @@ public class SplashFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = SplashFragmentBinding.inflate(inflater, container, false);
-        handler.postDelayed(this::startProductsView, 1000);
+        handler.postDelayed(this::startProductsView, 3000);
         return binding.getRoot();
     }
 
