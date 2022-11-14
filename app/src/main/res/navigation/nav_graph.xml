@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.macaria.app.ui.login.LoginFragment"
+        android:name="com.macaria.app.ui.login.fragments.LoginFragment"
         android:label="login_fragment"
         tools:layout="@layout/login_fragment" />
 </navigation>

@@ -7,5 +7,7 @@
     <string name="phone_number">Phone Number*</string>
     <string name="password">Password</string>
     <string name="create_account"><u>Create Account</u></string>
+    <string name="add_valid_mobile"><u>Please add a valid phone number</u></string>
+    <string name="add_valid_password"><u>Please add a valid Password</u></string>
 
 </resources>
