@@ -1,13 +1,9 @@
 package com.macaria.app.repository;
 
-import androidx.lifecycle.MutableLiveData;
-
-import com.macaria.app.BaseModel;
+import com.macaria.app.models.BaseModel;
 import com.macaria.app.network.ApiService;
 import com.macaria.app.ui.login.model.LoginModel;
 import com.macaria.app.ui.login.model.LoginRequest;
-
-import java.util.List;
 
 import javax.inject.Inject;
 

@@ -3,8 +3,6 @@ package com.macaria.app.ui.login.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -13,13 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.macaria.app.BaseModel;
+import com.macaria.app.models.BaseModel;
 import com.macaria.app.R;
 import com.macaria.app.databinding.LoginFragmentBinding;
 import com.macaria.app.ui.login.model.LoginModel;
 import com.macaria.app.ui.login.model.LoginRequest;
 import com.macaria.app.ui.login.vm.LoginViewModel;
-import com.macaria.app.utilities.Loading;
 import com.macaria.app.utilities.MyHelper;
 
 import javax.inject.Inject;
