@@ -13,6 +13,7 @@ import com.macaria.app.ui.login.model.LoginRequest;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+import retrofit2.HttpException;
 
 public class LoginViewModel extends ViewModel {
     private AuthorizationRepository repository ;
@@ -28,8 +29,18 @@ public class LoginViewModel extends ViewModel {
         repository.loginRequest(request)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(response -> loginResponse.setValue(response),
-                        error -> getErrorMessage(error.getMessage()));
+                .subscribe(response -> {
+                    loginResponse.setValue(response);
+                        },
+                        error -> {
+                            if (error instanceof HttpException) {
+                                HttpException error2 = (HttpException)error;
+                                String errorBody = error2.response().errorBody().string();
+                                getErrorMessage(errorBody);
+
+                            }
+
+                        });
     }
 
 
