@@ -4,6 +4,8 @@ package com.macaria.app.di;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.macaria.app.utilities.MyHelper;
+
 import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
@@ -18,6 +20,7 @@ public class ActivityModule {
         return new Handler(Looper.getMainLooper());
     }
 
-
+    @Provides
+    public MyHelper provideHelper(){return new MyHelper();}
 
 }

@@ -17,8 +17,9 @@ import com.macaria.app.databinding.LoginFragmentBinding;
 import com.macaria.app.ui.login.model.LoginModel;
 import com.macaria.app.ui.login.model.LoginRequest;
 import com.macaria.app.ui.login.vm.LoginViewModel;
+import com.macaria.app.utilities.MyHelper;
 
-import java.util.List;
+import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -26,6 +27,9 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class LoginFragment extends Fragment {
     private LoginFragmentBinding binding;
     private LoginViewModel viewModel;
+
+    @Inject
+    MyHelper helper ;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -44,6 +48,7 @@ public class LoginFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         binding.loginBtn.setOnClickListener(view -> loginRequest());
         loginResponse();
+        helper.showErrorDialog(getActivity() , null , "test error dialog");
     }
 
     private void loginRequest() {
