@@ -6,14 +6,16 @@ import android.os.Bundle;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import dagger.Provides;
 
 public class MyHelper {
 
-    @Provides
-    @Singleton
+    @Inject
+    Loading loading ;
+
     public void showErrorDialog(Context context, String title, String body) {
         Bundle bundle = new Bundle();
         if (title != null) {bundle.putString("title", title);}
@@ -23,5 +25,15 @@ public class MyHelper {
         ErrorDialog errorDialog = new ErrorDialog();
         errorDialog.setArguments(bundle);
         errorDialog.show(fm, "fragment_alert");
+    }
+
+    public void showLoading(Context context){
+        FragmentActivity activity = (FragmentActivity) (context);
+        FragmentManager fm = activity.getSupportFragmentManager();
+        loading.show(fm, "fragment_alert");
+    }
+
+    public void dismissLoading(){
+        loading.dismiss();
     }
 }

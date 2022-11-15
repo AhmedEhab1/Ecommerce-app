@@ -17,6 +17,7 @@ import com.macaria.app.databinding.LoginFragmentBinding;
 import com.macaria.app.ui.login.model.LoginModel;
 import com.macaria.app.ui.login.model.LoginRequest;
 import com.macaria.app.ui.login.vm.LoginViewModel;
+import com.macaria.app.utilities.Loading;
 import com.macaria.app.utilities.MyHelper;
 
 import javax.inject.Inject;
@@ -30,6 +31,7 @@ public class LoginFragment extends Fragment {
 
     @Inject
     MyHelper helper ;
+
 
     public LoginFragment() {
         // Required empty public constructor
@@ -48,7 +50,7 @@ public class LoginFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         binding.loginBtn.setOnClickListener(view -> loginRequest());
         loginResponse();
-        helper.showErrorDialog(getActivity() , null , "test error dialog");
+//        helper.showErrorDialog(getActivity() , null , "test error dialog");
     }
 
     private void loginRequest() {
@@ -59,6 +61,7 @@ public class LoginFragment extends Fragment {
         } else if (password.length() < 6) {
             Toast.makeText(getActivity(), getString(R.string.add_valid_password), Toast.LENGTH_SHORT).show();
         } else {
+            helper.showLoading(getActivity());
             LoginRequest request = new LoginRequest();
             request.setMobile(mobile);
             request.setPassword(password);
@@ -67,6 +70,7 @@ public class LoginFragment extends Fragment {
     }
 
     private void loginResponse() {
+        helper.dismissLoading();
         viewModel.getLoginResponse().observe(getViewLifecycleOwner(), new Observer<BaseModel<LoginModel>>() {
             @Override
             public void onChanged(BaseModel<LoginModel> loginModelBaseModel) {

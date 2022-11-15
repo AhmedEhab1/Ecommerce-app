@@ -4,6 +4,7 @@ package com.macaria.app.di;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.macaria.app.utilities.Loading;
 import com.macaria.app.utilities.MyHelper;
 
 import dagger.Module;
@@ -22,5 +23,8 @@ public class ActivityModule {
 
     @Provides
     public MyHelper provideHelper(){return new MyHelper();}
+
+    @Provides
+    public Loading loading(){return new Loading();}
 
 }

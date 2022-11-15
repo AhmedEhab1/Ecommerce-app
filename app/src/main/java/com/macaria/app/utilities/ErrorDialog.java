@@ -77,6 +77,12 @@ public class ErrorDialog extends DialogFragment {
                 Objects.requireNonNull(getDialog()).dismiss();
             }
         });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Objects.requireNonNull(getDialog()).dismiss();
+            }
+        });
         return root;
     }
 }
