@@ -3,7 +3,7 @@ package com.macaria.app.ui.authorization.login.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LoginModel {
+public class AuthModel {
     @SerializedName("token")
     @Expose
     private String token;

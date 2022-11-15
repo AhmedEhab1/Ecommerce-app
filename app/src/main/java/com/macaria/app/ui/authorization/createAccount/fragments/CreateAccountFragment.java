@@ -1,4 +1,4 @@
-package com.macaria.app.ui.authorization.login.fragments;
+package com.macaria.app.ui.authorization.createAccount.fragments;
 
 import android.os.Bundle;
 
@@ -12,9 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.macaria.app.databinding.LoginFragmentBinding;
-import com.macaria.app.models.BaseModel;
 import com.macaria.app.R;
+import com.macaria.app.databinding.CreareAccountFragmentBinding;
+import com.macaria.app.models.BaseModel;
+import com.macaria.app.ui.authorization.createAccount.CreateAccountRequest;
+import com.macaria.app.ui.authorization.createAccount.vm.CreateAccountViewModel;
 import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
 import com.macaria.app.ui.authorization.login.vm.LoginViewModel;
@@ -22,34 +24,30 @@ import com.macaria.app.utilities.MyHelper;
 
 import javax.inject.Inject;
 
-import dagger.hilt.android.AndroidEntryPoint;
 
-@AndroidEntryPoint
-public class LoginFragment extends Fragment {
-    private LoginFragmentBinding binding;
-    private LoginViewModel viewModel;
+public class CreateAccountFragment extends Fragment {
+    private CreareAccountFragmentBinding binding;
+    private CreateAccountViewModel viewModel ;
 
     @Inject
     MyHelper helper ;
 
-    public LoginFragment() {
+    public CreateAccountFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        if (binding == null){
-            binding = LoginFragmentBinding.inflate(inflater, container, false);
-            viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
-        }
+        binding = CreareAccountFragmentBinding.inflate(inflater, container, false);
         init();
-
         return binding.getRoot();
     }
 
     private void init() {
+        viewModel = new ViewModelProvider(this).get(CreateAccountViewModel.class);
         viewModel.clear();
         viewModel.getLoginResponse().observe(getViewLifecycleOwner(), this::loginResponse);
         onViewClicked();
@@ -57,9 +55,8 @@ public class LoginFragment extends Fragment {
     }
 
     private void onViewClicked(){
-        binding.loginBtn.setOnClickListener(view -> loginRequest());
-        binding.forgetPassword.setOnClickListener(view -> forgetPassword());
-        binding.createAccount.setOnClickListener(view -> createAccount());
+        binding.login.setOnClickListener(view -> Navigation.findNavController(requireView()).popBackStack());
+        binding.createAccount.setOnClickListener(view -> loginRequest());
     }
 
     private void loginRequest() {
@@ -71,7 +68,7 @@ public class LoginFragment extends Fragment {
             Toast.makeText(getActivity(), getString(R.string.add_valid_password), Toast.LENGTH_SHORT).show();
         } else {
             helper.showLoading(getActivity());
-            LoginRequest request = new LoginRequest();
+            CreateAccountRequest request = new CreateAccountRequest();
             request.setMobile(mobile);
             request.setPassword(password);
             viewModel.loginRequest(request);
@@ -80,22 +77,16 @@ public class LoginFragment extends Fragment {
 
     private void loginResponse(BaseModel<AuthModel> loginModelBaseModel) {
         helper.dismissLoading();
+       // Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_forgetPassword);
     }
+
 
     private void errorMessage(){
         viewModel.getErrorMassage().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 helper.showErrorDialog(getActivity() , null , s);
-
             }
         });
-    }
-    private void forgetPassword(){
-        Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_forgetPassword);
-    }
-
-    private void createAccount(){
-        Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_creareAccountFragment);
     }
 }

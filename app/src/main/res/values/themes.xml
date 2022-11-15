@@ -26,6 +26,10 @@
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <item name="android:fontFamily">@font/norms_regular</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+
+<!--        <item name="android:windowTranslucentStatus">true</item>-->
+<!--        <item name="android:windowTranslucentNavigation">true</item>-->
+
     </style>
 
 
@@ -43,5 +47,10 @@
 
     <style name="LoadingStyle">
         <item name="colorAccent">@color/colorPrimary</item> <!-- Whatever color you want-->
+    </style>
+
+    <style name="error" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/red</item> <!--apply the color you wat here -->
+        <item name="android:textSize">12sp</item>
     </style>
 </resources>

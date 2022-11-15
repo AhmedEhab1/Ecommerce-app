@@ -1,4 +1,4 @@
-package com.macaria.app.ui.authorization.login.vm;
+package com.macaria.app.ui.authorization.forgetPassword.vm;
 
 import static com.macaria.app.utilities.JsonHelper.isHttpException;
 
@@ -8,34 +8,33 @@ import androidx.lifecycle.ViewModel;
 
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.repository.AuthorizationRepository;
-import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class LoginViewModel extends ViewModel {
+public class ForgetPasswordViewModel extends ViewModel {
     private AuthorizationRepository repository;
-    private MutableLiveData<BaseModel<AuthModel>> loginResponse = new MutableLiveData<>();
-    public MutableLiveData<String> errorMassage = new MutableLiveData<>();
+    private MutableLiveData<BaseModel> forgetPasswordResponse = new MutableLiveData<>();
+    private MutableLiveData<String> errorMassage = new MutableLiveData<>();
 
     @ViewModelInject
-    public LoginViewModel(AuthorizationRepository repository) {
+    public ForgetPasswordViewModel(AuthorizationRepository repository) {
         this.repository = repository;
     }
 
-    public void loginRequest(LoginRequest request) {
-        repository.loginRequest(request)
+    public void forgetPasswordRequest(LoginRequest request) {
+        repository.forgetPasswordRequest(request)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(response -> loginResponse.setValue(response),
+                .subscribe(response -> forgetPasswordResponse.setValue(response),
                         error ->
                                 getErrorMessage(isHttpException(error)));
     }
 
 
-    public MutableLiveData<BaseModel<AuthModel>> getLoginResponse() {
-        return loginResponse;
+    public MutableLiveData<BaseModel> getResponse() {
+        return forgetPasswordResponse;
     }
 
     public MutableLiveData<String> getErrorMassage() {
@@ -45,11 +44,6 @@ public class LoginViewModel extends ViewModel {
     // show error alert dialog
     private void getErrorMessage(String message) {
         errorMassage.setValue(message);
-    }
-
-    public void clear(){
-        errorMassage = new MutableLiveData<>(); ;
-        loginResponse = new MutableLiveData<>(); ;
     }
 
 }

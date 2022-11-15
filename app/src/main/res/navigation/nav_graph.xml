@@ -35,7 +35,7 @@
         tools:layout="@layout/forget_password_fragment" />
     <fragment
         android:id="@+id/creareAccountFragment"
-        android:name="com.macaria.app.ui.authorization.createAccount.CreateAccountFragment"
+        android:name="com.macaria.app.ui.authorization.createAccount.fragments.CreateAccountFragment"
         android:label="creare_account_fragment"
         tools:layout="@layout/creare_account_fragment" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.macaria.app.ui.authorization.login.vm;
+package com.macaria.app.ui.authorization.createAccount.vm;
 
 import static com.macaria.app.utilities.JsonHelper.isHttpException;
 
@@ -8,24 +8,24 @@ import androidx.lifecycle.ViewModel;
 
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.repository.AuthorizationRepository;
+import com.macaria.app.ui.authorization.createAccount.CreateAccountRequest;
 import com.macaria.app.ui.authorization.login.model.AuthModel;
-import com.macaria.app.ui.authorization.login.model.LoginRequest;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class LoginViewModel extends ViewModel {
+public class CreateAccountViewModel extends ViewModel {
     private AuthorizationRepository repository;
     private MutableLiveData<BaseModel<AuthModel>> loginResponse = new MutableLiveData<>();
     public MutableLiveData<String> errorMassage = new MutableLiveData<>();
 
     @ViewModelInject
-    public LoginViewModel(AuthorizationRepository repository) {
+    public CreateAccountViewModel(AuthorizationRepository repository) {
         this.repository = repository;
     }
 
-    public void loginRequest(LoginRequest request) {
-        repository.loginRequest(request)
+    public void loginRequest(CreateAccountRequest request) {
+        repository.createAccount(request)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> loginResponse.setValue(response),
