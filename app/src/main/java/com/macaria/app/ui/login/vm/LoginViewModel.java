@@ -11,6 +11,9 @@ import com.macaria.app.repository.AuthorizationRepository;
 import com.macaria.app.ui.login.model.LoginModel;
 import com.macaria.app.ui.login.model.LoginRequest;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import retrofit2.HttpException;
@@ -54,8 +57,19 @@ public class LoginViewModel extends ViewModel {
 
     // show error alert dialog
     private void getErrorMessage(String message){
-        errorMassage.setValue(message);
+        errorMassage.setValue(getErrorMessageDetails(message));
         Log.e("viewModel", message);
     }
 
+
+    public static String getErrorMessageDetails(String errorMessage) {
+        try {
+            JSONObject jsonObject = new JSONObject(errorMessage);
+            String userMessage = jsonObject.getString("message");
+            return userMessage;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return "error";
+    }
 }
