@@ -9,23 +9,33 @@
         android:id="@+id/splashFragment"
         android:name="com.macaria.app.ui.splash.SplashFragment"
         android:label="splash_fragment"
-        tools:layout="@layout/splash_fragment" >
+        tools:layout="@layout/splash_fragment">
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.macaria.app.ui.login.fragments.LoginFragment"
+        android:name="com.macaria.app.ui.authorization.login.fragments.LoginFragment"
         android:label="login_fragment"
-        tools:layout="@layout/login_fragment" >
+        tools:layout="@layout/login_fragment">
         <action
             android:id="@+id/action_loginFragment_to_forgetPassword"
             app:destination="@id/forgetPassword" />
+        <action
+            android:id="@+id/action_loginFragment_to_creareAccountFragment"
+            app:destination="@id/creareAccountFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgetPassword"
-        android:name="com.macaria.app.ForgetPassword"
+        android:name="com.macaria.app.ui.authorization.forgetPassword.fragments.ForgetPassword"
         android:label="forget_password_fragment"
         tools:layout="@layout/forget_password_fragment" />
+    <fragment
+        android:id="@+id/creareAccountFragment"
+        android:name="com.macaria.app.ui.authorization.createAccount.CreateAccountFragment"
+        android:label="creare_account_fragment"
+        tools:layout="@layout/creare_account_fragment" />
 </navigation>

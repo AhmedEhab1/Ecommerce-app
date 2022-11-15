@@ -14,6 +14,7 @@
     <color name="colorPrimaryDark">#FF018786</color>
     <color name="textColor">#646464</color>
     <color name="textColorGray">#919699</color>
+    <color name="textColorDarkGray">#5E6366</color>
     <color name="viewBackground">#EEEEEE</color>
     <color name="gray">#808080</color>
 

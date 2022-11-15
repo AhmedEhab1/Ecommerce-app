@@ -27,6 +27,6 @@ public class ActivityModule {
     public MyHelper provideHelper(){return new MyHelper();}
 
     @Provides
-    public Loading loading(){return new Loading();}
+    public Loading provideLoading(){return new Loading();}
 
 }

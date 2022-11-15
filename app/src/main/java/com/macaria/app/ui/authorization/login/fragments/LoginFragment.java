@@ -1,22 +1,23 @@
-package com.macaria.app.ui.login.fragments;
+package com.macaria.app.ui.authorization.login.fragments;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.macaria.app.databinding.LoginFragmentBinding;
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.R;
-import com.macaria.app.databinding.LoginFragmentBinding;
-import com.macaria.app.ui.login.model.LoginModel;
-import com.macaria.app.ui.login.model.LoginRequest;
-import com.macaria.app.ui.login.vm.LoginViewModel;
+import com.macaria.app.ui.authorization.login.model.LoginModel;
+import com.macaria.app.ui.authorization.login.model.LoginRequest;
+import com.macaria.app.ui.authorization.login.vm.LoginViewModel;
 import com.macaria.app.utilities.MyHelper;
 
 import javax.inject.Inject;
@@ -47,9 +48,15 @@ public class LoginFragment extends Fragment {
 
     private void init() {
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
-        binding.loginBtn.setOnClickListener(view -> loginRequest());
         loginResponse();
         errorMessage();
+        onViewClicked();
+    }
+
+    private void onViewClicked(){
+        binding.loginBtn.setOnClickListener(view -> loginRequest());
+        binding.forgetPassword.setOnClickListener(view -> forgetPassword());
+        binding.createAccount.setOnClickListener(view -> createAccount());
     }
 
     private void loginRequest() {
@@ -73,7 +80,8 @@ public class LoginFragment extends Fragment {
             @Override
             public void onChanged(BaseModel<LoginModel> loginModelBaseModel) {
                 helper.dismissLoading();
-                Toast.makeText(getActivity(), loginModelBaseModel.getMessage(), Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_forgetPassword);
+
             }
         });
     }
@@ -85,5 +93,12 @@ public class LoginFragment extends Fragment {
                 helper.showErrorDialog(getActivity() , null , s);
             }
         });
+    }
+    private void forgetPassword(){
+        Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_forgetPassword);
+    }
+
+    private void createAccount(){
+        Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_creareAccountFragment);
     }
 }

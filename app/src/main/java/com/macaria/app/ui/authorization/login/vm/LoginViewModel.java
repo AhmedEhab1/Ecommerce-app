@@ -1,27 +1,25 @@
-package com.macaria.app.ui.login.vm;
+package com.macaria.app.ui.authorization.login.vm;
 
-import static com.macaria.app.utilities.JsonHelper.getErrorMessageDetails;
 import static com.macaria.app.utilities.JsonHelper.isHttpException;
-
-import android.util.Log;
 
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import androidx.navigation.Navigation;
 
+import com.macaria.app.R;
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.repository.AuthorizationRepository;
-import com.macaria.app.ui.login.model.LoginModel;
-import com.macaria.app.ui.login.model.LoginRequest;
+import com.macaria.app.ui.authorization.login.model.LoginModel;
+import com.macaria.app.ui.authorization.login.model.LoginRequest;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class LoginViewModel extends ViewModel {
-    private AuthorizationRepository repository ;
+    private AuthorizationRepository repository;
     private MutableLiveData<BaseModel<LoginModel>> loginResponse = new MutableLiveData<>();
     private MutableLiveData<String> errorMassage = new MutableLiveData<>();
-    private static final String TAG = "LoginViewModel";
 
     @ViewModelInject
     public LoginViewModel(AuthorizationRepository repository) {
@@ -32,13 +30,10 @@ public class LoginViewModel extends ViewModel {
         repository.loginRequest(request)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(response -> {
-                    loginResponse.setValue(response);
-                        },
+                .subscribe(response -> loginResponse.setValue(response),
                         error ->
-                            getErrorMessage(isHttpException(error)));
+                                getErrorMessage(isHttpException(error)));
     }
-
 
 
     public MutableLiveData<BaseModel<LoginModel>> getLoginResponse() {
@@ -50,8 +45,8 @@ public class LoginViewModel extends ViewModel {
     }
 
     // show error alert dialog
-    private void getErrorMessage(String message){
-        errorMassage.setValue(getErrorMessageDetails(message));
-        Log.e(TAG, message);
+    private void getErrorMessage(String message) {
+        errorMassage.setValue(message);
     }
+
 }

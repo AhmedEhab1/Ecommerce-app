@@ -2,8 +2,8 @@ package com.macaria.app.repository;
 
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.network.ApiService;
-import com.macaria.app.ui.login.model.LoginModel;
-import com.macaria.app.ui.login.model.LoginRequest;
+import com.macaria.app.ui.authorization.login.model.LoginModel;
+import com.macaria.app.ui.authorization.login.model.LoginRequest;
 
 import javax.inject.Inject;
 

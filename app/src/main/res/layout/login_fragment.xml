@@ -5,13 +5,14 @@
 
     <data>
 
+
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.login.fragments.LoginFragment">
+        tools:context=".ui.authorization.login.fragments.LoginFragment">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -90,6 +91,7 @@
             android:layout_gravity="end"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
+            android:id="@+id/forgetPassword"
             android:padding="5dp"
             android:text="@string/forget_your_password"
             android:textColor="@color/textColorGray"
@@ -127,6 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
+                android:id="@+id/createAccount"
                 android:text="@string/create_account"
                 android:textSize="12sp" />
         </LinearLayout>

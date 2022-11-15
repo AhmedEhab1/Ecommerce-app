@@ -1,4 +1,4 @@
-package com.macaria.app.ui.login.model;
+package com.macaria.app.ui.authorization.login.model;
 
 public class LoginRequest {
     String mobile ,password ;
