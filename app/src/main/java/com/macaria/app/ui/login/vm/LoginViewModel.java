@@ -28,7 +28,7 @@ public class LoginViewModel extends ViewModel {
         repository.loginRequest(request)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(productsResponses -> loginResponse.setValue(productsResponses),
+                .subscribe(response -> loginResponse.setValue(response),
                         error -> getErrorMessage(error.getMessage()));
     }
 
@@ -43,8 +43,8 @@ public class LoginViewModel extends ViewModel {
 
     // show error alert dialog
     private void getErrorMessage(String message){
-        Log.e("viewModel", message);
         errorMassage.setValue(message);
+        Log.e("viewModel", message);
     }
 
 }

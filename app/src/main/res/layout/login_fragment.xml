@@ -49,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:inputType="phone"
+                android:maxLength="11"
                 android:maxLines="1"
                 tools:ignore="KeyboardInaccessibleWidget" />
 

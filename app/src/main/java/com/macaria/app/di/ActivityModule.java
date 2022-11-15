@@ -7,6 +7,8 @@ import android.os.Looper;
 import com.macaria.app.utilities.Loading;
 import com.macaria.app.utilities.MyHelper;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;

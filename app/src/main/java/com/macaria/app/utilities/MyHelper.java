@@ -3,6 +3,7 @@ package com.macaria.app.utilities;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
@@ -12,11 +13,11 @@ import javax.inject.Singleton;
 import dagger.Provides;
 
 public class MyHelper {
+    Loading loading  = new Loading();
 
-    @Inject
-    Loading loading ;
 
     public void showErrorDialog(Context context, String title, String body) {
+        loading.dismiss();
         Bundle bundle = new Bundle();
         if (title != null) {bundle.putString("title", title);}
         if (body != null) {bundle.putString("message", body);}

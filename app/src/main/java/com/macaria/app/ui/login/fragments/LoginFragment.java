@@ -3,6 +3,8 @@ package com.macaria.app.ui.login.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -50,7 +52,7 @@ public class LoginFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         binding.loginBtn.setOnClickListener(view -> loginRequest());
         loginResponse();
-//        helper.showErrorDialog(getActivity() , null , "test error dialog");
+        errorMessage();
     }
 
     private void loginRequest() {
@@ -70,11 +72,20 @@ public class LoginFragment extends Fragment {
     }
 
     private void loginResponse() {
-        helper.dismissLoading();
         viewModel.getLoginResponse().observe(getViewLifecycleOwner(), new Observer<BaseModel<LoginModel>>() {
             @Override
             public void onChanged(BaseModel<LoginModel> loginModelBaseModel) {
+                helper.dismissLoading();
                 Toast.makeText(getActivity(), loginModelBaseModel.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void errorMessage(){
+        viewModel.getErrorMassage().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                helper.showErrorDialog(getActivity() , null , s);
             }
         });
     }
