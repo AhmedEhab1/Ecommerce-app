@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.authorization.createAccount.fragments.VerifyMobileFragment">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <fragment
+                android:id="@+id/fragmentContainerView2"
+                class="com.macaria.app.utilities.BackFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="@dimen/margin_top"
+                tools:layout="@layout/fragment_back" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/norms_medium"
+                android:text="@string/verify_phone_number"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/forgetPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="25dp"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/verify_phone_dis"
+                android:textColor="@color/textColorDarkGray"
+                android:textSize="13sp" />
+
+
+            <TextView
+                android:id="@+id/mobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="25dp"
+                android:fontFamily="@font/norms_bold"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                tools:text="01201992847" />
+
+            <com.goodiebag.pinview.Pinview
+                android:id="@+id/pinview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cursorVisible="false"
+                app:forceKeyboard="false"
+                app:inputType="text"
+                app:password="false"
+                app:pinBackground="@drawable/edit_text_bg"
+                app:pinHeight="45dp"
+                app:pinLength="4"
+                app:pinWidth="45dp"
+                app:textSize="8sp" />
+
+            <TextView
+                android:id="@+id/timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                tools:text="00:50" />
+
+            <TextView
+                android:id="@+id/sendCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:text="@string/sresend_code"
+                android:textColor="@color/textColorGray"
+                android:textSize="12sp" />
+
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="15dp"
+                android:background="@color/black"
+                android:text="@string/submit"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </FrameLayout>
+</layout>

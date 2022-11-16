@@ -1,7 +1,7 @@
 package com.macaria.app.ui.authorization.login.model;
 
 public class LoginRequest {
-    String mobile ,password ;
+    String mobile ,password, otp ;
 
     public String getMobile() {
         return mobile;
@@ -17,5 +17,13 @@ public class LoginRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getOtp() {
+        return otp;
+    }
+
+    public void setOtp(String otp) {
+        this.otp = otp;
     }
 }

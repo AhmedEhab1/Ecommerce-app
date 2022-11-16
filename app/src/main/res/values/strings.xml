@@ -3,8 +3,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login">Login</string>
+    <string name="submit">Submit</string>
     <string name="login2"><u>Login</u></string>
     <string name="send">Send</string>
+    <string name="add_valid_name">Please add a valid name</string>
+    <string name="add_valid_email">Please add a valid email</string>
     <string name="forget_your_password">Forget your password?</string>
     <string name="forget_password">Forget password</string>
     <string name="phone_number">Phone Number*</string>
@@ -15,9 +18,12 @@
     <string name="yes">Yes</string>
     <string name="already_have_account">already have an account?</string>
     <string name="email">Email</string>
+    <string name="verify_phone_dis">A 4-digit confirmation code has been sent to your mobile number</string>
+    <string name="verify_phone_number">Verify Phone Number</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="create_account"><u>Create Account</u></string>
+    <string name="sresend_code"><u>Resend code</u></string>
     <string name="create_account2">Create Account</string>
     <string name="add_valid_mobile"><u>Please add a valid phone number</u></string>
     <string name="add_valid_password"><u>Please add a valid Password</u></string>

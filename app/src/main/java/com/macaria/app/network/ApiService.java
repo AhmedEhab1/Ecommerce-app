@@ -19,4 +19,7 @@ public interface ApiService {
 
     @POST("forgot-password/sendCode")
     Observable<BaseModel> forgetPassword(@Body LoginRequest request);
+
+    @POST("auth/verify")
+    Observable<BaseModel<AuthModel>> verifyAccount(@Body LoginRequest request);
 }

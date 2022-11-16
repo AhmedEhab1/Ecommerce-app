@@ -13,8 +13,6 @@ import io.reactivex.rxjava3.core.Observable;
 public class AuthorizationRepository {
     private ApiService apiService ;
 
-
-
     @Inject
     public AuthorizationRepository(ApiService apiService) {
         this.apiService = apiService;
@@ -31,5 +29,10 @@ public class AuthorizationRepository {
     public Observable<BaseModel> forgetPasswordRequest(LoginRequest request){
         return apiService.forgetPassword(request);
     }
+
+    public Observable<BaseModel<AuthModel>> verifyRequest(LoginRequest request){
+        return apiService.verifyAccount(request);
+    }
+
 
 }

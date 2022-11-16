@@ -49,7 +49,7 @@
         <item name="colorAccent">@color/colorPrimary</item> <!-- Whatever color you want-->
     </style>
 
-    <style name="error" parent="@android:style/TextAppearance">
+    <style name="error" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="android:textColor">@color/red</item> <!--apply the color you wat here -->
         <item name="android:textSize">12sp</item>
     </style>

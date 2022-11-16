@@ -80,6 +80,10 @@ public class LoginFragment extends Fragment {
 
     private void loginResponse(BaseModel<AuthModel> loginModelBaseModel) {
         helper.dismissLoading();
+        if (loginModelBaseModel.getSuccess()){
+            Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_homeScreenFragment);
+
+        }
     }
 
     private void errorMessage(){
