@@ -82,7 +82,6 @@ public class LoginFragment extends Fragment {
         helper.dismissLoading();
         if (loginModelBaseModel.getSuccess()){
             Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_homeScreenFragment);
-
         }
     }
 
