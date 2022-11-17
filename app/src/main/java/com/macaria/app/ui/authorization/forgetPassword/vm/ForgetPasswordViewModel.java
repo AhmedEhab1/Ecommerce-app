@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.repository.AuthorizationRepository;
+import com.macaria.app.ui.authorization.forgetPassword.model.ChangePasswordRequest;
 import com.macaria.app.ui.authorization.forgetPassword.model.ForgetPasswordModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
 
@@ -20,7 +21,9 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class ForgetPasswordViewModel extends ViewModel {
     private AuthorizationRepository repository;
     private MutableLiveData<BaseModel<ForgetPasswordModel>> forgetPasswordResponse = new MutableLiveData<>();
+    private MutableLiveData<BaseModel<ForgetPasswordModel>> resendCode = new MutableLiveData<>();
     private MutableLiveData<BaseModel<ForgetPasswordModel>> confirmCode = new MutableLiveData<>();
+    private MutableLiveData<BaseModel> updatePasswordResponse = new MutableLiveData<>();
     private MutableLiveData<String> errorMassage = new MutableLiveData<>();
 
     @ViewModelInject
@@ -41,6 +44,34 @@ public class ForgetPasswordViewModel extends ViewModel {
                     @Override
                     public void onNext(@NonNull BaseModel<ForgetPasswordModel> model) {
                         forgetPasswordResponse.setValue(model);
+
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        getErrorMessage(isHttpException(e));
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void resendCode(LoginRequest request) {
+        repository.forgetPasswordRequest(request)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<BaseModel<ForgetPasswordModel>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull BaseModel<ForgetPasswordModel> model) {
+                        resendCode.setValue(model);
 
                     }
 
@@ -84,8 +115,48 @@ public class ForgetPasswordViewModel extends ViewModel {
                 });
     }
 
+    public void updatePassword(ChangePasswordRequest request) {
+        repository.updatePassword(request)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<BaseModel>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull BaseModel model) {
+                        updatePasswordResponse.setValue(model);
+
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        getErrorMessage(isHttpException(e));
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
     public MutableLiveData<BaseModel<ForgetPasswordModel>> getResponse() {
         return forgetPasswordResponse;
+    }
+
+    public MutableLiveData<BaseModel> getUpdatePasswordResponse() {
+        return updatePasswordResponse;
+    }
+
+    public MutableLiveData<BaseModel<ForgetPasswordModel>> getResendCodeResponse() {
+        return resendCode;
+    }
+
+    public MutableLiveData<BaseModel<ForgetPasswordModel>> getConfirmCode() {
+        return confirmCode;
     }
 
     public MutableLiveData<String> getErrorMassage() {

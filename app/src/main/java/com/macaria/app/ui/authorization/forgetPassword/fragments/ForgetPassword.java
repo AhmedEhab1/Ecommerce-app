@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.macaria.app.R;
 import com.macaria.app.databinding.ForgetPasswordFragmentBinding;
 import com.macaria.app.models.BaseModel;
+import com.macaria.app.ui.authorization.AuthData;
 import com.macaria.app.ui.authorization.forgetPassword.model.ForgetPasswordModel;
 import com.macaria.app.ui.authorization.forgetPassword.vm.ForgetPasswordViewModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
@@ -51,8 +52,8 @@ public class ForgetPassword extends Fragment implements ResetPasswordListener{
         binding.send.setOnClickListener(view -> forgetPasswordRequest());
         loginResponse();
         errorMessage();
-        showResetPasswordDialog();
         confirmCodeResponse();
+        resendCodeResponse();
     }
 
     private void forgetPasswordRequest() {
@@ -69,6 +70,13 @@ public class ForgetPassword extends Fragment implements ResetPasswordListener{
         viewModel.forgetPasswordRequest(request);
     }
 
+    private void resendCode(){
+        helper.showLoading(getActivity());
+        LoginRequest request = new LoginRequest();
+        request.setMobile(mobile);
+        viewModel.resendCode(request);
+    }
+
     private void loginResponse() {
         viewModel.getResponse().observe(getViewLifecycleOwner(), new Observer<BaseModel<ForgetPasswordModel>>() {
             @Override
@@ -81,11 +89,14 @@ public class ForgetPassword extends Fragment implements ResetPasswordListener{
     }
 
     private void confirmCodeResponse() {
-        viewModel.getResponse().observe(getViewLifecycleOwner(), new Observer<BaseModel<ForgetPasswordModel>>() {
+        viewModel.getConfirmCode().observe(getViewLifecycleOwner(), new Observer<BaseModel<ForgetPasswordModel>>() {
             @Override
             public void onChanged(BaseModel<ForgetPasswordModel> forgetPasswordModelBaseModel) {
               // navigate
-                Navigation.findNavController(requireView()).navigate(R.id.action_forgetPassword_to_createNewPasswordFragment);
+                helper.dismissLoading();
+                Bundle bundle = new Bundle();
+                bundle.putInt("user_id", Integer.parseInt(userId));
+                Navigation.findNavController(requireView()).navigate(R.id.action_forgetPassword_to_createNewPasswordFragment, bundle);
             }
         });
     }
@@ -95,6 +106,15 @@ public class ForgetPassword extends Fragment implements ResetPasswordListener{
             @Override
             public void onChanged(String s) {
                 helper.showErrorDialog(getActivity() , null , s);
+            }
+        });
+    }
+
+    private void resendCodeResponse(){
+        viewModel.getResendCodeResponse().observe(getViewLifecycleOwner(), new Observer<BaseModel<ForgetPasswordModel>>() {
+            @Override
+            public void onChanged(BaseModel<ForgetPasswordModel> forgetPasswordModelBaseModel) {
+                helper.dismissLoading();
             }
         });
     }
@@ -109,13 +129,13 @@ public class ForgetPassword extends Fragment implements ResetPasswordListener{
         resetPasswordDialog.dismiss();
         helper.showLoading(getActivity());
         ForgetPasswordModel request = new ForgetPasswordModel();
-        request.setOtp(otp);
+        request.setCode(otp);
         request.setUser_id(userId);
         viewModel.confirmCode(request);
     }
 
     @Override
     public void onSendCodeClicked() {
-        sendCode();
+        resendCode();
     }
 }

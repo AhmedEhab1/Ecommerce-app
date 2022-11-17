@@ -1,9 +1,11 @@
 package com.macaria.app.di;
 
 
+import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 
+import com.macaria.app.ui.authorization.AuthData;
 import com.macaria.app.utilities.Loading;
 import com.macaria.app.utilities.MyHelper;
 

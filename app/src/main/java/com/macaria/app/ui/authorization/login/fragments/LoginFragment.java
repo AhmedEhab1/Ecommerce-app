@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.macaria.app.databinding.LoginFragmentBinding;
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.R;
+import com.macaria.app.ui.authorization.AuthData;
 import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
 import com.macaria.app.ui.authorization.login.model.UserModel;
@@ -82,8 +83,7 @@ public class LoginFragment extends Fragment {
     private void loginResponse(BaseModel<AuthModel> loginModelBaseModel) {
         helper.dismissLoading();
         if (loginModelBaseModel.getSuccess()){
-            UserModel userModel = (UserModel)loginModelBaseModel.getItem().getData().getUser() ;
-
+            new AuthData(getActivity()).SaveUserData(loginModelBaseModel.getItem().getData());
             Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_homeScreenFragment);
         }
     }

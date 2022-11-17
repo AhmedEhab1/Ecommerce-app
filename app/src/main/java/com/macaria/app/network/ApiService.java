@@ -3,6 +3,7 @@ package com.macaria.app.network;
 
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.ui.authorization.createAccount.CreateAccountRequest;
+import com.macaria.app.ui.authorization.forgetPassword.model.ChangePasswordRequest;
 import com.macaria.app.ui.authorization.forgetPassword.model.ForgetPasswordModel;
 import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
@@ -26,4 +27,7 @@ public interface ApiService {
 
     @POST("forgot-password/confirmCode")
     Observable<BaseModel<ForgetPasswordModel>> confirmCode(@Body ForgetPasswordModel request);
+
+    @POST("forgot-password/updatePassword")
+    Observable<BaseModel> updatePassword(@Body ChangePasswordRequest request);
 }

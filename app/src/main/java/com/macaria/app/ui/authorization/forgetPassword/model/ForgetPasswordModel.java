@@ -10,6 +10,13 @@ public class ForgetPasswordModel {
     @SerializedName("otp")
     @Expose
     private String otp;
+    @SerializedName("code")
+    @Expose
+    private String code;
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public String getUser_id() {
         return user_id;

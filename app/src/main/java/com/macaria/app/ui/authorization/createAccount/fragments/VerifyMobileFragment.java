@@ -18,6 +18,7 @@ import com.macaria.app.R;
 import com.macaria.app.databinding.SplashFragmentBinding;
 import com.macaria.app.databinding.VerifyMobileFragmentBinding;
 import com.macaria.app.models.BaseModel;
+import com.macaria.app.ui.authorization.AuthData;
 import com.macaria.app.ui.authorization.createAccount.CreateAccountRequest;
 import com.macaria.app.ui.authorization.createAccount.vm.CreateAccountViewModel;
 import com.macaria.app.ui.authorization.login.model.AuthModel;
@@ -83,6 +84,7 @@ public class VerifyMobileFragment extends Fragment {
 
     private void loginResponse(BaseModel<AuthModel> loginModelBaseModel) {
         helper.dismissLoading();
+        new AuthData(getActivity()).SaveUserData(loginModelBaseModel.getItem().getData());
         Navigation.findNavController(requireView()).navigate(R.id.action_verifyMobileFragment_to_homeScreenFragment);
     }
 
