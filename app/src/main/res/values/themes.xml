@@ -27,8 +27,8 @@
         <item name="android:fontFamily">@font/norms_regular</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
 
-<!--        <item name="android:windowTranslucentStatus">true</item>-->
-<!--        <item name="android:windowTranslucentNavigation">true</item>-->
+        <!--        <item name="android:windowTranslucentStatus">true</item>-->
+        <!--        <item name="android:windowTranslucentNavigation">true</item>-->
 
     </style>
 
@@ -53,4 +53,22 @@
         <item name="android:textColor">@color/red</item> <!--apply the color you wat here -->
         <item name="android:textSize">12sp</item>
     </style>
+
+    <style name="MyTransparentBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="bottomSheetStyle">@style/MyTransparentBottomSheetDialogStyle</item>
+        <item name="android:colorBackground">@android:color/white</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="MyTransparentBottomSheetDialogStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_down</item>
+    </style>
+
 </resources>

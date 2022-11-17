@@ -24,7 +24,7 @@ public class UserModel {
     private String email;
     @SerializedName("image")
     @Expose
-    private Object image;
+    private String image;
     @SerializedName("otp")
     @Expose
     private Integer otp;
@@ -80,11 +80,11 @@ public class UserModel {
         this.email = email;
     }
 
-    public Object getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Object image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

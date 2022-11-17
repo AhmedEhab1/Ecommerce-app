@@ -83,7 +83,7 @@ public class VerifyMobileFragment extends Fragment {
 
     private void loginResponse(BaseModel<AuthModel> loginModelBaseModel) {
         helper.dismissLoading();
-        Navigation.findNavController(requireView()).navigate(R.id.action_creareAccountFragment_to_verifyMobileFragment);
+        Navigation.findNavController(requireView()).navigate(R.id.action_verifyMobileFragment_to_homeScreenFragment);
     }
 
     private void errorMessage() {
@@ -96,7 +96,7 @@ public class VerifyMobileFragment extends Fragment {
     }
 
     private void counter() {
-        sendCode = true;
+        sendCode = false;
         new CountDownTimer(60000, 1000) {
             public void onTick(long millisUntilFinished) {
                 binding.timer.setText("00:" + millisUntilFinished / 1000);
@@ -110,9 +110,12 @@ public class VerifyMobileFragment extends Fragment {
     }
 
     private void reSendCode(){
-        LoginRequest request = new LoginRequest();
-        request.setMobile(mobile);
-        viewModel.sendCode(request);
+        if (sendCode){
+            LoginRequest request = new LoginRequest();
+            request.setMobile(mobile);
+            helper.showLoading(getActivity());
+            viewModel.sendCode(request);
+        }else Toast.makeText(getActivity(), "please wait..", Toast.LENGTH_SHORT).show();
     }
 
     private void sendCodeResponse() {

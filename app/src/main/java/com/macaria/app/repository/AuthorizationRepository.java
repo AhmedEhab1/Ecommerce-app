@@ -3,6 +3,7 @@ package com.macaria.app.repository;
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.network.ApiService;
 import com.macaria.app.ui.authorization.createAccount.CreateAccountRequest;
+import com.macaria.app.ui.authorization.forgetPassword.model.ForgetPasswordModel;
 import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
 
@@ -26,8 +27,12 @@ public class AuthorizationRepository {
         return apiService.createAccount(request);
     }
 
-    public Observable<BaseModel> forgetPasswordRequest(LoginRequest request){
+    public Observable<BaseModel<ForgetPasswordModel>> forgetPasswordRequest(LoginRequest request){
         return apiService.forgetPassword(request);
+    }
+
+    public Observable<BaseModel<ForgetPasswordModel>> confirmCode(ForgetPasswordModel request){
+        return apiService.confirmCode(request);
     }
 
     public Observable<BaseModel<AuthModel>> verifyRequest(LoginRequest request){

@@ -9,7 +9,7 @@ public class BaseModel<T> {
     private Boolean success;
     @SerializedName("item")
     @Expose
-    private Item item;
+    private Item<T> item;
     @SerializedName("message")
     @Expose
     private String message;
@@ -22,7 +22,7 @@ public class BaseModel<T> {
         this.success = success;
     }
 
-    public Item getItem() {
+    public Item<T> getItem() {
         return item;
     }
 
@@ -38,7 +38,7 @@ public class BaseModel<T> {
         this.message = message;
     }
 
-    public class Item {
+    public static class Item<T> {
 
         @SerializedName("data")
         @Expose

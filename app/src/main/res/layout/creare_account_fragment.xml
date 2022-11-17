@@ -69,7 +69,6 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:inputType="textPersonName"
-                        android:maxLength="11"
                         android:maxLines="1"
                         tools:ignore="KeyboardInaccessibleWidget" />
 
@@ -100,7 +99,6 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:inputType="textPersonName"
-                        android:maxLength="11"
                         android:maxLines="1"
                         tools:ignore="KeyboardInaccessibleWidget" />
 
@@ -161,7 +159,6 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:inputType="textEmailAddress"
-                        android:maxLength="11"
                         android:maxLines="1"
                         tools:ignore="KeyboardInaccessibleWidget" />
 

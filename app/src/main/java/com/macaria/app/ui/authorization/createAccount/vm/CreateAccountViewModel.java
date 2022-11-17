@@ -15,6 +15,9 @@ import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class CreateAccountViewModel extends ViewModel {
@@ -30,14 +33,41 @@ public class CreateAccountViewModel extends ViewModel {
     }
 
     public void loginRequest(CreateAccountRequest request) {
+//        repository.createAccount(request)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(response -> loginResponse.setValue(response),
+//                        error -> {
+//                            Log.d("viewModel error", "getErrorMessage: " + error);
+//                            getErrorMessage(isHttpException(error));
+//                        });
+
         repository.createAccount(request)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(response -> loginResponse.setValue(response),
-                        error -> {
-                            Log.d("viewModel error", "getErrorMessage: " + error);
-                            getErrorMessage(isHttpException(error));
-                        });
+                .subscribe(new Observer<BaseModel<AuthModel>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull BaseModel<AuthModel> authModelBaseModel) {
+                        loginResponse.setValue(authModelBaseModel);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        getErrorMessage(isHttpException(e));
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+
     }
 
     public void verifyRequest(LoginRequest request) {

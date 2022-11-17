@@ -23,8 +23,9 @@
         >
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:fitsSystemWindows="true"
+            android:windowSoftInputMode="stateVisible|adjustPan"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.macaria.app.R;
 import com.macaria.app.databinding.ForgetPasswordFragmentBinding;
 import com.macaria.app.models.BaseModel;
+import com.macaria.app.ui.authorization.forgetPassword.model.ForgetPasswordModel;
 import com.macaria.app.ui.authorization.forgetPassword.vm.ForgetPasswordViewModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
 import com.macaria.app.utilities.MyHelper;
@@ -24,10 +26,11 @@ import javax.inject.Inject;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class ForgetPassword extends Fragment {
+public class ForgetPassword extends Fragment implements ResetPasswordListener{
     private ForgetPasswordFragmentBinding binding ;
     private ForgetPasswordViewModel viewModel ;
-
+    private String mobile , userId ;
+    ResetPasswordDialog resetPasswordDialog ;
     @Inject
     MyHelper helper ;
 
@@ -48,28 +51,41 @@ public class ForgetPassword extends Fragment {
         binding.send.setOnClickListener(view -> forgetPasswordRequest());
         loginResponse();
         errorMessage();
+        showResetPasswordDialog();
+        confirmCodeResponse();
     }
 
     private void forgetPasswordRequest() {
-        String mobile = binding.phoneNumber.getText().toString();
-        if (mobile.length() != 11) {
+        mobile = binding.phoneNumber.getText().toString();
+        if (mobile.length() != 11)
             Toast.makeText(getActivity(), getString(R.string.add_valid_mobile), Toast.LENGTH_SHORT).show();
-        }  else {
-            helper.showLoading(getActivity());
-            LoginRequest request = new LoginRequest();
-            request.setMobile(mobile);
-            viewModel.forgetPasswordRequest(request);
-        }
+          else sendCode();
+    }
+
+    private void sendCode(){
+        helper.showLoading(getActivity());
+        LoginRequest request = new LoginRequest();
+        request.setMobile(mobile);
+        viewModel.forgetPasswordRequest(request);
     }
 
     private void loginResponse() {
-        viewModel.getResponse().observe(getViewLifecycleOwner(), new Observer<BaseModel>() {
+        viewModel.getResponse().observe(getViewLifecycleOwner(), new Observer<BaseModel<ForgetPasswordModel>>() {
             @Override
-            public void onChanged(BaseModel model) {
+            public void onChanged(BaseModel<ForgetPasswordModel> forgetPasswordModelBaseModel) {
                 helper.dismissLoading();
-                Log.d("TAG", "onChanged: ");
-              //  Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_forgetPassword);
+                showResetPasswordDialog();
+                userId = forgetPasswordModelBaseModel.getItem().getData().getUser_id();
+            }
+        });
+    }
 
+    private void confirmCodeResponse() {
+        viewModel.getResponse().observe(getViewLifecycleOwner(), new Observer<BaseModel<ForgetPasswordModel>>() {
+            @Override
+            public void onChanged(BaseModel<ForgetPasswordModel> forgetPasswordModelBaseModel) {
+              // navigate
+                Navigation.findNavController(requireView()).navigate(R.id.action_forgetPassword_to_createNewPasswordFragment);
             }
         });
     }
@@ -81,5 +97,25 @@ public class ForgetPassword extends Fragment {
                 helper.showErrorDialog(getActivity() , null , s);
             }
         });
+    }
+
+    private void showResetPasswordDialog(){
+        resetPasswordDialog = new ResetPasswordDialog(getActivity() , this, mobile);
+        resetPasswordDialog.show();
+    }
+
+    @Override
+    public void onOtpEntered(String otp) {
+        resetPasswordDialog.dismiss();
+        helper.showLoading(getActivity());
+        ForgetPasswordModel request = new ForgetPasswordModel();
+        request.setOtp(otp);
+        request.setUser_id(userId);
+        viewModel.confirmCode(request);
+    }
+
+    @Override
+    public void onSendCodeClicked() {
+        sendCode();
     }
 }
