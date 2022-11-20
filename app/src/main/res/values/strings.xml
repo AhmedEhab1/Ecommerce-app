@@ -6,6 +6,10 @@
     <string name="submit">Submit</string>
     <string name="login2"><u>Login</u></string>
     <string name="send">Send</string>
+    <string name="home">Home</string>
+    <string name="categories">Categories</string>
+    <string name="favorite">Favorite</string>
+    <string name="profile">Profile</string>
     <string name="add_valid_name">Please add a valid name</string>
     <string name="add_valid_email">Please add a valid email</string>
     <string name="forget_your_password">Forget your password?</string>
