@@ -81,7 +81,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeScreenFragment"
-        android:name="com.macaria.app.ui.home.HomeScreenFragment"
+        android:name="com.macaria.app.ui.homeScreen.HomeScreenFragment"
         android:label="fragment_home_screen"
         tools:layout="@layout/fragment_home_screen" />
     <fragment

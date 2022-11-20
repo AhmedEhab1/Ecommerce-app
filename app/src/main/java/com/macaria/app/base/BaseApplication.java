@@ -1,4 +1,4 @@
-package com.macaria.app;
+package com.macaria.app.base;
 
 import android.app.Application;
 

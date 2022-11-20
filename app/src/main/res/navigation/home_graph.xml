@@ -7,12 +7,37 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.macaria.app.HomeFragment"
+        android:name="com.macaria.app.ui.homeScreen.home.HomeFragment"
         android:label="home_fragment"
         tools:layout="@layout/home_fragment" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.macaria.app.ProfileFragment"
+        android:name="com.macaria.app.ui.homeScreen.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/profile_fragment" />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.macaria.app.ui.homeScreen.favorite.FavoriteFragment"
+        android:label="favorite_fragment"
+        tools:layout="@layout/favorite_fragment" />
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.macaria.app.ui.homeScreen.categories.CategoriesFragment"
+        android:label="categories_fragment"
+        tools:layout="@layout/categories_fragment" />
+    <fragment
+        android:id="@+id/accountInfo"
+        android:name="com.macaria.app.ui.homeScreen.profile.accountInfo.AccountInfo"
+        android:label="account_info_fragment"
+        tools:layout="@layout/account_info_fragment" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.macaria.app.ui.homeScreen.profile.accountInfo.ChangePasswordFragment"
+        android:label="change_password_fragment"
+        tools:layout="@layout/change_password_fragment" />
+    <fragment
+        android:id="@+id/savedAddressesFragment"
+        android:name="com.macaria.app.SavedAddressesFragment"
+        android:label="saved_addresses_fragment"
+        tools:layout="@layout/saved_addresses_fragment" />
 </navigation>

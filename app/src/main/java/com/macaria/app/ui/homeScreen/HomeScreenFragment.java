@@ -1,11 +1,10 @@
-package com.macaria.app.ui.home;
+package com.macaria.app.ui.homeScreen;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.view.LayoutInflater;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.macaria.app.R;
-import com.macaria.app.databinding.ForgetPasswordFragmentBinding;
 import com.macaria.app.databinding.FragmentHomeScreenBinding;
 
 public class HomeScreenFragment extends Fragment {
@@ -36,18 +34,12 @@ public class HomeScreenFragment extends Fragment {
     }
 
     private void init() {
-        AppBarConfiguration  mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.splashFragment)
-                .build();
-
         navHostFragment =
                 (NavHostFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView);
         if (navHostFragment != null) {
             navController = navHostFragment.getNavController();
         }
-
         NavigationUI.setupWithNavController(binding.mainBottomNavView, navController);
-
     }
 
 

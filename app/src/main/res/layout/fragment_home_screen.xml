@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.home.HomeScreenFragment">
+        tools:context=".ui.homeScreen.HomeScreenFragment">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerView"
@@ -27,7 +27,7 @@
             android:layout_height="70dp"
             android:orientation="vertical"
             android:background="@color/white"
-            tools:context=".ui.home.HomeScreenFragment">
+            tools:context=".ui.homeScreen.HomeScreenFragment">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/main_bottom_nav_view"

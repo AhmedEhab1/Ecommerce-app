@@ -5,7 +5,7 @@
         android:icon="@drawable/home_item"
         android:title="@string/home" />
     <item
-        android:id="@+id/cartFragment"
+        android:id="@+id/categoriesFragment"
         android:icon="@drawable/categories_item"
         android:title="@string/categories" />
     <item
@@ -13,7 +13,7 @@
         android:icon="@drawable/favorite_item"
         android:title="@string/favorite" />
     <item
-        android:id="@+id/accountFragment"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/profile_item"
         android:title="@string/profile" />
 </menu>
