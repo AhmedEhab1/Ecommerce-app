@@ -5,6 +5,8 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/splashFragment">
 
+
+
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.macaria.app.ui.splash.SplashFragment"
@@ -18,13 +20,14 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_homeScreenFragment"
-            app:destination="@id/homeScreenFragment"
+            app:destination="@id/homeFragment"
             app:popUpTo="@id/splashFragment"
             app:popUpToInclusive="true"
             app:enterAnim="@anim/push_left_in"
             app:exitAnim="@anim/push_left_out"
             app:popEnterAnim="@anim/push_right_in"
             app:popExitAnim="@anim/push_right_out"/>
+
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -47,7 +50,7 @@
             app:popExitAnim="@anim/push_right_out" />
         <action
             android:id="@+id/action_loginFragment_to_homeScreenFragment"
-            app:destination="@id/homeScreenFragment"
+            app:destination="@id/homeFragment"
             app:enterAnim="@anim/push_left_in"
             app:exitAnim="@anim/push_left_out"
             app:popEnterAnim="@anim/push_right_in"
@@ -79,11 +82,7 @@
             app:popEnterAnim="@anim/push_right_in"
             app:popExitAnim="@anim/push_right_out" />
     </fragment>
-    <fragment
-        android:id="@+id/homeScreenFragment"
-        android:name="com.macaria.app.ui.homeScreen.HomeScreenFragment"
-        android:label="fragment_home_screen"
-        tools:layout="@layout/fragment_home_screen" />
+
     <fragment
         android:id="@+id/verifyMobileFragment"
         android:name="com.macaria.app.ui.authorization.createAccount.fragments.VerifyMobileFragment"
@@ -91,7 +90,7 @@
         tools:layout="@layout/verify_mobile_fragment">
         <action
             android:id="@+id/action_verifyMobileFragment_to_homeScreenFragment"
-            app:destination="@id/homeScreenFragment"
+            app:destination="@id/homeFragment"
             app:enterAnim="@anim/push_left_in"
             app:exitAnim="@anim/push_left_out"
             app:popEnterAnim="@anim/push_right_in"
@@ -112,4 +111,48 @@
             app:popEnterAnim="@anim/push_right_in"
             app:popExitAnim="@anim/push_right_out" />
     </fragment>
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.macaria.app.ui.homeScreen.home.HomeFragment"
+        tools:layout="@layout/home_fragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.macaria.app.ui.homeScreen.profile.ProfileFragment"
+        tools:layout="@layout/profile_fragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_accountInfo"
+            app:destination="@id/accountInfo"
+            app:enterAnim="@anim/push_left_in"
+            app:exitAnim="@anim/push_left_out"
+            app:popEnterAnim="@anim/push_right_in"
+            app:popExitAnim="@anim/push_right_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.macaria.app.ui.homeScreen.favorite.FavoriteFragment"
+        tools:layout="@layout/favorite_fragment" />
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.macaria.app.ui.homeScreen.categories.CategoriesFragment"
+        tools:layout="@layout/categories_fragment" />
+
+
+
+    <fragment
+        android:id="@+id/accountInfo"
+        android:name="com.macaria.app.ui.homeScreen.profile.accountInfo.AccountInfo"
+        tools:layout="@layout/account_info_fragment" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.macaria.app.ui.homeScreen.profile.accountInfo.ChangePasswordFragment"
+        android:label="change_password_fragment"
+        tools:layout="@layout/change_password_fragment" />
+    <fragment
+        android:id="@+id/savedAddressesFragment"
+        android:name="com.macaria.app.ui.homeScreen.profile.savedAddresses.SavedAddressesFragment"
+        android:label="saved_addresses_fragment"
+        tools:layout="@layout/saved_addresses_fragment" />
+
+
 </navigation>

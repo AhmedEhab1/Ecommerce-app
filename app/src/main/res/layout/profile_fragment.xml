@@ -11,8 +11,67 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-
         tools:context=".ui.homeScreen.profile.ProfileFragment">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="105dp"
+            android:layout_marginTop="-15dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/norms_medium"
+                    android:text="@string/profile"
+                    android:textAlignment="viewStart"
+                    android:textSize="22sp" />
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+
+                    >
+
+                    <FrameLayout
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginBottom="7dp"
+                        android:background="@drawable/black_circle">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="0"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </FrameLayout>
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:src="@drawable/ic_shopping_cart" />
+                </FrameLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
 
         <ScrollView
@@ -24,66 +83,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="-20dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="15dp"
-                    app:cardElevation="4dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:layout_marginBottom="20dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textView3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="15dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/norms_medium"
-                            android:text="@string/profile"
-                            android:textAlignment="viewStart"
-                            android:textSize="22sp" />
-
-                        <FrameLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="20dp"
-
-                            >
-
-                            <FrameLayout
-                                android:layout_width="22dp"
-                                android:layout_height="22dp"
-                                android:layout_marginStart="12dp"
-                                android:layout_marginBottom="7dp"
-                                android:background="@drawable/black_circle">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:text="0"
-                                    android:textColor="@color/white"
-                                    android:textSize="12sp" />
-
-                            </FrameLayout>
-
-                            <ImageView
-                                android:id="@+id/imageView"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="bottom"
-                                android:src="@drawable/ic_shopping_cart" />
-                        </FrameLayout>
-
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
 
                 <ImageView
                     android:id="@+id/profileImage"
@@ -116,14 +115,15 @@
                     tools:text="laurel.mendoza@mail.com" />
 
                 <TextView
+                    android:id="@+id/account_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
-                    android:paddingBottom="10dp"
                     android:layout_marginEnd="25dp"
                     android:drawablePadding="10dp"
                     android:gravity="center|start"
+                    android:paddingBottom="10dp"
                     android:text="@string/account_info"
                     android:textAlignment="viewStart"
                     android:textColor="@color/textColor"
@@ -143,9 +143,9 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="25dp"
-                    android:paddingBottom="10dp"
                     android:drawablePadding="10dp"
                     android:gravity="center|start"
+                    android:paddingBottom="10dp"
                     android:text="@string/orders_history"
                     android:textAlignment="viewStart"
                     android:textColor="@color/textColor"
@@ -164,10 +164,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
-                    android:paddingBottom="10dp"
                     android:layout_marginEnd="25dp"
                     android:drawablePadding="10dp"
                     android:gravity="center|start"
+                    android:paddingBottom="10dp"
                     android:text="@string/saved_addresses"
                     android:textAlignment="viewStart"
                     android:textColor="@color/textColor"
@@ -194,9 +194,9 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginEnd="25dp"
-                    android:paddingBottom="10dp"
                     android:drawablePadding="10dp"
                     android:gravity="center|start"
+                    android:paddingBottom="10dp"
                     android:text="@string/contact_us"
                     android:textAlignment="viewStart"
                     android:textColor="@color/textColor"
@@ -215,9 +215,9 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="25dp"
-                    android:paddingBottom="10dp"
                     android:drawablePadding="10dp"
                     android:gravity="center|start"
+                    android:paddingBottom="10dp"
                     android:text="@string/privacy_policy"
                     android:textAlignment="viewStart"
                     android:textColor="@color/textColor"
@@ -236,9 +236,9 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="25dp"
-                    android:paddingBottom="10dp"
                     android:drawablePadding="10dp"
                     android:gravity="center|start"
+                    android:paddingBottom="10dp"
                     android:text="@string/exchange_return"
                     android:textAlignment="viewStart"
                     android:textColor="@color/textColor"
@@ -257,9 +257,9 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="25dp"
-                    android:paddingBottom="10dp"
                     android:drawablePadding="10dp"
                     android:gravity="center|start"
+                    android:paddingBottom="10dp"
                     android:text="@string/terms_conditions"
                     android:textAlignment="viewStart"
                     android:textColor="@color/textColor"
@@ -278,9 +278,9 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="25dp"
-                    android:paddingBottom="10dp"
                     android:drawablePadding="10dp"
                     android:gravity="center|start"
+                    android:paddingBottom="10dp"
                     android:text="@string/logout"
                     android:textAlignment="viewStart"
                     android:textColor="@color/textColor"

@@ -28,6 +28,5 @@ public class AccountInfo extends Fragment {
     }
 
     private void init(){
-
     }
 }
