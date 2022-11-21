@@ -9,9 +9,15 @@ import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
 import com.macaria.app.ui.authorization.login.model.UserModel;
 
+import java.util.HashMap;
+
 import io.reactivex.rxjava3.core.Observable;
+import okhttp3.MultipartBody;
 import retrofit2.http.Body;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
+import retrofit2.http.PartMap;
 
 public interface ApiService {
     @POST("auth/login")
@@ -32,6 +38,13 @@ public interface ApiService {
     @POST("forgot-password/updatePassword")
     Observable<BaseModel> updatePassword(@Body ChangePasswordRequest request);
 
+    @POST("profile/changePassword")
+    Observable<BaseModel> changePassword(@Body ChangePasswordRequest request);
+
     @POST("profile/update")
     Observable<BaseModel<UserModel>> changeAccountInfo(@Body CreateAccountRequest request);
+
+    @Multipart
+    @POST("profile/update")
+    Observable<BaseModel<UserModel>> changeAccountInfo(@PartMap HashMap<String, String> map, @Part MultipartBody.Part Image);
 }

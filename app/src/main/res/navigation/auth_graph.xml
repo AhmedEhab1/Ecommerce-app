@@ -141,7 +141,7 @@
 
     <fragment
         android:id="@+id/accountInfo"
-        android:name="com.macaria.app.ui.homeScreen.profile.accountInfo.AccountInfo"
+        android:name="com.macaria.app.ui.homeScreen.profile.accountInfo.fragments.AccountInfo"
         tools:layout="@layout/account_info_fragment" >
         <action
             android:id="@+id/action_accountInfo_to_changePasswordFragment"
@@ -149,7 +149,7 @@
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
-        android:name="com.macaria.app.ui.homeScreen.profile.accountInfo.ChangePasswordFragment"
+        android:name="com.macaria.app.ui.homeScreen.profile.accountInfo.fragments.ChangePasswordFragment"
         android:label="change_password_fragment"
         tools:layout="@layout/change_password_fragment" />
     <fragment

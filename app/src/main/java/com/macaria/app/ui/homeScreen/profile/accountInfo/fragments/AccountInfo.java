@@ -1,4 +1,4 @@
-package com.macaria.app.ui.homeScreen.profile.accountInfo;
+package com.macaria.app.ui.homeScreen.profile.accountInfo.fragments;
 
 import static com.macaria.app.utilities.ImageHelper.getMultipartBodyImage;
 import static com.macaria.app.utilities.ImageHelper.loadImage;
@@ -49,9 +49,9 @@ public class AccountInfo extends Fragment {
     private MultipartBody.Part imagePart ;
     private AccountInfoViewModel viewModel ;
 
-
     @Inject
     MyHelper helper;
+
     public AccountInfo() {
         // Required empty public constructor
     }
@@ -163,7 +163,8 @@ public class AccountInfo extends Fragment {
             request.setFirst_name(firstName);
             request.setLast_name(lastName);
             request.setEmail(email);
-            viewModel.changeAccountInfoRequest(request);
+            if (imagePart == null)viewModel.changeAccountInfoRequest(request);
+            else viewModel.changeAccountInfoRequest(request, imagePart);
         }
     }
 

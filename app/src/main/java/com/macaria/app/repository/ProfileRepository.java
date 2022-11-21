@@ -9,9 +9,13 @@ import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
 import com.macaria.app.ui.authorization.login.model.UserModel;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
 
 import io.reactivex.rxjava3.core.Observable;
+import okhttp3.MultipartBody;
+import retrofit2.http.Part;
 
 public class ProfileRepository {
     private ApiService apiService ;
@@ -23,6 +27,19 @@ public class ProfileRepository {
 
     public Observable<BaseModel<UserModel>> changeAccountInfoRequest(CreateAccountRequest request){
         return apiService.changeAccountInfo(request);
+    }
+    public Observable<BaseModel<UserModel>> changeAccountInfoRequest(CreateAccountRequest request, @Part MultipartBody.Part image){
+        HashMap<String, String> map = new HashMap<>();
+        map.put("first_name", request.getFirst_name());
+        map.put("last_name", request.getLast_name());
+        map.put("email", request.getEmail());
+        return apiService.changeAccountInfo(map, image);
+    }
+
+
+
+    public Observable<BaseModel> updatePassword(ChangePasswordRequest request){
+        return apiService.changePassword(request);
     }
 
 }
