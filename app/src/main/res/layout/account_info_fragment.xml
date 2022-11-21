@@ -50,10 +50,12 @@
             android:layout_marginTop="30dp">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/profileImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:background="@drawable/image_circle"
+                android:scaleType="centerCrop"
                 android:src="@drawable/profile_holder" />
 
             <androidx.cardview.widget.CardView
@@ -153,7 +155,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/email"
+                android:id="@+id/userEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"

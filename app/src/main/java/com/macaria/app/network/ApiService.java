@@ -30,4 +30,7 @@ public interface ApiService {
 
     @POST("forgot-password/updatePassword")
     Observable<BaseModel> updatePassword(@Body ChangePasswordRequest request);
+
+    @POST("profile/update")
+    Observable<BaseModel> changeAccountInfo(@Body ChangePasswordRequest request);
 }

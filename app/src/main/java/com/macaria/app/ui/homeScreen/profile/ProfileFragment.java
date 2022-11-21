@@ -44,7 +44,6 @@ public class ProfileFragment extends Fragment {
         binding.userEmail.setText(userModel.getEmail());
         binding.profileImage.setClipToOutline(true);
         loadImage(getActivity(), userModel.getImage(), R.drawable.profile_holder, binding.profileImage);
-
     }
 
     private void onViewClicked() {
