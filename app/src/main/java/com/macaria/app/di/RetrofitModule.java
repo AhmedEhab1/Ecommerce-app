@@ -5,6 +5,7 @@ import static com.macaria.app.data.Constants.baseUrl;
 
 import android.util.Log;
 
+import com.macaria.app.data.Constants;
 import com.macaria.app.network.ApiService;
 
 import java.util.concurrent.TimeUnit;
@@ -36,6 +37,7 @@ public class RetrofitModule {
                     Request request = chain.request().newBuilder()
                             .addHeader("Content-Type", "application/json")
                             .addHeader("Accept", "application/json")
+                            .addHeader("Authorization", "bearer ".concat(Constants.TOKEN))
                             .build();
                     return chain.proceed(request);
                 })

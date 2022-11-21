@@ -47,6 +47,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void onViewClicked() {
-        binding.accountInfo.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_profileFragment_to_accountInfo));
+        binding.userInfoData.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_profileFragment_to_accountInfo));
     }
+
 }

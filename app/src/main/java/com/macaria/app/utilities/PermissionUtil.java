@@ -22,10 +22,9 @@ public class PermissionUtil {
     public static boolean isPermissionGranted(@NonNull Activity activity) {
         final int read_permission = ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE);
         final int write_permission = ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        final int camera_permission = ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA);
+//        final int camera_permission = ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA);
         if (read_permission == PackageManager.PERMISSION_GRANTED &&
-                write_permission == PackageManager.PERMISSION_GRANTED &&
-                camera_permission == PackageManager.PERMISSION_GRANTED) {
+                write_permission == PackageManager.PERMISSION_GRANTED ) {
             return true;
         } else {
             return false;

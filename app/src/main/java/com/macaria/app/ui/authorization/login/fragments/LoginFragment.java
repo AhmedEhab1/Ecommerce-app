@@ -93,7 +93,6 @@ public class LoginFragment extends Fragment {
             @Override
             public void onChanged(String s) {
                 helper.showErrorDialog(getActivity() , null , s);
-
             }
         });
     }

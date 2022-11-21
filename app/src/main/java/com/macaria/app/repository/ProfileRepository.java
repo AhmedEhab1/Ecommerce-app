@@ -7,6 +7,7 @@ import com.macaria.app.ui.authorization.forgetPassword.model.ChangePasswordReque
 import com.macaria.app.ui.authorization.forgetPassword.model.ForgetPasswordModel;
 import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
+import com.macaria.app.ui.authorization.login.model.UserModel;
 
 import javax.inject.Inject;
 
@@ -20,9 +21,8 @@ public class ProfileRepository {
         this.apiService = apiService;
     }
 
-    public Observable<BaseModel<AuthModel>> changeAccountInfoRequest(LoginRequest request){
-        return apiService.login(request);
+    public Observable<BaseModel<UserModel>> changeAccountInfoRequest(CreateAccountRequest request){
+        return apiService.changeAccountInfo(request);
     }
-
 
 }

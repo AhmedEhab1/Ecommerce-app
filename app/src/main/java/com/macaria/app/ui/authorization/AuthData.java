@@ -3,34 +3,40 @@ package com.macaria.app.ui.authorization;
 import android.content.Context;
 
 import com.macaria.app.R;
+import com.macaria.app.data.Constants;
 import com.macaria.app.data.PreferencesHelper;
 import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.UserModel;
 
 public class AuthData {
-    private Context context ;
+    private Context context;
 
     public AuthData(Context context) {
         this.context = context;
     }
 
-    public void SaveUserData(AuthModel authModel){
-        getPreferencesHelper().putString("token",authModel.getToken());
-        getPreferencesHelper().putInt("userId",authModel.getUser().getId());
-        getPreferencesHelper().putString("name",authModel.getUser().getName());
-        getPreferencesHelper().putString("first_name",authModel.getUser().getFirstName());
-        getPreferencesHelper().putString("last_name",authModel.getUser().getLastName());
-        getPreferencesHelper().putString("mobile",authModel.getUser().getMobile());
-        getPreferencesHelper().putString("email",authModel.getUser().getEmail());
-        getPreferencesHelper().putString("image",authModel.getUser().getImage());
-        getPreferencesHelper().putBoolean("is_verify",authModel.getUser().getIsVerify());
+    public void SaveUserData(AuthModel authModel) {
+        getPreferencesHelper().putString("token", authModel.getToken());
+        saveUserData(authModel.getUser());
     }
 
-    public AuthModel getUserData(){
+    public void saveUserData(UserModel model) {
+        getPreferencesHelper().putInt("userId", model.getId());
+        getPreferencesHelper().putString("name", model.getName());
+        getPreferencesHelper().putString("first_name", model.getFirstName());
+        getPreferencesHelper().putString("last_name", model.getLastName());
+        getPreferencesHelper().putString("mobile", model.getMobile());
+        getPreferencesHelper().putString("email", model.getEmail());
+        getPreferencesHelper().putString("image", model.getImage());
+        getPreferencesHelper().putBoolean("is_verify", model.getIsVerify());
+    }
+
+    public AuthModel getUserData() {
         AuthModel model = new AuthModel();
         UserModel userModel = new UserModel();
         userModel.setId(getPreferencesHelper().getInt("userId"));
         model.setToken(getPreferencesHelper().getString("token"));
+        Constants.TOKEN = getPreferencesHelper().getString("token");
         userModel.setName(getPreferencesHelper().getString("name"));
         userModel.setFirstName(getPreferencesHelper().getString("first_name"));
         userModel.setLastName(getPreferencesHelper().getString("last_name"));

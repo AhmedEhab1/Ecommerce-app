@@ -7,6 +7,7 @@ import com.macaria.app.ui.authorization.forgetPassword.model.ChangePasswordReque
 import com.macaria.app.ui.authorization.forgetPassword.model.ForgetPasswordModel;
 import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
+import com.macaria.app.ui.authorization.login.model.UserModel;
 
 import io.reactivex.rxjava3.core.Observable;
 import retrofit2.http.Body;
@@ -32,5 +33,5 @@ public interface ApiService {
     Observable<BaseModel> updatePassword(@Body ChangePasswordRequest request);
 
     @POST("profile/update")
-    Observable<BaseModel> changeAccountInfo(@Body ChangePasswordRequest request);
+    Observable<BaseModel<UserModel>> changeAccountInfo(@Body CreateAccountRequest request);
 }

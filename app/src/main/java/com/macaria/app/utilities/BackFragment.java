@@ -35,7 +35,6 @@ public class BackFragment extends Fragment {
 
     private void init(){
         binding.icBack.setOnClickListener(view -> {
-            Log.d("icBack", "init: ");
             Navigation.findNavController(requireView()).popBackStack();
         });
     }
