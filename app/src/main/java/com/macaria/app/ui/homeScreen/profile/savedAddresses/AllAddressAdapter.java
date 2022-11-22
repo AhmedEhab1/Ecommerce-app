@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.macaria.app.databinding.AddressItemBinding;
-import com.macaria.app.ui.homeScreen.profile.savedAddresses.model.AddressModel;
+import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddressModel;
 
 import java.util.ArrayList;
 import java.util.List;

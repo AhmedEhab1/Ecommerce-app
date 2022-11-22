@@ -37,6 +37,7 @@
     <string name="postal_code">Postal Code</string>
     <string name="flat_no">Flat No</string>
     <string name="apartment_no">Apartment No</string>
+    <string name="building_no">Building No</string>
     <string name="enter_phone_number">Please Enter Your Phone Number</string>
     <string name="yes">Yes</string>
     <string name="country_region">Country/Region</string>
@@ -44,6 +45,7 @@
     <string name="password_not_match">Password not match</string>
     <string name="already_have_account">already have an account?</string>
     <string name="email">Email</string>
+    <string name="select_city">Select city</string>
     <string name="reset_password">Reset Password</string>
     <string name="verify_phone_dis">A 4-digit confirmation code has been sent to your mobile number</string>
     <string name="verify_phone_number">Verify Phone Number</string>

@@ -8,8 +8,10 @@ import com.macaria.app.ui.authorization.forgetPassword.model.ForgetPasswordModel
 import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
 import com.macaria.app.ui.authorization.login.model.UserModel;
-import com.macaria.app.ui.homeScreen.profile.savedAddresses.model.AddressModel;
-import com.macaria.app.ui.homeScreen.profile.savedAddresses.model.DeleteRequest;
+import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddAddressRequest;
+import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddressModel;
+import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.CitiesModel;
+import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.DeleteRequest;
 
 import java.util.HashMap;
 import java.util.List;
@@ -45,11 +47,17 @@ public interface ApiService {
     @POST("profile/changePassword")
     Observable<BaseModel> changePassword(@Body ChangePasswordRequest request);
 
+    @POST("profile/address/store")
+    Observable<BaseModel> addAddress(@Body AddAddressRequest request);
+
     @POST("profile/update")
     Observable<BaseModel<UserModel>> changeAccountInfo(@Body CreateAccountRequest request);
 
     @GET("profile/address")
     Observable<BaseModel<List<AddressModel>>> getAddress();
+
+    @GET("list/cities")
+    Observable<BaseModel<List<CitiesModel>>> getCities();
 
     @POST("profile/address/delete")
     Observable<BaseModel> deleteAddress(@Body DeleteRequest id);

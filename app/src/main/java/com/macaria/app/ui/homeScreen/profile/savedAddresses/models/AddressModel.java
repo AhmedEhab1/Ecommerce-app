@@ -1,4 +1,4 @@
-package com.macaria.app.ui.homeScreen.profile.savedAddresses.model;
+package com.macaria.app.ui.homeScreen.profile.savedAddresses.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

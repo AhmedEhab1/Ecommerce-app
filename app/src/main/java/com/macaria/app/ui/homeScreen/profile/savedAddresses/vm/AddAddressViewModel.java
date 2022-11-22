@@ -8,7 +8,8 @@ import androidx.lifecycle.ViewModel;
 
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.repository.ProfileRepository;
-import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddressModel;
+import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddAddressRequest;
+import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.CitiesModel;
 
 import java.util.List;
 
@@ -18,34 +19,23 @@ import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class SavedAddressViewModel extends ViewModel {
+public class AddAddressViewModel extends ViewModel {
     private ProfileRepository repository;
     private MutableLiveData<String> errorMassage = new MutableLiveData<>();
-    private MutableLiveData<BaseModel<List<AddressModel>>> addressModel = new MutableLiveData<>();
-    private MutableLiveData<BaseModel> deleteAddress = new MutableLiveData<>();
+    private MutableLiveData<BaseModel<List<CitiesModel>>> citiesResponse = new MutableLiveData<>();
+    private MutableLiveData<BaseModel> addAddress = new MutableLiveData<>();
 
 
     @ViewModelInject
-    public SavedAddressViewModel(ProfileRepository repository) {
+    public AddAddressViewModel(ProfileRepository repository) {
         this.repository = repository;
     }
 
-    public void deleteAddress(int request) {
-        repository.deleteAddress(request)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(response -> deleteAddress.setValue(response),
-                        error ->
-                                getErrorMessage(isHttpException(error)));
-    }
-
-
-
-    public MutableLiveData<BaseModel<List<AddressModel>>> getAddressModel() {
-        return addressModel;
+    public MutableLiveData<BaseModel<List<CitiesModel>>> getCitiesResponse() {
+        return citiesResponse;
     }
     public MutableLiveData<BaseModel> getDeleteAddressResponse() {
-        return deleteAddress;
+        return addAddress;
     }
 
 
@@ -60,22 +50,49 @@ public class SavedAddressViewModel extends ViewModel {
 
     public void clear() {
         errorMassage = new MutableLiveData<>();
-        addressModel = new MutableLiveData<>();
+        citiesResponse = new MutableLiveData<>();
     }
 
-    public void getAddress() {
-        repository.getAddress()
+    public void addAddress(AddAddressRequest request) {
+        repository.addAddress(request)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<BaseModel<List<AddressModel>>>() {
+                .subscribe(new Observer<BaseModel>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(@NonNull BaseModel<List<AddressModel>> model) {
-                        addressModel.setValue(model);
+                    public void onNext(@NonNull BaseModel model) {
+                        citiesResponse.setValue(model);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        getErrorMessage(isHttpException(e));
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getCities() {
+        repository.getCities()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<BaseModel<List<CitiesModel>>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull BaseModel<List<CitiesModel>> model) {
+                        citiesResponse.setValue(model);
                     }
 
                     @Override

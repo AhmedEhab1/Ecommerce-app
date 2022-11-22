@@ -13,13 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.macaria.app.R;
-import com.macaria.app.databinding.ChangePasswordFragmentBinding;
 import com.macaria.app.databinding.SavedAddressesFragmentBinding;
 import com.macaria.app.models.BaseModel;
-import com.macaria.app.ui.authorization.forgetPassword.vm.ForgetPasswordViewModel;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.AddressListener;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.AllAddressAdapter;
-import com.macaria.app.ui.homeScreen.profile.savedAddresses.model.AddressModel;
+import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddressModel;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.vm.SavedAddressViewModel;
 import com.macaria.app.utilities.MyHelper;
 
@@ -57,7 +55,7 @@ public class SavedAddressesFragment extends Fragment implements AddressListener 
         getAddressResponse();
         deleteAddressResponse();
         errorMessage();
-        binding.addAddressRec.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_savedAddressesFragment_to_addAddressFragment));
+        binding.addAddress.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_savedAddressesFragment_to_addAddressFragment));
     }
 
     private void getAddressResponse() {

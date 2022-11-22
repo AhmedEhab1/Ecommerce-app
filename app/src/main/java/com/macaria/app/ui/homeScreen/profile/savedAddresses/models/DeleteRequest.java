@@ -1,4 +1,4 @@
-package com.macaria.app.ui.homeScreen.profile.savedAddresses.model;
+package com.macaria.app.ui.homeScreen.profile.savedAddresses.models;
 
 public class DeleteRequest {
     int id ;

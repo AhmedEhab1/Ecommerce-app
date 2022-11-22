@@ -4,12 +4,11 @@ import com.macaria.app.models.BaseModel;
 import com.macaria.app.network.ApiService;
 import com.macaria.app.ui.authorization.createAccount.CreateAccountRequest;
 import com.macaria.app.ui.authorization.forgetPassword.model.ChangePasswordRequest;
-import com.macaria.app.ui.authorization.forgetPassword.model.ForgetPasswordModel;
-import com.macaria.app.ui.authorization.login.model.AuthModel;
-import com.macaria.app.ui.authorization.login.model.LoginRequest;
 import com.macaria.app.ui.authorization.login.model.UserModel;
-import com.macaria.app.ui.homeScreen.profile.savedAddresses.model.AddressModel;
-import com.macaria.app.ui.homeScreen.profile.savedAddresses.model.DeleteRequest;
+import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddAddressRequest;
+import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddressModel;
+import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.CitiesModel;
+import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.DeleteRequest;
 
 import java.util.HashMap;
 import java.util.List;
@@ -48,9 +47,16 @@ public class ProfileRepository {
         deleteRequest.setId(id);
         return apiService.deleteAddress(deleteRequest);
     }
-
     public Observable<BaseModel<List<AddressModel>>> getAddress(){
         return apiService.getAddress();
+    }
+
+    public Observable<BaseModel<List<CitiesModel>>> getCities(){
+        return apiService.getCities();
+    }
+
+    public Observable<BaseModel> addAddress(AddAddressRequest request){
+        return apiService.addAddress(request);
     }
 
 }
