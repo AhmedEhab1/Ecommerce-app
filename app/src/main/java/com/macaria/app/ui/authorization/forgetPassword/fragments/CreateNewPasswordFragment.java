@@ -53,6 +53,7 @@ public class CreateNewPasswordFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(ForgetPasswordViewModel.class);
         getResponse();
         binding.submit.setOnClickListener(view -> changePassword());
+        errorMessage();
     }
 
     private void changePassword() {
@@ -77,6 +78,15 @@ public class CreateNewPasswordFragment extends Fragment {
             public void onChanged(BaseModel forgetPasswordModelBaseModel) {
                 helper.dismissLoading();
                 Navigation.findNavController(requireView()).navigate(R.id.action_createNewPasswordFragment_to_homeScreenFragment);
+            }
+        });
+    }
+
+    private void errorMessage(){
+        viewModel.getErrorMassage().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                helper.showErrorDialog(getActivity() , null , s);
             }
         });
     }

@@ -56,6 +56,7 @@ public class SavedAddressesFragment extends Fragment implements AddressListener 
         viewModel.getAddress();
         getAddressResponse();
         deleteAddressResponse();
+        errorMessage();
         binding.addAddressRec.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_savedAddressesFragment_to_addAddressFragment));
     }
 
@@ -94,5 +95,14 @@ public class SavedAddressesFragment extends Fragment implements AddressListener 
     @Override
     public void onEditAddress() {
 
+    }
+
+    private void errorMessage(){
+        viewModel.getErrorMassage().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                helper.showErrorDialog(getActivity() , null , s);
+            }
+        });
     }
 }
