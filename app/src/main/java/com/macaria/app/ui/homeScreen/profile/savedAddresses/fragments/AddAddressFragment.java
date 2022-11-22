@@ -1,4 +1,4 @@
-package com.macaria.app.ui.homeScreen.profile.savedAddresses;
+package com.macaria.app.ui.homeScreen.profile.savedAddresses.fragments;
 
 import android.os.Bundle;
 
@@ -9,15 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.macaria.app.R;
-import com.macaria.app.databinding.ChangePasswordFragmentBinding;
+import com.macaria.app.databinding.AddAddressFragmentBinding;
 import com.macaria.app.databinding.SavedAddressesFragmentBinding;
 
+import dagger.hilt.android.AndroidEntryPoint;
 
-public class SavedAddressesFragment extends Fragment {
-    private SavedAddressesFragmentBinding binding;
+@AndroidEntryPoint
+public class AddAddressFragment extends Fragment {
+    private AddAddressFragmentBinding binding ;
 
-
-    public SavedAddressesFragment() {
+    public AddAddressFragment() {
         // Required empty public constructor
     }
 
@@ -26,12 +27,12 @@ public class SavedAddressesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = SavedAddressesFragmentBinding.inflate(inflater, container, false);
+        binding = AddAddressFragmentBinding.inflate(inflater, container, false);
         init();
         return binding.getRoot();
     }
 
-    private void init() {
-
+    private void init(){
+        
     }
 }

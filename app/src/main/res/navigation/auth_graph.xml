@@ -5,8 +5,6 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/splashFragment">
 
-
-
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.macaria.app.ui.splash.SplashFragment"
@@ -21,12 +19,12 @@
         <action
             android:id="@+id/action_splashFragment_to_homeScreenFragment"
             app:destination="@id/homeFragment"
-            app:popUpTo="@id/splashFragment"
-            app:popUpToInclusive="true"
             app:enterAnim="@anim/push_left_in"
             app:exitAnim="@anim/push_left_out"
             app:popEnterAnim="@anim/push_right_in"
-            app:popExitAnim="@anim/push_right_out"/>
+            app:popExitAnim="@anim/push_right_out"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
 
     </fragment>
     <fragment
@@ -119,14 +117,21 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.macaria.app.ui.homeScreen.profile.ProfileFragment"
-        tools:layout="@layout/profile_fragment" >
+        tools:layout="@layout/profile_fragment">
         <action
             android:id="@+id/action_profileFragment_to_accountInfo"
             app:destination="@id/accountInfo"
             app:enterAnim="@anim/push_left_in"
             app:exitAnim="@anim/push_left_out"
             app:popEnterAnim="@anim/push_right_in"
-            app:popExitAnim="@anim/push_right_out"/>
+            app:popExitAnim="@anim/push_right_out" />
+        <action
+            android:id="@+id/action_profileFragment_to_savedAddressesFragment"
+            app:destination="@id/savedAddressesFragment"
+            app:enterAnim="@anim/push_left_in"
+            app:exitAnim="@anim/push_left_out"
+            app:popEnterAnim="@anim/push_right_in"
+            app:popExitAnim="@anim/push_right_out" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
@@ -138,14 +143,17 @@
         tools:layout="@layout/categories_fragment" />
 
 
-
     <fragment
         android:id="@+id/accountInfo"
         android:name="com.macaria.app.ui.homeScreen.profile.accountInfo.fragments.AccountInfo"
-        tools:layout="@layout/account_info_fragment" >
+        tools:layout="@layout/account_info_fragment">
         <action
             android:id="@+id/action_accountInfo_to_changePasswordFragment"
-            app:destination="@id/changePasswordFragment" />
+            app:destination="@id/changePasswordFragment"
+            app:enterAnim="@anim/push_left_in"
+            app:exitAnim="@anim/push_left_out"
+            app:popEnterAnim="@anim/push_right_in"
+            app:popExitAnim="@anim/push_right_out"/>
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
@@ -154,9 +162,22 @@
         tools:layout="@layout/change_password_fragment" />
     <fragment
         android:id="@+id/savedAddressesFragment"
-        android:name="com.macaria.app.ui.homeScreen.profile.savedAddresses.SavedAddressesFragment"
+        android:name="com.macaria.app.ui.homeScreen.profile.savedAddresses.fragments.SavedAddressesFragment"
         android:label="saved_addresses_fragment"
-        tools:layout="@layout/saved_addresses_fragment" />
+        tools:layout="@layout/saved_addresses_fragment">
+        <action
+            android:id="@+id/action_savedAddressesFragment_to_addAddressFragment"
+            app:destination="@id/addAddressFragment"
+            app:enterAnim="@anim/push_left_in"
+            app:exitAnim="@anim/push_left_out"
+            app:popEnterAnim="@anim/push_right_in"
+            app:popExitAnim="@anim/push_right_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAddressFragment"
+        android:name="com.macaria.app.ui.homeScreen.profile.savedAddresses.fragments.AddAddressFragment"
+        android:label="add_address_fragment"
+        tools:layout="@layout/add_address_fragment" />
 
 
 </navigation>

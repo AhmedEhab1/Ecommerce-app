@@ -173,6 +173,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="25dp"
+                    android:id="@+id/saved_addresses"
                     android:drawablePadding="10dp"
                     android:gravity="center|start"
                     android:paddingBottom="10dp"

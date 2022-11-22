@@ -48,6 +48,7 @@ public class AccountInfo extends Fragment {
     private EasyImage easyImage;
     private MultipartBody.Part imagePart ;
     private AccountInfoViewModel viewModel ;
+    private UserModel userModel ;
 
     @Inject
     MyHelper helper;
@@ -94,7 +95,7 @@ public class AccountInfo extends Fragment {
     }
 
     private void setUserData() {
-        UserModel userModel = new AuthData(getActivity()).getUserData().getUser();
+        userModel = new AuthData(getActivity()).getUserData().getUser();
         binding.firstName.setText(userModel.getFirstName());
         binding.lastName.setText(userModel.getLastName());
         binding.userEmail.setText(userModel.getEmail());
@@ -163,6 +164,7 @@ public class AccountInfo extends Fragment {
             request.setFirst_name(firstName);
             request.setLast_name(lastName);
             request.setEmail(email);
+            request.setMobile(userModel.getEmail());
             if (imagePart == null)viewModel.changeAccountInfoRequest(request);
             else viewModel.changeAccountInfoRequest(request, imagePart);
         }

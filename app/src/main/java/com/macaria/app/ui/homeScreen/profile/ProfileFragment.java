@@ -48,6 +48,7 @@ public class ProfileFragment extends Fragment {
 
     private void onViewClicked() {
         binding.userInfoData.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_profileFragment_to_accountInfo));
+        binding.savedAddresses.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_profileFragment_to_savedAddressesFragment));
     }
 
 }

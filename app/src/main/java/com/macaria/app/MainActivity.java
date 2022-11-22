@@ -8,6 +8,10 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.transition.Fade;
+import androidx.transition.Transition;
+
+import androidx.transition.TransitionManager;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -51,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements NavController.OnD
         }
         NavigationUI.setupWithNavController(binding.mainBottomNavView, navController);
         navController.addOnDestinationChangedListener(this);
-
     }
 
     @Override
@@ -63,8 +66,11 @@ public class MainActivity extends AppCompatActivity implements NavController.OnD
         }
     }
 
-    private void hideBottomNavBar(boolean visibility){
-        if (visibility)binding.navLayout.setVisibility(View.VISIBLE);
-        else binding.navLayout.setVisibility(View.GONE);
+    private void hideBottomNavBar(boolean show) {
+        Transition transition = new Fade();
+        transition.setDuration(400);
+        transition.addTarget(binding.navLayout);
+        TransitionManager.beginDelayedTransition(binding.navLayout, transition);
+        binding.navLayout.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 }

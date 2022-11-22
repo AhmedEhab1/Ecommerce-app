@@ -8,12 +8,16 @@ import com.macaria.app.ui.authorization.forgetPassword.model.ForgetPasswordModel
 import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
 import com.macaria.app.ui.authorization.login.model.UserModel;
+import com.macaria.app.ui.homeScreen.profile.savedAddresses.model.AddressModel;
+import com.macaria.app.ui.homeScreen.profile.savedAddresses.model.DeleteRequest;
 
 import java.util.HashMap;
+import java.util.List;
 
 import io.reactivex.rxjava3.core.Observable;
 import okhttp3.MultipartBody;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -43,6 +47,12 @@ public interface ApiService {
 
     @POST("profile/update")
     Observable<BaseModel<UserModel>> changeAccountInfo(@Body CreateAccountRequest request);
+
+    @GET("profile/address")
+    Observable<BaseModel<List<AddressModel>>> getAddress();
+
+    @POST("profile/address/delete")
+    Observable<BaseModel> deleteAddress(@Body DeleteRequest id);
 
     @Multipart
     @POST("profile/update")

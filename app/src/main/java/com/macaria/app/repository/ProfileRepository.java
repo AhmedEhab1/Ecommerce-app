@@ -8,8 +8,11 @@ import com.macaria.app.ui.authorization.forgetPassword.model.ForgetPasswordModel
 import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
 import com.macaria.app.ui.authorization.login.model.UserModel;
+import com.macaria.app.ui.homeScreen.profile.savedAddresses.model.AddressModel;
+import com.macaria.app.ui.homeScreen.profile.savedAddresses.model.DeleteRequest;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -36,10 +39,18 @@ public class ProfileRepository {
         return apiService.changeAccountInfo(map, image);
     }
 
-
-
     public Observable<BaseModel> updatePassword(ChangePasswordRequest request){
         return apiService.changePassword(request);
+    }
+
+    public Observable<BaseModel> deleteAddress(int id){
+        DeleteRequest deleteRequest = new DeleteRequest();
+        deleteRequest.setId(id);
+        return apiService.deleteAddress(deleteRequest);
+    }
+
+    public Observable<BaseModel<List<AddressModel>>> getAddress(){
+        return apiService.getAddress();
     }
 
 }

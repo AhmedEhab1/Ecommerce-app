@@ -16,6 +16,7 @@
         <entry key="app/src/main/res/drawable/profile_item.xml" value="0.1475" />
         <entry key="app/src/main/res/layout/account_info_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23489583333333333" />
+        <entry key="app/src/main/res/layout/add_address_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/address_item.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/back_layout.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/categories_fragment.xml" value="0.24895833333333334" />
