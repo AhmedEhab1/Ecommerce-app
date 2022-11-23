@@ -12,6 +12,7 @@ import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddAddressReq
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddressModel;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.CitiesModel;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.DeleteRequest;
+import com.macaria.app.ui.homeScreen.profile.webViews.WebViewModel;
 
 import java.util.HashMap;
 import java.util.List;
@@ -68,6 +69,9 @@ public interface ApiService {
 
     @POST("logout")
     Observable<BaseModel> logout();
+
+    @GET("webViews/links")
+    Observable<BaseModel<WebViewModel>> getWebViewsLinks();
 
     @Multipart
     @POST("profile/update")

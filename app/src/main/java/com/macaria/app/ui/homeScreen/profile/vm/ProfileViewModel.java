@@ -10,6 +10,7 @@ import com.macaria.app.models.BaseModel;
 import com.macaria.app.repository.AuthorizationRepository;
 import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
+import com.macaria.app.ui.homeScreen.profile.webViews.WebViewModel;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -17,6 +18,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class ProfileViewModel extends ViewModel {
     private AuthorizationRepository repository;
     private MutableLiveData<BaseModel> logoutResponse = new MutableLiveData<>();
+    private MutableLiveData<BaseModel<WebViewModel>> webViewResponse = new MutableLiveData<>();
     public MutableLiveData<String> errorMassage = new MutableLiveData<>();
 
     @ViewModelInject
@@ -33,9 +35,21 @@ public class ProfileViewModel extends ViewModel {
                                 getErrorMessage(isHttpException(error)));
     }
 
+    public void webViewRequest() {
+        repository.getWebViewsLinks()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response -> webViewResponse.setValue(response),
+                        error ->
+                                getErrorMessage(isHttpException(error)));
+    }
 
     public MutableLiveData<BaseModel> getLogoutResponse() {
         return logoutResponse;
+    }
+
+    public MutableLiveData<BaseModel<WebViewModel>> getWebViewResponse() {
+        return webViewResponse;
     }
 
     public MutableLiveData<String> getErrorMassage() {

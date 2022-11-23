@@ -132,6 +132,15 @@
             app:exitAnim="@anim/push_left_out"
             app:popEnterAnim="@anim/push_right_in"
             app:popExitAnim="@anim/push_right_out" />
+        <action
+            android:id="@+id/action_profileFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_orderHistoryFragment"
+            app:destination="@id/orderHistoryFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_contactUsFragment"
+            app:destination="@id/contactUsFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
@@ -168,16 +177,31 @@
         <action
             android:id="@+id/action_savedAddressesFragment_to_addAddressFragment"
             app:destination="@id/addAddressFragment"
-            app:enterAnim="@anim/push_left_in"
-            app:exitAnim="@anim/push_left_out"
-            app:popEnterAnim="@anim/push_right_in"
-            app:popExitAnim="@anim/push_right_out" />
+            app:enterAnim="@anim/push_up_in"
+            app:exitAnim="@anim/push_up_out"
+            app:popEnterAnim="@anim/push_down_in"
+            app:popExitAnim="@anim/push_down_out" />
     </fragment>
     <fragment
         android:id="@+id/addAddressFragment"
         android:name="com.macaria.app.ui.homeScreen.profile.savedAddresses.fragments.AddAddressFragment"
         android:label="add_address_fragment"
         tools:layout="@layout/add_address_fragment" />
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.macaria.app.ui.homeScreen.profile.webViews.WebViewFragment"
+        android:label="web_view_fragment"
+        tools:layout="@layout/web_view_fragment" />
+    <fragment
+        android:id="@+id/orderHistoryFragment"
+        android:name="com.macaria.app.ui.homeScreen.profile.orderHistory.OrderHistoryFragment"
+        android:label="order_history_fragment"
+        tools:layout="@layout/order_history_fragment" />
+    <fragment
+        android:id="@+id/contactUsFragment"
+        android:name="com.macaria.app.ContactUsFragment"
+        android:label="contact_us_fragment"
+        tools:layout="@layout/contact_us_fragment" />
 
 
 </navigation>

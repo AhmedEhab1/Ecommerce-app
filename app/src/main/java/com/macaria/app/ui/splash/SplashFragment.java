@@ -36,7 +36,7 @@ public class SplashFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = SplashFragmentBinding.inflate(inflater, container, false);
-        handler.postDelayed(this::getAuthToken, 1000);
+        handler.postDelayed(this::getAuthToken, 1800);
         return binding.getRoot();
     }
 

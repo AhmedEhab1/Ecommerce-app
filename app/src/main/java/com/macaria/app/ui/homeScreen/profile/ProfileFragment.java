@@ -24,6 +24,7 @@ import com.macaria.app.ui.authorization.AuthData;
 import com.macaria.app.ui.authorization.login.model.UserModel;
 import com.macaria.app.ui.authorization.login.vm.LoginViewModel;
 import com.macaria.app.ui.homeScreen.profile.vm.ProfileViewModel;
+import com.macaria.app.ui.homeScreen.profile.webViews.WebViewModel;
 import com.macaria.app.utilities.MyHelper;
 import com.macaria.app.utilities.errorDialog.ErrorDialog;
 import com.macaria.app.utilities.errorDialog.ErrorDialogListener;
@@ -36,6 +37,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class ProfileFragment extends Fragment implements ErrorDialogListener {
     private ProfileFragmentBinding binding;
     private ProfileViewModel viewModel;
+    private String terms, privacyPolicy;
 
     @Inject
     MyHelper helper;
@@ -57,6 +59,7 @@ public class ProfileFragment extends Fragment implements ErrorDialogListener {
         viewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         setUserData();
         onViewClicked();
+        getWebViewLinks();
     }
 
     private void setUserData() {
@@ -71,6 +74,20 @@ public class ProfileFragment extends Fragment implements ErrorDialogListener {
         binding.userInfoData.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_profileFragment_to_accountInfo));
         binding.savedAddresses.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_profileFragment_to_savedAddressesFragment));
         binding.logout.setOnClickListener(view -> showLogoutDialog());
+    }
+
+    private void termsConditions(){
+        Bundle bundle = new Bundle();
+        bundle.putString("link", terms);
+        bundle.putString("title", getString(R.string.terms_conditions));
+        binding.termsConditions.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_profileFragment_to_webViewFragment, bundle));
+    }
+
+    private void privacyPolicy(){
+        Bundle bundle = new Bundle();
+        bundle.putString("link", privacyPolicy);
+        bundle.putString("title", getString(R.string.privacy_policy));
+        binding.privacyPolicy.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_profileFragment_to_webViewFragment, bundle));
     }
 
     private void showLogoutDialog() {
@@ -110,6 +127,19 @@ public class ProfileFragment extends Fragment implements ErrorDialogListener {
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
                 getActivity().finish();
+            }
+        });
+    }
+
+    private void getWebViewLinks() {
+        viewModel.webViewRequest();
+        viewModel.getWebViewResponse().observe(getViewLifecycleOwner(), new Observer<BaseModel<WebViewModel>>() {
+            @Override
+            public void onChanged(BaseModel<WebViewModel> webViewModelBaseModel) {
+                terms = webViewModelBaseModel.getItem().getData().getTerms();
+                privacyPolicy = webViewModelBaseModel.getItem().getData().getPrivacyPolicy();
+                privacyPolicy();
+                termsConditions();
             }
         });
     }

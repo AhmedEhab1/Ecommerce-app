@@ -7,6 +7,7 @@ import com.macaria.app.ui.authorization.forgetPassword.model.ChangePasswordReque
 import com.macaria.app.ui.authorization.forgetPassword.model.ForgetPasswordModel;
 import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
+import com.macaria.app.ui.homeScreen.profile.webViews.WebViewModel;
 
 import javax.inject.Inject;
 
@@ -46,6 +47,10 @@ public class AuthorizationRepository {
 
     public Observable<BaseModel> logout(){
         return apiService.logout();
+    }
+
+    public Observable<BaseModel<WebViewModel>> getWebViewsLinks(){
+        return apiService.getWebViewsLinks();
     }
 
 

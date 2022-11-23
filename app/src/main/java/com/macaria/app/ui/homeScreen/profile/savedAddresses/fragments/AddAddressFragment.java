@@ -207,7 +207,6 @@ public class AddAddressFragment extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i != 0) {
                     cityId = Ids.get(i - 1);
-
                 }
             }
 
@@ -216,7 +215,6 @@ public class AddAddressFragment extends Fragment {
             }
         });
     }
-
 
     private int getSelectedPlace(String id, List<Integer> places) {
         for (int i = 0; i < places.size(); i++) {
