@@ -91,7 +91,10 @@ public class SavedAddressesFragment extends Fragment implements AddressListener 
     }
 
     @Override
-    public void onEditAddress() {
+    public void onEditAddress(AddressModel model) {
+        Bundle args = new Bundle();
+        args.putSerializable("addressModel", model);
+        Navigation.findNavController(requireView()).navigate(R.id.action_savedAddressesFragment_to_addAddressFragment, args);
 
     }
 

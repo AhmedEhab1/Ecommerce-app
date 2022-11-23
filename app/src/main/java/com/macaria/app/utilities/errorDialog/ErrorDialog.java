@@ -1,4 +1,4 @@
-package com.macaria.app.utilities;
+package com.macaria.app.utilities.errorDialog;
 
 import android.app.Dialog;
 import android.graphics.Color;
@@ -21,6 +21,14 @@ import java.util.Objects;
 
 public class ErrorDialog extends DialogFragment {
     TextView title, body, cancel, done;
+    ErrorDialogListener listener  ;
+
+    public ErrorDialog() {
+    }
+
+    public ErrorDialog(ErrorDialogListener listener) {
+        this.listener = listener;
+    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -71,10 +79,15 @@ public class ErrorDialog extends DialogFragment {
             body.setText(message);
         }
 
+        if (listener != null){
+            done.setVisibility(View.VISIBLE);
+        }
+
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Objects.requireNonNull(getDialog()).dismiss();
+                listener.onConfirm();
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {

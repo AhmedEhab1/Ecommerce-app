@@ -75,16 +75,17 @@
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:background="#F1F3F4"/>
+
                 <TextView
+                    android:id="@+id/confirm"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@string/yes"
-                    android:visibility="gone"
-                    android:id="@+id/confirm"
-                    android:textColor="@color/textColorGray"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textSize="13sp"/>
+                    android:text="@string/yes"
+                    android:textColor="@color/textColorGray"
+                    android:textSize="13sp"
+                    android:visibility="gone" />
             </LinearLayout>
 
         </LinearLayout>

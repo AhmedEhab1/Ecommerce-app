@@ -59,4 +59,8 @@ public class ProfileRepository {
         return apiService.addAddress(request);
     }
 
+    public Observable<BaseModel> updateAddress(AddAddressRequest request){
+        return apiService.updateAddress(request);
+    }
+
 }

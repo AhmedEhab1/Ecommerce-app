@@ -53,5 +53,18 @@ public class AuthData {
         return preferencesHelper;
     }
 
+    public void logout(){
+        getPreferencesHelper().removeKey("token");
+        getPreferencesHelper().removeKey("userId");
+        getPreferencesHelper().removeKey("name");
+        getPreferencesHelper().removeKey("first_name");
+        getPreferencesHelper().removeKey("last_name");
+        getPreferencesHelper().removeKey("last_name");
+        getPreferencesHelper().removeKey("mobile");
+        getPreferencesHelper().removeKey("email");
+        getPreferencesHelper().removeKey("image");
+        getPreferencesHelper().removeKey("is_verify");
+    }
+
 
 }

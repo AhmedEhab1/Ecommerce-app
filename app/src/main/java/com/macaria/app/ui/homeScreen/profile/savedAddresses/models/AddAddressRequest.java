@@ -4,6 +4,12 @@ public class AddAddressRequest {
     String address, zip_code, country_id, city_id, building_number, apartment_no,
             flat_no, first_name, last_name, phone;
 
+    int id ;
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setAddress(String address) {
         this.address = address;
     }
@@ -42,5 +48,45 @@ public class AddAddressRequest {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getZip_code() {
+        return zip_code;
+    }
+
+    public String getCountry_id() {
+        return country_id;
+    }
+
+    public String getCity_id() {
+        return city_id;
+    }
+
+    public String getBuilding_number() {
+        return building_number;
+    }
+
+    public String getApartment_no() {
+        return apartment_no;
+    }
+
+    public String getFlat_no() {
+        return flat_no;
+    }
+
+    public String getFirst_name() {
+        return first_name;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 }

@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.macaria.app.ui.authorization.AuthData;
+import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddAddressRequest;
 import com.macaria.app.utilities.Loading;
 import com.macaria.app.utilities.MyHelper;
 
@@ -30,5 +31,8 @@ public class ActivityModule {
 
     @Provides
     public Loading provideLoading(){return new Loading();}
+
+    @Provides
+    public AddAddressRequest provideAddressRequest(){return new AddAddressRequest();}
 
 }

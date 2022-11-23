@@ -3,7 +3,9 @@ package com.macaria.app.ui.homeScreen.profile.savedAddresses.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AddressModel {
+import java.io.Serializable;
+
+public class AddressModel implements Serializable {
     @SerializedName("id")
     @Expose
     private Integer id;

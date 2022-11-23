@@ -25,7 +25,6 @@ public class AddAddressViewModel extends ViewModel {
     private MutableLiveData<BaseModel<List<CitiesModel>>> citiesResponse = new MutableLiveData<>();
     private MutableLiveData<BaseModel> addAddress = new MutableLiveData<>();
 
-
     @ViewModelInject
     public AddAddressViewModel(ProfileRepository repository) {
         this.repository = repository;
@@ -34,7 +33,7 @@ public class AddAddressViewModel extends ViewModel {
     public MutableLiveData<BaseModel<List<CitiesModel>>> getCitiesResponse() {
         return citiesResponse;
     }
-    public MutableLiveData<BaseModel> getDeleteAddressResponse() {
+    public MutableLiveData<BaseModel> getAddAddressResponse() {
         return addAddress;
     }
 
@@ -60,12 +59,38 @@ public class AddAddressViewModel extends ViewModel {
                 .subscribe(new Observer<BaseModel>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
+                    }
+
+                    @Override
+                    public void onNext(@NonNull BaseModel model) {
+                        addAddress.setValue(model);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        getErrorMessage(isHttpException(e));
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void updateAddress(AddAddressRequest request) {
+        repository.updateAddress(request)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<BaseModel>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
                     public void onNext(@NonNull BaseModel model) {
-                        citiesResponse.setValue(model);
+                        addAddress.setValue(model);
                     }
 
                     @Override

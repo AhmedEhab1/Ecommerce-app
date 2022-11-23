@@ -50,6 +50,9 @@ public interface ApiService {
     @POST("profile/address/store")
     Observable<BaseModel> addAddress(@Body AddAddressRequest request);
 
+    @POST("profile/address/update")
+    Observable<BaseModel> updateAddress(@Body AddAddressRequest request);
+
     @POST("profile/update")
     Observable<BaseModel<UserModel>> changeAccountInfo(@Body CreateAccountRequest request);
 
@@ -61,6 +64,10 @@ public interface ApiService {
 
     @POST("profile/address/delete")
     Observable<BaseModel> deleteAddress(@Body DeleteRequest id);
+
+
+    @POST("logout")
+    Observable<BaseModel> logout();
 
     @Multipart
     @POST("profile/update")

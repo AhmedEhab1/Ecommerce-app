@@ -1,10 +1,13 @@
 package com.macaria.app.ui.homeScreen.profile.savedAddresses.fragments;
 
+import static com.macaria.app.utilities.InputValidatorHelper.isEmptyString;
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,16 +37,20 @@ import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
 public class AddAddressFragment extends Fragment {
-    private AddAddressFragmentBinding binding ;
+    private AddAddressFragmentBinding binding;
     private AddAddressViewModel viewModel;
     private int cityId = 0;
+    private boolean updateAddress = false;
 
     public AddAddressFragment() {
         // Required empty public constructor
     }
 
     @Inject
-    MyHelper helper ;
+    MyHelper helper;
+
+    @Inject
+    AddAddressRequest addAddressRequest ;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,17 +61,27 @@ public class AddAddressFragment extends Fragment {
         return binding.getRoot();
     }
 
-    private void init(){
+    private void init() {
         viewModel = new ViewModelProvider(this).get(AddAddressViewModel.class);
         getCities();
+        errorMessage();
+        binding.saveAddress.setOnClickListener(view -> addAddress());
+        getAddressData();
     }
 
-    private void getCities(){
+    private void getAddressData(){
+        if (getArguments() !=null){
+            AddressModel model =(AddressModel) getArguments().getSerializable("addressModel");
+            setAddressData(model);
+            updateAddress = true;
+        }
+    }
+
+    private void getCities() {
         helper.showLoading(getActivity());
         viewModel.getCities();
         citiesResponse();
     }
-
 
     private void citiesResponse() {
         viewModel.getCitiesResponse().observe(getViewLifecycleOwner(), new Observer<BaseModel<List<CitiesModel>>>() {
@@ -77,24 +94,92 @@ public class AddAddressFragment extends Fragment {
     }
 
     private void addAddress() {
-        String address = binding.address.getText().toString();
-        String zip_code = binding.postalCode.getText().toString();
-        String building_number = binding.buildingNumber.getText().toString();
-        String apartment_no = binding.apartmentNo.getText().toString();
-        String flatNo = binding.flatNo.getText().toString();
-        String first_name = binding.firstName.getText().toString();
-        String last_name = binding.lastName.getText().toString();
-        String phone = binding.phoneNumber.getText().toString();
+        addAddressRequest.setAddress(binding.address.getText().toString());
+        addAddressRequest.setZip_code(binding.postalCode.getText().toString());
+        addAddressRequest.setBuilding_number(binding.buildingNumber.getText().toString());
+        addAddressRequest.setApartment_no( binding.apartmentNo.getText().toString());
+        addAddressRequest.setFlat_no(binding.flatNo.getText().toString());
+        addAddressRequest.setFirst_name(binding.firstName.getText().toString());
+        addAddressRequest.setLast_name(binding.lastName.getText().toString());
+        addAddressRequest.setPhone(binding.phoneNumber.getText().toString());
+        addAddressRequest.setCity_id(String.valueOf(cityId));
+        checkIsDataValid();
     }
 
+    private void checkIsDataValid(){
+        if (isEmptyString(addAddressRequest.getAddress())) {
+            helper.showToast(requireActivity(), "please add address");
+        } else if (isEmptyString(addAddressRequest.getZip_code())) {
+            helper.showToast(requireActivity(), "please add postal code");
+        } else if (isEmptyString(addAddressRequest.getBuilding_number())) {
+            helper.showToast(requireActivity(), "please add building number");
+        } else if (isEmptyString(addAddressRequest.getBuilding_number())) {
+            helper.showToast(requireActivity(), "please add apartment number");
+        } else if (isEmptyString(addAddressRequest.getFlat_no())) {
+            helper.showToast(requireActivity(), "please add flat number");
+        }else if (isEmptyString(addAddressRequest.getFirst_name())) {
+            helper.showToast(requireActivity(), "please add first name");
+        }else if (isEmptyString(addAddressRequest.getLast_name())) {
+            helper.showToast(requireActivity(), "please add last name");
+        }else if (isEmptyString(addAddressRequest.getPhone())) {
+            helper.showToast(requireActivity(), "please add phone number");
+        }else if (cityId == 0) {
+            helper.showToast(requireActivity(), "please choose city");
+        }else {
+            AddAddressReq();
+        }
+    }
+
+    private void AddAddressReq(){
+        helper.showLoading(requireActivity());
+        if (updateAddress) viewModel.updateAddress(addAddressRequest);
+        else  viewModel.addAddress(addAddressRequest);
+        addAddressResponse();
+    }
+
+    private void addAddressResponse(){
+        viewModel.getAddAddressResponse().observe(getViewLifecycleOwner(), new Observer<BaseModel>() {
+            @Override
+            public void onChanged(BaseModel model) {
+                helper.dismissLoading();
+                back();
+            }
+        });
+    }
+
+    public void back(){
+        Navigation.findNavController(requireView()).popBackStack();
+    }
+
+    private void errorMessage(){
+        viewModel.getErrorMassage().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                helper.showErrorDialog(getActivity() , null , s);
+            }
+        });
+    }
+
+    private void setAddressData(AddressModel model){
+        addAddressRequest.setId(model.getId());
+        cityId = model.getCityId();
+        binding.address.setText(model.getAddress());
+        binding.postalCode.setText(model.getZipCode());
+        binding.buildingNumber.setText(model.getBuildingNumber());
+        binding.apartmentNo.setText(model.getApartmentNumber());
+        binding.flatNo.setText(model.getFloorNumber());
+        binding.firstName.setText(model.getFirstName());
+        binding.lastName.setText(model.getLastName());
+        binding.phoneNumber.setText(model.getPhone());
+    }
 
     public void setCountrySpinnerAdapter(Spinner spinner, List<CitiesModel> models) {
         List<String> listSpinner = new ArrayList<>();
-        List<Integer> countriesIds = new ArrayList<>();
+        List<Integer> Ids = new ArrayList<>();
         listSpinner.add(getString(R.string.select_city));
         for (int i = 0; i < models.size(); i++) {
             listSpinner.add(models.get(i).getName());
-            countriesIds.add(models.get(i).getId());
+            Ids.add(models.get(i).getId());
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 R.layout.spinner_item, listSpinner) {
@@ -114,11 +199,15 @@ public class AddAddressFragment extends Fragment {
         };
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        if (updateAddress) {
+            binding.spinner.setSelection(getSelectedPlace(String.valueOf(cityId), Ids));
+        }
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i != 0) {
-                    cityId = countriesIds.get(i - 1);
+                    cityId = Ids.get(i - 1);
+
                 }
             }
 
@@ -126,5 +215,14 @@ public class AddAddressFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
+    }
+
+
+    private int getSelectedPlace(String id, List<Integer> places) {
+        for (int i = 0; i < places.size(); i++) {
+            if (id.equals(String.valueOf(places.get(i))))
+                return i + 1;
+        }
+        return 0;
     }
 }

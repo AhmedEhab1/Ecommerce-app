@@ -44,5 +44,9 @@ public class AuthorizationRepository {
         return apiService.updatePassword(request);
     }
 
+    public Observable<BaseModel> logout(){
+        return apiService.logout();
+    }
+
 
 }

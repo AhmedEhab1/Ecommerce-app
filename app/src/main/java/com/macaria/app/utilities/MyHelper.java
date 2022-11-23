@@ -1,16 +1,16 @@
 package com.macaria.app.utilities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
-import dagger.Provides;
+import com.google.android.material.snackbar.Snackbar;
+import com.macaria.app.utilities.errorDialog.ErrorDialog;
 
 public class MyHelper {
     Loading loading = new Loading();
@@ -42,4 +42,21 @@ public class MyHelper {
     public void dismissLoading() {
         loading.dismiss();
     }
+
+    public void showSnackBar(Context context, String message) {
+        Snackbar.make((((Activity) context).findViewById(android.R.id.content)), message, Snackbar.LENGTH_LONG)
+                .setAction("CLOSE", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                    }
+                })
+                .setActionTextColor(context.getResources().getColor(android.R.color.holo_red_light))
+                .setTextColor(context.getResources().getColor(android.R.color.white))
+                .show();
+    }
+
+    public void showToast(Context context, String message){
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
 }

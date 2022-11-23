@@ -2,23 +2,43 @@ package com.macaria.app.ui.homeScreen.profile;
 
 import static com.macaria.app.utilities.ImageHelper.loadImage;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.macaria.app.MainActivity;
 import com.macaria.app.R;
 import com.macaria.app.databinding.ProfileFragmentBinding;
+import com.macaria.app.models.BaseModel;
 import com.macaria.app.ui.authorization.AuthData;
 import com.macaria.app.ui.authorization.login.model.UserModel;
+import com.macaria.app.ui.authorization.login.vm.LoginViewModel;
+import com.macaria.app.ui.homeScreen.profile.vm.ProfileViewModel;
+import com.macaria.app.utilities.MyHelper;
+import com.macaria.app.utilities.errorDialog.ErrorDialog;
+import com.macaria.app.utilities.errorDialog.ErrorDialogListener;
 
+import javax.inject.Inject;
 
-public class ProfileFragment extends Fragment {
-    ProfileFragmentBinding binding;
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
+public class ProfileFragment extends Fragment implements ErrorDialogListener {
+    private ProfileFragmentBinding binding;
+    private ProfileViewModel viewModel;
+
+    @Inject
+    MyHelper helper;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -34,6 +54,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void init() {
+        viewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
         setUserData();
         onViewClicked();
     }
@@ -49,6 +70,48 @@ public class ProfileFragment extends Fragment {
     private void onViewClicked() {
         binding.userInfoData.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_profileFragment_to_accountInfo));
         binding.savedAddresses.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_profileFragment_to_savedAddressesFragment));
+        binding.logout.setOnClickListener(view -> showLogoutDialog());
+    }
+
+    private void showLogoutDialog() {
+        Bundle bundle = new Bundle();
+        bundle.putString("title", getString(R.string.logout));
+        bundle.putString("message", getString(R.string.logout_message));
+        FragmentActivity activity = (FragmentActivity) (requireActivity());
+        FragmentManager fm = activity.getSupportFragmentManager();
+        ErrorDialog errorDialog = new ErrorDialog(this);
+        errorDialog.setArguments(bundle);
+        errorDialog.show(fm, "fragment_alert");
+    }
+
+    @Override
+    public void onConfirm() {
+        helper.showLoading(requireActivity());
+        viewModel.loginRequest();
+        logoutResponse();
+        errorMessage();
+    }
+
+    private void errorMessage() {
+        viewModel.getErrorMassage().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                helper.showErrorDialog(getActivity(), null, s);
+            }
+        });
+    }
+
+    private void logoutResponse() {
+        viewModel.getLogoutResponse().observe(getViewLifecycleOwner(), new Observer<BaseModel>() {
+            @Override
+            public void onChanged(BaseModel model) {
+                helper.dismissLoading();
+                new AuthData(getActivity()).logout();
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
     }
 
 }

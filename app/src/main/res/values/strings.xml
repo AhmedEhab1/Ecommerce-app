@@ -19,6 +19,7 @@
     <string name="egypt">Egypt</string>
     <string name="change_password">Change Password</string>
     <string name="logout">Logout</string>
+    <string name="logout_message">Are you sure that you want to logout?</string>
     <string name="categories">Categories</string>
     <string name="favorite">Favorite</string>
     <string name="profile">Profile</string>
