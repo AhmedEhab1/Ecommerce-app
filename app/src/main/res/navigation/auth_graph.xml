@@ -199,7 +199,7 @@
         tools:layout="@layout/order_history_fragment" />
     <fragment
         android:id="@+id/contactUsFragment"
-        android:name="com.macaria.app.ContactUsFragment"
+        android:name="com.macaria.app.ui.homeScreen.profile.contactUs.ContactUsFragment"
         android:label="contact_us_fragment"
         tools:layout="@layout/contact_us_fragment" />
 

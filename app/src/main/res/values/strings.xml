@@ -17,6 +17,7 @@
     <string name="send">Send</string>
     <string name="home">Home</string>
     <string name="egypt">Egypt</string>
+    <string name="contact_us_body">We’re happy to answer any questions you have or provide you with an estimate. Just send us a message in the form below with any questions you may have.</string>
     <string name="change_password">Change Password</string>
     <string name="logout">Logout</string>
     <string name="logout_message">Are you sure that you want to logout?</string>
@@ -52,6 +53,8 @@
     <string name="verify_phone_number">Verify Phone Number</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
+    <string name="your_name">Your Name</string>
+    <string name="email_address">Email Address *</string>
     <string name="create_account"><u>Create Account</u></string>
     <string name="sresend_code"><u>Resend code</u></string>
     <string name="create_account2">Create Account</string>

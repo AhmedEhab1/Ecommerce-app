@@ -11,6 +11,8 @@
         <entry key="app/src/main/res/drawable/edit_text_border.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/favorite_item.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/home_item.xml" value="0.1475" />
+        <entry key="app/src/main/res/drawable/ic_contact_us_email.xml" value="0.1475" />
+        <entry key="app/src/main/res/drawable/ic_contact_us_phone.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/image_circle.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/load_icon.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/profile_item.xml" value="0.1475" />
@@ -22,7 +24,7 @@
         <entry key="app/src/main/res/layout/categories_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/change_password_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/close_fragment.xml" value="0.24791666666666667" />
-        <entry key="app/src/main/res/layout/contact_us_fragment.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/contact_us_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/creare_account_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/create_new_password_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/favorite_fragment.xml" value="0.24895833333333334" />

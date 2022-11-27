@@ -1,4 +1,4 @@
-package com.macaria.app;
+package com.macaria.app.ui.homeScreen.profile.contactUs;
 
 import android.os.Bundle;
 
