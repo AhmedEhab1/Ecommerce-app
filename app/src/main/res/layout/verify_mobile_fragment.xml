@@ -101,7 +101,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:padding="5dp"
-                android:text="@string/sresend_code"
+                android:text="@string/resend_code"
                 android:textColor="@color/textColorGray"
                 android:textSize="12sp" />
 

@@ -11,6 +11,7 @@
     <string name="saved_addresses">Saved Addresses</string>
     <string name="save_address">Save Address</string>
     <string name="orders_history">Orders History</string>
+    <string name="orders_details">Order Details</string>
     <string name="account_info">Account info</string>
     <string name="login2"><u>Login</u></string>
     <string name="change"><u>change</u></string>
@@ -54,14 +55,30 @@
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="your_name">Your Name</string>
+    <string name="your_message">Your Message</string>
     <string name="email_address">Email Address *</string>
     <string name="create_account"><u>Create Account</u></string>
-    <string name="sresend_code"><u>Resend code</u></string>
+    <string name="resend_code"><u>Resend code</u></string>
     <string name="create_account2">Create Account</string>
     <string name="add_new_address">Add New Address</string>
     <string name="add_valid_mobile"><u>Please add a valid phone number</u></string>
     <string name="add_valid_password"><u>Please add a valid Password</u></string>
     <string name="internet_error">Unable to connect to the internet</string>
     <string name="error_message">Something went wrong</string>
+    <string name="message_send">The message has been sent successfully</string>
+    <string name="order_reference">Order Reference</string>
+    <string name="placed_on">Placed On</string>
+    <string name="total_price">Total Price</string>
+    <string name="payment">Payment</string>
+    <string name="details"><u>details</u></string>
+    <string name="reorder"><u>Reorder</u></string>
+    <string name="status">Status</string>
+    <string name="egp">EGP</string>
+    <string name="shipping">Shipping</string>
+    <string name="taxes">Taxes</string>
+    <string name="total">Total</string>
+    <string name="products">Products</string>
+    <string name="delivery_address">Delivery Address</string>
+    <string name="sub_total">Sub Total</string>
 
 </resources>

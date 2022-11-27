@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        tools:context=".ui.homeScreen.profile.contactUs.ContactUsFragment">
+        tools:context=".ui.homeScreen.profile.contactUs.fragments.ContactUsFragment">
 
 
         <LinearLayout
@@ -65,6 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="mary.ann@mail.com"
+                android:id="@+id/email"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:gravity="center"
@@ -79,6 +80,7 @@
                 tools:text="+20 1192435227"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
+                android:id="@+id/phone"
                 android:gravity="center"
                 android:drawablePadding="10dp"
                 android:textSize="13sp"
@@ -132,7 +134,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/lastName"
+                    android:id="@+id/email_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -179,7 +181,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
-                android:hint="@string/your_name"
+                android:hint="@string/your_message"
                 app:boxCornerRadiusBottomEnd="5dp"
                 app:boxCornerRadiusBottomStart="5dp"
                 app:boxCornerRadiusTopEnd="5dp"

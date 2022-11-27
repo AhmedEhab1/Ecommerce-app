@@ -1,4 +1,4 @@
-package com.macaria.app.ui.homeScreen.profile.contactUs;
+package com.macaria.app.ui.homeScreen.profile.orderHistory.fragments;
 
 import android.os.Bundle;
 
@@ -8,17 +8,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.macaria.app.databinding.ContactUsFragmentBinding;
-import com.macaria.app.databinding.SplashFragmentBinding;
+import com.macaria.app.databinding.OrderDetailsFragmentBinding;
+import com.macaria.app.utilities.MyHelper;
+
+import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class ContactUsFragment extends Fragment {
-    private ContactUsFragmentBinding binding ;
+public class OrderDetailsFragment extends Fragment {
+    private OrderDetailsFragmentBinding binding ;
 
+    @Inject
+    MyHelper helper;
 
-    public ContactUsFragment() {
+    public OrderDetailsFragment() {
         // Required empty public constructor
     }
 
@@ -26,7 +30,8 @@ public class ContactUsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = ContactUsFragmentBinding.inflate(inflater, container, false);
+        // Inflate the layout for this fragment
+        binding = OrderDetailsFragmentBinding.inflate(inflater, container, false);
         init();
         return binding.getRoot();
     }

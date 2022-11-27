@@ -1,4 +1,4 @@
-package com.macaria.app.ui.homeScreen.profile.savedAddresses;
+package com.macaria.app.ui.homeScreen.profile.savedAddresses.adapters;
 
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddressModel;
 

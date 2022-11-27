@@ -8,6 +8,9 @@ import com.macaria.app.ui.authorization.forgetPassword.model.ForgetPasswordModel
 import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
 import com.macaria.app.ui.authorization.login.model.UserModel;
+import com.macaria.app.ui.homeScreen.profile.contactUs.models.ContactModel;
+import com.macaria.app.ui.homeScreen.profile.contactUs.models.ContactUsRequest;
+import com.macaria.app.ui.homeScreen.profile.orderHistory.models.OrderHistoryModel;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddAddressRequest;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddressModel;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.CitiesModel;
@@ -54,11 +57,20 @@ public interface ApiService {
     @POST("profile/address/update")
     Observable<BaseModel> updateAddress(@Body AddAddressRequest request);
 
+    @POST("contactUs")
+    Observable<BaseModel> contactUs(@Body ContactUsRequest request);
+
     @POST("profile/update")
     Observable<BaseModel<UserModel>> changeAccountInfo(@Body CreateAccountRequest request);
 
     @GET("profile/address")
     Observable<BaseModel<List<AddressModel>>> getAddress();
+
+    @GET("profile/orders")
+    Observable<BaseModel<List<OrderHistoryModel>>> getOrderHistory();
+
+    @GET("contact")
+    Observable<BaseModel<ContactModel>> requestContact();
 
     @GET("list/cities")
     Observable<BaseModel<List<CitiesModel>>> getCities();

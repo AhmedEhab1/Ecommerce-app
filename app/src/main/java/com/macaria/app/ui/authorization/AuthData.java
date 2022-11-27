@@ -1,6 +1,7 @@
 package com.macaria.app.ui.authorization;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.macaria.app.R;
 import com.macaria.app.data.Constants;
@@ -45,6 +46,7 @@ public class AuthData {
         userModel.setImage(getPreferencesHelper().getString("image"));
         userModel.setIsVerify(getPreferencesHelper().getBoolean("is_verify"));
         model.setUser(userModel);
+        Log.d("token", "getUserData: "+Constants.TOKEN);
         return model;
     }
 

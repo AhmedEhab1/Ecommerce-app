@@ -134,10 +134,15 @@
             app:popExitAnim="@anim/push_right_out" />
         <action
             android:id="@+id/action_profileFragment_to_webViewFragment"
-            app:destination="@id/webViewFragment" />
+            app:destination="@id/webViewFragment"
+            />
         <action
             android:id="@+id/action_profileFragment_to_orderHistoryFragment"
-            app:destination="@id/orderHistoryFragment" />
+            app:destination="@id/orderHistoryFragment"
+            app:enterAnim="@anim/push_left_in"
+            app:exitAnim="@anim/push_left_out"
+            app:popEnterAnim="@anim/push_right_in"
+            app:popExitAnim="@anim/push_right_out"/>
         <action
             android:id="@+id/action_profileFragment_to_contactUsFragment"
             app:destination="@id/contactUsFragment" />
@@ -194,14 +199,27 @@
         tools:layout="@layout/web_view_fragment" />
     <fragment
         android:id="@+id/orderHistoryFragment"
-        android:name="com.macaria.app.ui.homeScreen.profile.orderHistory.OrderHistoryFragment"
+        android:name="com.macaria.app.ui.homeScreen.profile.orderHistory.fragments.OrderHistoryFragment"
         android:label="order_history_fragment"
-        tools:layout="@layout/order_history_fragment" />
+        tools:layout="@layout/order_history_fragment" >
+        <action
+            android:id="@+id/action_orderHistoryFragment_to_orderDetailsFragment"
+            app:destination="@id/orderDetailsFragment"
+            app:enterAnim="@anim/push_left_in"
+            app:exitAnim="@anim/push_left_out"
+            app:popEnterAnim="@anim/push_right_in"
+            app:popExitAnim="@anim/push_right_out"/>
+    </fragment>
     <fragment
         android:id="@+id/contactUsFragment"
-        android:name="com.macaria.app.ui.homeScreen.profile.contactUs.ContactUsFragment"
+        android:name="com.macaria.app.ui.homeScreen.profile.contactUs.fragments.ContactUsFragment"
         android:label="contact_us_fragment"
         tools:layout="@layout/contact_us_fragment" />
+    <fragment
+        android:id="@+id/orderDetailsFragment"
+        android:name="com.macaria.app.ui.homeScreen.profile.orderHistory.fragments.OrderDetailsFragment"
+        android:label="order_details_fragment"
+        tools:layout="@layout/order_details_fragment" />
 
 
 </navigation>

@@ -39,7 +39,6 @@ public class BaseModel<T> {
     }
 
     public static class Item<T> {
-
         @SerializedName("data")
         @Expose
         private T data;

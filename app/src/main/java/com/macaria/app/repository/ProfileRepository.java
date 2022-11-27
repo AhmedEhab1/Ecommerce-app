@@ -5,6 +5,9 @@ import com.macaria.app.network.ApiService;
 import com.macaria.app.ui.authorization.createAccount.CreateAccountRequest;
 import com.macaria.app.ui.authorization.forgetPassword.model.ChangePasswordRequest;
 import com.macaria.app.ui.authorization.login.model.UserModel;
+import com.macaria.app.ui.homeScreen.profile.contactUs.models.ContactModel;
+import com.macaria.app.ui.homeScreen.profile.contactUs.models.ContactUsRequest;
+import com.macaria.app.ui.homeScreen.profile.orderHistory.models.OrderHistoryModel;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddAddressRequest;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddressModel;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.CitiesModel;
@@ -51,6 +54,10 @@ public class ProfileRepository {
         return apiService.getAddress();
     }
 
+    public Observable<BaseModel<ContactModel>> requestContact(){
+        return apiService.requestContact();
+    }
+
     public Observable<BaseModel<List<CitiesModel>>> getCities(){
         return apiService.getCities();
     }
@@ -61,6 +68,14 @@ public class ProfileRepository {
 
     public Observable<BaseModel> updateAddress(AddAddressRequest request){
         return apiService.updateAddress(request);
+    }
+
+    public Observable<BaseModel> contactUs(ContactUsRequest request){
+        return apiService.contactUs(request);
+    }
+
+    public Observable<BaseModel<List<OrderHistoryModel>>> getOrderHistory(){
+        return apiService.getOrderHistory();
     }
 
 }

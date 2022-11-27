@@ -20,5 +20,11 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="red">#EA3D2F</color>
     <color name="borderColor">#F1F3F4</color>
+    <color name="inProgressColor">#F3AA18</color>
+
+    <color name="lightGreyColor">#919699</color>
+    <color name="orangeColor">#F3AA18</color>
+    <color name="greenColor">#2FA84F</color>
+
 
 </resources>

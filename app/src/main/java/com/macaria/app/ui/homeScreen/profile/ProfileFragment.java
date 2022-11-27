@@ -73,6 +73,8 @@ public class ProfileFragment extends Fragment implements ErrorDialogListener {
     private void onViewClicked() {
         binding.userInfoData.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_profileFragment_to_accountInfo));
         binding.savedAddresses.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_profileFragment_to_savedAddressesFragment));
+        binding.contactUs.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_profileFragment_to_contactUsFragment));
+        binding.ordersHistory.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_profileFragment_to_orderHistoryFragment));
         binding.logout.setOnClickListener(view -> showLogoutDialog());
     }
 
