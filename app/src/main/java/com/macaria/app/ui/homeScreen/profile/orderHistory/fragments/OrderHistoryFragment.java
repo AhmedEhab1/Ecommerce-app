@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.macaria.app.R;
 import com.macaria.app.databinding.OrderHistoryFragmentBinding;
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.ui.homeScreen.profile.orderHistory.adapters.OrderHistoryAdapter;
@@ -37,7 +39,6 @@ public class OrderHistoryFragment extends Fragment implements OrderHistoryListen
     public OrderHistoryFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -87,6 +88,9 @@ public class OrderHistoryFragment extends Fragment implements OrderHistoryListen
 
     @Override
     public void onDetailsClicked(OrderHistoryModel model) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("model", model);
+        Navigation.findNavController(requireView()).navigate(R.id.action_orderHistoryFragment_to_orderDetailsFragment, bundle);
 
     }
 

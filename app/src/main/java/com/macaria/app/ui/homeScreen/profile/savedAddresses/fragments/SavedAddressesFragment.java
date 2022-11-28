@@ -42,7 +42,6 @@ public class SavedAddressesFragment extends Fragment implements AddressListener 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         binding = SavedAddressesFragmentBinding.inflate(inflater, container, false);
         init();
         return binding.getRoot();
@@ -95,7 +94,6 @@ public class SavedAddressesFragment extends Fragment implements AddressListener 
         Bundle args = new Bundle();
         args.putSerializable("addressModel", model);
         Navigation.findNavController(requireView()).navigate(R.id.action_savedAddressesFragment_to_addAddressFragment, args);
-
     }
 
     private void errorMessage(){

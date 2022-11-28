@@ -219,7 +219,20 @@
         android:id="@+id/orderDetailsFragment"
         android:name="com.macaria.app.ui.homeScreen.profile.orderHistory.fragments.OrderDetailsFragment"
         android:label="order_details_fragment"
-        tools:layout="@layout/order_details_fragment" />
+        tools:layout="@layout/order_details_fragment" >
+        <action
+            android:id="@+id/action_orderDetailsFragment_to_addReviewFragment"
+            app:destination="@id/addReviewFragment"
+            app:enterAnim="@anim/push_left_in"
+            app:exitAnim="@anim/push_left_out"
+            app:popEnterAnim="@anim/push_right_in"
+            app:popExitAnim="@anim/push_right_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/addReviewFragment"
+        android:name="com.macaria.app.ui.homeScreen.profile.orderHistory.fragments.AddReviewFragment"
+        android:label="add_review_fragment"
+        tools:layout="@layout/add_review_fragment" />
 
 
 </navigation>

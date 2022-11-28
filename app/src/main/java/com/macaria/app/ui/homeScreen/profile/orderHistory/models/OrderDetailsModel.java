@@ -15,16 +15,16 @@ public class OrderDetailsModel implements Serializable {
     private Integer itemId;
     @SerializedName("name")
     @Expose
-    private Object name;
+    private String name;
     @SerializedName("size_id")
     @Expose
     private Object sizeId;
     @SerializedName("size")
     @Expose
-    private Object size;
+    private String size;
     @SerializedName("color")
     @Expose
-    private Object color;
+    private String color;
     @SerializedName("price")
     @Expose
     private String price;
@@ -54,11 +54,11 @@ public class OrderDetailsModel implements Serializable {
         this.itemId = itemId;
     }
 
-    public Object getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Object name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -70,19 +70,19 @@ public class OrderDetailsModel implements Serializable {
         this.sizeId = sizeId;
     }
 
-    public Object getSize() {
+    public String getSize() {
         return size;
     }
 
-    public void setSize(Object size) {
+    public void setSize(String size) {
         this.size = size;
     }
 
-    public Object getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(Object color) {
+    public void setColor(String color) {
         this.color = color;
     }
 

@@ -74,10 +74,18 @@
     <string name="reorder"><u>Reorder</u></string>
     <string name="status">Status</string>
     <string name="egp">EGP</string>
+    <string name="qty">Qty</string>
+    <string name="size">Size</string>
+    <string name="color">Color</string>
     <string name="shipping">Shipping</string>
     <string name="taxes">Taxes</string>
     <string name="total">Total</string>
     <string name="products">Products</string>
+    <string name="leave_comment">Leave Comment</string>
+    <string name="comment_title">Comment title</string>
+    <string name="leave_your_review">Leave Your Review</string>
+    <string name="add_review">Add Review</string>
+    <string name="review_item"><u>Review item</u></string>
     <string name="delivery_address">Delivery Address</string>
     <string name="sub_total">Sub Total</string>
 

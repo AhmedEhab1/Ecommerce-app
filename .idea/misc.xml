@@ -13,12 +13,16 @@
         <entry key="app/src/main/res/drawable/home_item.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/ic_contact_us_email.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/ic_contact_us_phone.xml" value="0.1475" />
+        <entry key="app/src/main/res/drawable/ic_favorite.xml" value="0.1475" />
+        <entry key="app/src/main/res/drawable/ic_favorite_add_review.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/image_circle.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/load_icon.xml" value="0.1475" />
+        <entry key="app/src/main/res/drawable/product_image_bg.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/profile_item.xml" value="0.1475" />
         <entry key="app/src/main/res/layout/account_info_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23489583333333333" />
         <entry key="app/src/main/res/layout/add_address_fragment.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/add_review_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/address_item.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/back_layout.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/categories_fragment.xml" value="0.24895833333333334" />
@@ -38,6 +42,7 @@
         <entry key="app/src/main/res/layout/order_details_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/order_history_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/order_history_item.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/products_item.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/profile_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/reset_password_dialog.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/saved_addresses_fragment.xml" value="0.24895833333333334" />

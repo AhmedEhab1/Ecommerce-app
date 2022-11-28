@@ -50,12 +50,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
         holder.binding.payment.setText(data.get(position).getPaymentType());
         String status = data.get(position).getStatus();
         holder.binding.status.setText(status);
-
-//        holder.binding.deleteAddress.setOnClickListener(view -> {
-//            listener.onDeleteAddress(data.get(position).getId());
-//            data.remove(position);
-//            notifyDataSetChanged();
-//        });
+        holder.binding.details.setOnClickListener(view -> listener.onDetailsClicked(data.get(position)));
 
         if (status.equals(PENDING)) {
             holder.binding.status.setTextColor(ContextCompat.getColor(context, R.color.lightGreyColor));
