@@ -10,6 +10,7 @@ import com.macaria.app.ui.authorization.login.model.LoginRequest;
 import com.macaria.app.ui.authorization.login.model.UserModel;
 import com.macaria.app.ui.homeScreen.profile.contactUs.models.ContactModel;
 import com.macaria.app.ui.homeScreen.profile.contactUs.models.ContactUsRequest;
+import com.macaria.app.ui.homeScreen.profile.orderHistory.models.AddReviewRequest;
 import com.macaria.app.ui.homeScreen.profile.orderHistory.models.OrderHistoryModel;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddAddressRequest;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddressModel;
@@ -59,6 +60,9 @@ public interface ApiService {
 
     @POST("contactUs")
     Observable<BaseModel> contactUs(@Body ContactUsRequest request);
+
+    @POST("reviews/store")
+    Observable<BaseModel> addReview(@Body AddReviewRequest request);
 
     @POST("profile/update")
     Observable<BaseModel<UserModel>> changeAccountInfo(@Body CreateAccountRequest request);

@@ -6,7 +6,6 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class OrderDetailsModel implements Serializable {
-
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -34,9 +33,37 @@ public class OrderDetailsModel implements Serializable {
     @SerializedName("qty")
     @Expose
     private String qty;
+    @SerializedName("product_description")
+    @Expose
+    private String product_description;
+    @SerializedName("percentage")
+    @Expose
+    private String percentage;
+    @SerializedName("old_price")
+    @Expose
+    private String old_price;
+    @SerializedName("is_fav")
+    @Expose
+    private boolean is_fav;
     @SerializedName("item_count")
     @Expose
     private Integer itemCount;
+
+    public String getPercentage() {
+        return percentage;
+    }
+
+    public String getOld_price() {
+        return old_price;
+    }
+
+    public boolean isIs_fav() {
+        return is_fav;
+    }
+
+    public String getProduct_description() {
+        return product_description;
+    }
 
     public Integer getId() {
         return id;

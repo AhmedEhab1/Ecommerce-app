@@ -7,6 +7,7 @@ import com.macaria.app.ui.authorization.forgetPassword.model.ChangePasswordReque
 import com.macaria.app.ui.authorization.login.model.UserModel;
 import com.macaria.app.ui.homeScreen.profile.contactUs.models.ContactModel;
 import com.macaria.app.ui.homeScreen.profile.contactUs.models.ContactUsRequest;
+import com.macaria.app.ui.homeScreen.profile.orderHistory.models.AddReviewRequest;
 import com.macaria.app.ui.homeScreen.profile.orderHistory.models.OrderHistoryModel;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddAddressRequest;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddressModel;
@@ -76,6 +77,10 @@ public class ProfileRepository {
 
     public Observable<BaseModel<List<OrderHistoryModel>>> getOrderHistory(){
         return apiService.getOrderHistory();
+    }
+
+    public Observable<BaseModel> addReview(AddReviewRequest request){
+        return apiService.addReview(request);
     }
 
 }

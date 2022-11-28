@@ -54,8 +54,7 @@ public class OrderProductsAdapter extends RecyclerView.Adapter<OrderProductsAdap
             loadImage(context, data.get(position).getImage(), R.drawable.profile_holder, holder.binding.image);
             holder.binding.colorView.setCardBackgroundColor(Color.parseColor(data.get(position).getColor()));
             if (status.equals(DELIVERY))holder.binding.reviewItem.setVisibility(View.VISIBLE);
-            holder.binding.reviewItem.setOnClickListener(view -> listener.onReviewItemClicked());
-            holder.binding.reviewItem.setVisibility(View.VISIBLE);
+            holder.binding.reviewItem.setOnClickListener(view -> listener.onReviewItemClicked(data.get(position)));
         }catch (Exception e){
             Log.e("crash", "onBindViewHolder: ",e );
         }

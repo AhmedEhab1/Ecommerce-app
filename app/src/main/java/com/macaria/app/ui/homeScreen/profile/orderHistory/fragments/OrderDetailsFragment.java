@@ -23,6 +23,7 @@ import com.macaria.app.models.BaseModel;
 import com.macaria.app.ui.homeScreen.profile.orderHistory.adapters.OrderHistoryAdapter;
 import com.macaria.app.ui.homeScreen.profile.orderHistory.adapters.OrderProductsAdapter;
 import com.macaria.app.ui.homeScreen.profile.orderHistory.adapters.ProductsListener;
+import com.macaria.app.ui.homeScreen.profile.orderHistory.models.OrderDetailsModel;
 import com.macaria.app.ui.homeScreen.profile.orderHistory.models.OrderHistoryModel;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddressModel;
 import com.macaria.app.utilities.MyHelper;
@@ -117,8 +118,9 @@ public class OrderDetailsFragment extends Fragment implements ProductsListener {
     }
 
     @Override
-    public void onReviewItemClicked() {
-        Navigation.findNavController(requireView()).navigate(R.id.action_orderDetailsFragment_to_addReviewFragment);
-
+    public void onReviewItemClicked(OrderDetailsModel model) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("model", model);
+        Navigation.findNavController(requireView()).navigate(R.id.action_orderDetailsFragment_to_addReviewFragment, bundle);
     }
 }

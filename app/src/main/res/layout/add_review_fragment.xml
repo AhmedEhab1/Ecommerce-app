@@ -56,6 +56,7 @@
                 android:layout_width="82dp"
                 android:layout_height="82dp"
                 android:layout_margin="10dp"
+                android:scaleType="centerCrop"
                 android:background="@drawable/product_image_bg"
                 tools:srcCompat="@tools:sample/avatars" />
 
@@ -80,15 +81,15 @@
                         tools:text="Oversized Denim" />
 
                     <ImageView
-                        android:id="@+id/imageView3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="5dp"
-                        android:src="@drawable/ic_favorite_add_review" />
+                        android:id="@+id/ic_fav"
+                        android:layout_width="21dp"
+                        android:layout_margin="8dp"
+                        android:layout_height="21dp"
+                        android:src="@drawable/ic_favorite" />
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/productDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
@@ -104,7 +105,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView9"
+                        android:id="@+id/price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -121,7 +122,7 @@
                         tools:text="410.00 EGP" />
 
                     <TextView
-                        android:id="@+id/textView8"
+                        android:id="@+id/percentage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="15dp"
@@ -148,7 +149,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:layout_marginEnd="15dp"
             android:isIndicator="false"
             android:numStars="5"
@@ -160,7 +163,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="15dp"
             android:hint="@string/comment_title"
             app:boxCornerRadiusBottomEnd="5dp"
@@ -177,7 +180,6 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:inputType="text"
-                android:maxLength="11"
                 android:maxLines="1"
                 tools:ignore="KeyboardInaccessibleWidget" />
 
@@ -201,14 +203,12 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/last_name"
+                android:id="@+id/leave_comment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:ellipsize="end"
                 android:gravity="top"
                 android:inputType="textMultiLine"
-                android:maxLength="11"
-                android:maxLines="1"
                 tools:ignore="KeyboardInaccessibleWidget" />
 
         </com.google.android.material.textfield.TextInputLayout>
