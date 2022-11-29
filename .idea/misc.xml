@@ -31,6 +31,8 @@
         <entry key="app/src/main/res/layout/contact_us_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/creare_account_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/create_new_password_fragment.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/faq_fragment.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/faq_item.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/favorite_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/forget_password_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/fragment_back.xml" value="0.24895833333333334" />

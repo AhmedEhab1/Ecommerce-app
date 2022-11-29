@@ -24,7 +24,6 @@ import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddressModel;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapter.StoryViewHolder> {
     private List<OrderHistoryModel> data = new ArrayList<>();
     private Context context;
@@ -62,7 +61,6 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
             holder.binding.status.setTextColor(ContextCompat.getColor(context, R.color.red));
         }
     }
-
 
     public void addData(List<OrderHistoryModel> data) {
         int lastIndex = this.data.isEmpty() ? 0 : this.data.size() - 1;

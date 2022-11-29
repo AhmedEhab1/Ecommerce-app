@@ -9,9 +9,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.macaria.app.R;
+import com.macaria.app.databinding.FaqFragmentBinding;
+import com.macaria.app.databinding.FavoriteFragmentBinding;
+import com.macaria.app.utilities.MyHelper;
 
+import javax.inject.Inject;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class FavoriteFragment extends Fragment {
+    FavoriteFragmentBinding binding ;
+
+    @Inject
+    MyHelper helper ;
 
     public FavoriteFragment() {
         // Required empty public constructor
@@ -21,7 +32,12 @@ public class FavoriteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.favorite_fragment, container, false);
+        binding = FavoriteFragmentBinding.inflate(inflater, container, false);
+        init();
+        return binding.getRoot();
+    }
+
+    private void init(){
+
     }
 }

@@ -30,11 +30,11 @@ import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
 public class OrderHistoryFragment extends Fragment implements OrderHistoryListener {
-    private OrderHistoryFragmentBinding binding ;
-    private OrderHistoryViewModel viewModel ;
+    private OrderHistoryFragmentBinding binding;
+    private OrderHistoryViewModel viewModel;
 
     @Inject
-    MyHelper helper ;
+    MyHelper helper;
 
     public OrderHistoryFragment() {
         // Required empty public constructor
@@ -48,12 +48,12 @@ public class OrderHistoryFragment extends Fragment implements OrderHistoryListen
         return binding.getRoot();
     }
 
-    private void init(){
+    private void init() {
         requestOrderHistory();
         errorMessage();
     }
 
-    private void requestOrderHistory(){
+    private void requestOrderHistory() {
         viewModel = new ViewModelProvider(this).get(OrderHistoryViewModel.class);
         helper.showLoading(requireActivity());
         viewModel.getOrderHistory();
@@ -70,11 +70,11 @@ public class OrderHistoryFragment extends Fragment implements OrderHistoryListen
         });
     }
 
-    private void errorMessage(){
+    private void errorMessage() {
         viewModel.getErrorMassage().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                helper.showErrorDialog(getActivity() , null , s);
+                helper.showErrorDialog(getActivity(), null, s);
             }
         });
     }
@@ -91,7 +91,6 @@ public class OrderHistoryFragment extends Fragment implements OrderHistoryListen
         Bundle bundle = new Bundle();
         bundle.putSerializable("model", model);
         Navigation.findNavController(requireView()).navigate(R.id.action_orderHistoryFragment_to_orderDetailsFragment, bundle);
-
     }
 
     @Override

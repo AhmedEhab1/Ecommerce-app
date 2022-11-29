@@ -10,6 +10,8 @@ import com.macaria.app.ui.authorization.login.model.LoginRequest;
 import com.macaria.app.ui.authorization.login.model.UserModel;
 import com.macaria.app.ui.homeScreen.profile.contactUs.models.ContactModel;
 import com.macaria.app.ui.homeScreen.profile.contactUs.models.ContactUsRequest;
+import com.macaria.app.ui.homeScreen.profile.faq.models.FaqModel;
+import com.macaria.app.ui.homeScreen.profile.faq.vm.FaqViewModel;
 import com.macaria.app.ui.homeScreen.profile.orderHistory.models.AddReviewRequest;
 import com.macaria.app.ui.homeScreen.profile.orderHistory.models.OrderHistoryModel;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddAddressRequest;
@@ -78,6 +80,9 @@ public interface ApiService {
 
     @GET("list/cities")
     Observable<BaseModel<List<CitiesModel>>> getCities();
+
+    @GET("faqs")
+    Observable<BaseModel<List<FaqModel>>> getFaq();
 
     @POST("profile/address/delete")
     Observable<BaseModel> deleteAddress(@Body DeleteRequest id);

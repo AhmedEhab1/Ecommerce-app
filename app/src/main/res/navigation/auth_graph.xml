@@ -134,18 +134,28 @@
             app:popExitAnim="@anim/push_right_out" />
         <action
             android:id="@+id/action_profileFragment_to_webViewFragment"
-            app:destination="@id/webViewFragment"
-            />
+            app:destination="@id/webViewFragment" />
         <action
             android:id="@+id/action_profileFragment_to_orderHistoryFragment"
             app:destination="@id/orderHistoryFragment"
             app:enterAnim="@anim/push_left_in"
             app:exitAnim="@anim/push_left_out"
             app:popEnterAnim="@anim/push_right_in"
-            app:popExitAnim="@anim/push_right_out"/>
+            app:popExitAnim="@anim/push_right_out" />
         <action
             android:id="@+id/action_profileFragment_to_contactUsFragment"
-            app:destination="@id/contactUsFragment" />
+            app:destination="@id/contactUsFragment"
+            app:enterAnim="@anim/push_left_in"
+            app:exitAnim="@anim/push_left_out"
+            app:popEnterAnim="@anim/push_right_in"
+            app:popExitAnim="@anim/push_right_out" />
+        <action
+            android:id="@+id/action_profileFragment_to_faqFragment"
+            app:destination="@id/faqFragment"
+            app:enterAnim="@anim/push_left_in"
+            app:exitAnim="@anim/push_left_out"
+            app:popEnterAnim="@anim/push_right_in"
+            app:popExitAnim="@anim/push_right_out" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
@@ -167,7 +177,7 @@
             app:enterAnim="@anim/push_left_in"
             app:exitAnim="@anim/push_left_out"
             app:popEnterAnim="@anim/push_right_in"
-            app:popExitAnim="@anim/push_right_out"/>
+            app:popExitAnim="@anim/push_right_out" />
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
@@ -201,14 +211,14 @@
         android:id="@+id/orderHistoryFragment"
         android:name="com.macaria.app.ui.homeScreen.profile.orderHistory.fragments.OrderHistoryFragment"
         android:label="order_history_fragment"
-        tools:layout="@layout/order_history_fragment" >
+        tools:layout="@layout/order_history_fragment">
         <action
             android:id="@+id/action_orderHistoryFragment_to_orderDetailsFragment"
             app:destination="@id/orderDetailsFragment"
             app:enterAnim="@anim/push_left_in"
             app:exitAnim="@anim/push_left_out"
             app:popEnterAnim="@anim/push_right_in"
-            app:popExitAnim="@anim/push_right_out"/>
+            app:popExitAnim="@anim/push_right_out" />
     </fragment>
     <fragment
         android:id="@+id/contactUsFragment"
@@ -219,20 +229,25 @@
         android:id="@+id/orderDetailsFragment"
         android:name="com.macaria.app.ui.homeScreen.profile.orderHistory.fragments.OrderDetailsFragment"
         android:label="order_details_fragment"
-        tools:layout="@layout/order_details_fragment" >
+        tools:layout="@layout/order_details_fragment">
         <action
             android:id="@+id/action_orderDetailsFragment_to_addReviewFragment"
             app:destination="@id/addReviewFragment"
             app:enterAnim="@anim/push_left_in"
             app:exitAnim="@anim/push_left_out"
             app:popEnterAnim="@anim/push_right_in"
-            app:popExitAnim="@anim/push_right_out"/>
+            app:popExitAnim="@anim/push_right_out" />
     </fragment>
     <fragment
         android:id="@+id/addReviewFragment"
         android:name="com.macaria.app.ui.homeScreen.profile.orderHistory.fragments.AddReviewFragment"
         android:label="add_review_fragment"
         tools:layout="@layout/add_review_fragment" />
+    <fragment
+        android:id="@+id/faqFragment"
+        android:name="com.macaria.app.ui.homeScreen.profile.faq.fragments.FaqFragment"
+        android:label="faq_fragment"
+        tools:layout="@layout/faq_fragment" />
 
 
 </navigation>

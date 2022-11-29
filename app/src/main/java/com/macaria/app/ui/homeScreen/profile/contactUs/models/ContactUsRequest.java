@@ -1,7 +1,7 @@
 package com.macaria.app.ui.homeScreen.profile.contactUs.models;
 
 public class ContactUsRequest {
-    String name, email, mobile, massage ;
+   private String name, email, mobile, massage ;
 
     public String getName() {
         return name;
