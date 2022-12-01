@@ -159,7 +159,7 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.macaria.app.ui.homeScreen.favorite.FavoriteFragment"
+        android:name="com.macaria.app.ui.homeScreen.favorite.fragments.FavoriteFragment"
         tools:layout="@layout/favorite_fragment" />
     <fragment
         android:id="@+id/categoriesFragment"

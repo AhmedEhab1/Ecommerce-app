@@ -19,23 +19,19 @@ import android.view.ViewGroup;
 
 import com.macaria.app.R;
 import com.macaria.app.databinding.OrderDetailsFragmentBinding;
-import com.macaria.app.models.BaseModel;
-import com.macaria.app.ui.homeScreen.profile.orderHistory.adapters.OrderHistoryAdapter;
 import com.macaria.app.ui.homeScreen.profile.orderHistory.adapters.OrderProductsAdapter;
-import com.macaria.app.ui.homeScreen.profile.orderHistory.adapters.ProductsListener;
+import com.macaria.app.ui.homeScreen.profile.orderHistory.adapters.OrdersProductsListener;
 import com.macaria.app.ui.homeScreen.profile.orderHistory.models.OrderDetailsModel;
 import com.macaria.app.ui.homeScreen.profile.orderHistory.models.OrderHistoryModel;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddressModel;
 import com.macaria.app.utilities.MyHelper;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class OrderDetailsFragment extends Fragment implements ProductsListener {
+public class OrderDetailsFragment extends Fragment implements OrdersProductsListener {
     private OrderDetailsFragmentBinding binding;
     private OrderHistoryModel model;
 

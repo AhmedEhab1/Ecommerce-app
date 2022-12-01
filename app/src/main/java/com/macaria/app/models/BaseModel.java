@@ -42,6 +42,13 @@ public class BaseModel<T> {
         @SerializedName("data")
         @Expose
         private T data;
+        @SerializedName("meta")
+        @Expose
+        private MetaModel meta;
+
+        public MetaModel getMeta() {
+            return meta;
+        }
 
         public T getData() {
             return data;

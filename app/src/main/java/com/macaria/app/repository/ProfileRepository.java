@@ -5,6 +5,7 @@ import com.macaria.app.network.ApiService;
 import com.macaria.app.ui.authorization.createAccount.CreateAccountRequest;
 import com.macaria.app.ui.authorization.forgetPassword.model.ChangePasswordRequest;
 import com.macaria.app.ui.authorization.login.model.UserModel;
+import com.macaria.app.ui.homeScreen.home.products.models.ProductModel;
 import com.macaria.app.ui.homeScreen.profile.contactUs.models.ContactModel;
 import com.macaria.app.ui.homeScreen.profile.contactUs.models.ContactUsRequest;
 import com.macaria.app.ui.homeScreen.profile.faq.models.FaqModel;
@@ -78,6 +79,10 @@ public class ProfileRepository {
 
     public Observable<BaseModel<List<OrderHistoryModel>>> getOrderHistory(){
         return apiService.getOrderHistory();
+    }
+
+    public Observable<BaseModel<List<ProductModel>>> getFavorite(){
+        return apiService.getFavorite();
     }
 
     public Observable<BaseModel<List<FaqModel>>> getFaq(){
