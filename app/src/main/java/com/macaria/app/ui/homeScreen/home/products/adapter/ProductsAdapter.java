@@ -44,6 +44,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.StoryV
             holder.binding.image.setClipToOutline(true);
             holder.binding.title.setText(data.get(position).getName());
             loadImage(context, data.get(position).getImage(), R.drawable.profile_holder, holder.binding.image);
+            holder.binding.favorite.setOnClickListener(view -> listener.onFavoriteClick(data.get(position).getId()));
+            if (data.get(position).getFav())holder.binding.favorite.setImageResource(R.drawable.ic_products_fav_fill);
         }catch (Exception e){
             Log.e("crash", "onBindViewHolder: ",e );
         }

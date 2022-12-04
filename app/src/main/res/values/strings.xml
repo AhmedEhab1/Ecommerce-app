@@ -44,6 +44,9 @@
     <string name="building_no">Building No</string>
     <string name="enter_phone_number">Please Enter Your Phone Number</string>
     <string name="yes">Yes</string>
+    <string name="select_your_size">Select your Size</string>
+    <string name="size_guide">Size Guide</string>
+    <string name="add_to_cart">Add to Cart</string>
     <string name="country_region">Country/Region</string>
     <string name="save_changes">Save Changes</string>
     <string name="password_not_match">Password not match</string>

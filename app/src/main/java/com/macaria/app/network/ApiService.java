@@ -8,6 +8,7 @@ import com.macaria.app.ui.authorization.forgetPassword.model.ForgetPasswordModel
 import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
 import com.macaria.app.ui.authorization.login.model.UserModel;
+import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
 import com.macaria.app.ui.homeScreen.home.products.models.ProductModel;
 import com.macaria.app.ui.homeScreen.profile.contactUs.models.ContactModel;
 import com.macaria.app.ui.homeScreen.profile.contactUs.models.ContactUsRequest;
@@ -69,6 +70,9 @@ public interface ApiService {
 
     @POST("reviews/store")
     Observable<BaseModel> addReview(@Body AddReviewRequest request);
+
+    @POST("fav/store")
+    Observable<BaseModel> setFavorite(@Body SetFavoriteRequest request);
 
     @POST("profile/update")
     Observable<BaseModel<UserModel>> changeAccountInfo(@Body CreateAccountRequest request);

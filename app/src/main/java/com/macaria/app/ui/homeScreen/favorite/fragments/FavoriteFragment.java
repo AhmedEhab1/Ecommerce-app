@@ -16,6 +16,7 @@ import com.macaria.app.R;
 import com.macaria.app.databinding.FaqFragmentBinding;
 import com.macaria.app.databinding.FavoriteFragmentBinding;
 import com.macaria.app.models.BaseModel;
+import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
 import com.macaria.app.ui.homeScreen.favorite.vm.FavoriteViewModel;
 import com.macaria.app.ui.homeScreen.home.products.adapter.ProductsAdapter;
 import com.macaria.app.ui.homeScreen.home.products.adapter.ProductsListener;
@@ -98,6 +99,19 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
 
     @Override
     public void onFavoriteClick(int id) {
+        helper.showLoading(requireActivity());
+        SetFavoriteRequest request = new SetFavoriteRequest();
+        request.setProduct_id(id);
+        viewModel.setFavorite(request);
+        getSetFavoriteResponse();
+    }
 
+    private void getSetFavoriteResponse(){
+        viewModel.getSetFavorite().observe(getViewLifecycleOwner(), new Observer<BaseModel>() {
+            @Override
+            public void onChanged(BaseModel model) {
+                requestFavorite();
+            }
+        });
     }
 }

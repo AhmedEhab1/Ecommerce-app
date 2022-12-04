@@ -160,7 +160,11 @@
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.macaria.app.ui.homeScreen.favorite.fragments.FavoriteFragment"
-        tools:layout="@layout/favorite_fragment" />
+        tools:layout="@layout/favorite_fragment" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_product_details"
+            app:destination="@id/product_details" />
+    </fragment>
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="com.macaria.app.ui.homeScreen.categories.CategoriesFragment"
@@ -248,6 +252,11 @@
         android:name="com.macaria.app.ui.homeScreen.profile.faq.fragments.FaqFragment"
         android:label="faq_fragment"
         tools:layout="@layout/faq_fragment" />
+    <fragment
+        android:id="@+id/product_details"
+        android:name="com.macaria.app.ui.homeScreen.home.productsDetails.ProductDetails"
+        android:label="product_details_fragment"
+        tools:layout="@layout/product_details_fragment" />
 
 
 </navigation>

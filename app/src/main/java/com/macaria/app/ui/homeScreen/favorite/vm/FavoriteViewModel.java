@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.repository.ProfileRepository;
+import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
 import com.macaria.app.ui.homeScreen.home.products.models.ProductModel;
 import com.macaria.app.ui.homeScreen.profile.orderHistory.models.OrderHistoryModel;
 
@@ -22,6 +23,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class FavoriteViewModel extends ViewModel {
     private ProfileRepository repository;
     private MutableLiveData<BaseModel<List<ProductModel>>> modelMutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<BaseModel> setFavorite = new MutableLiveData<>();
     private MutableLiveData<String> errorMassage = new MutableLiveData<>();
 
 
@@ -32,6 +34,10 @@ public class FavoriteViewModel extends ViewModel {
 
     public MutableLiveData<BaseModel<List<ProductModel>>> getModelMutableLiveData() {
         return modelMutableLiveData;
+    }
+
+    public MutableLiveData<BaseModel> getSetFavorite() {
+        return setFavorite;
     }
 
     public MutableLiveData<String> getErrorMassage() {
@@ -61,6 +67,34 @@ public class FavoriteViewModel extends ViewModel {
                     @Override
                     public void onNext(@NonNull BaseModel<List<ProductModel>> listBaseModel) {
                         modelMutableLiveData.setValue(listBaseModel);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Log.e("crash", "onError: ", e);
+                        errorMassage.setValue(e.toString());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void setFavorite(SetFavoriteRequest request) {
+        repository.setFavorite(request)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<BaseModel>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull BaseModel model) {
+                        setFavorite.setValue(model);
                     }
 
                     @Override
