@@ -33,6 +33,7 @@ import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnima
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -40,7 +41,7 @@ import javax.inject.Inject;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class ProductDetails extends Fragment implements ProductsListener, SizeListener, ColorListener {
+public class ProductDetails extends Fragment implements ProductsListener, SizeListener, ColorListener , Serializable {
     private ProductDetailsFragmentBinding binding ;
     private ProductModel model ;
 
@@ -56,8 +57,9 @@ public class ProductDetails extends Fragment implements ProductsListener, SizeLi
                              Bundle savedInstanceState) {
         if (binding == null){
             binding = ProductDetailsFragmentBinding.inflate(inflater, container, false);
-            init();
         }
+        init();
+
         return binding.getRoot();
     }
 
