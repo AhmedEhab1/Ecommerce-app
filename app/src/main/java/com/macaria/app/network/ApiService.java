@@ -33,6 +33,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
+import retrofit2.http.Query;
 
 public interface ApiService {
     @POST("auth/login")
@@ -95,7 +96,6 @@ public interface ApiService {
     @POST("profile/address/delete")
     Observable<BaseModel> deleteAddress(@Body DeleteRequest id);
 
-
     @POST("logout")
     Observable<BaseModel> logout();
 
@@ -105,4 +105,7 @@ public interface ApiService {
     @Multipart
     @POST("profile/update")
     Observable<BaseModel<UserModel>> changeAccountInfo(@PartMap HashMap<String, String> map, @Part MultipartBody.Part Image);
+
+    @POST("product/details")
+    Observable<BaseModel<ProductModel>> getProductDetails(@Query("id") int id);
 }

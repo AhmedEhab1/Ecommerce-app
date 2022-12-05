@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/drawable-v24/image_circle.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/black_circle.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/categories_item.xml" value="0.1475" />
+        <entry key="app/src/main/res/drawable/color_item_bg.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/custom_progress_bar.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/edit_text_bg.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/edit_text_border.xml" value="0.1475" />
@@ -19,10 +20,12 @@
         <entry key="app/src/main/res/drawable/ic_products_fav_fill.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/image_circle.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/load_icon.xml" value="0.1475" />
+        <entry key="app/src/main/res/drawable/order_history_bg.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/product_image_bg.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/products_back_icon.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/products_fav_bg.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/profile_item.xml" value="0.1475" />
+        <entry key="app/src/main/res/drawable/size_item_bg.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/white_corner_bg.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/wieght_circle.xml" value="0.1475" />
         <entry key="app/src/main/res/layout/account_info_fragment.xml" value="0.24895833333333334" />
@@ -30,10 +33,12 @@
         <entry key="app/src/main/res/layout/add_address_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/add_review_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/address_item.xml" value="0.24791666666666667" />
+        <entry key="app/src/main/res/layout/all_reviews_item.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/back_layout.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/categories_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/change_password_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/close_fragment.xml" value="0.24791666666666667" />
+        <entry key="app/src/main/res/layout/color_item.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/contact_us_fragment.xml" value="0.25" />
         <entry key="app/src/main/res/layout/creare_account_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/create_new_password_fragment.xml" value="0.24895833333333334" />
@@ -49,6 +54,7 @@
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/login_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/order_details_fragment.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/order_history_bg.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/order_history_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/order_history_item.xml" value="0.375" />
         <entry key="app/src/main/res/layout/product_details_fragment.xml" value="0.24895833333333334" />
@@ -57,6 +63,7 @@
         <entry key="app/src/main/res/layout/reset_password_dialog.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/saved_addresses_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/size_item.xml" value="0.24791666666666667" />
+        <entry key="app/src/main/res/layout/sloder_item.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/spinner_dropdown_item.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/spinner_item.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/splash_fragment.xml" value="0.24895833333333334" />

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -34,11 +35,12 @@ import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
 public class FavoriteFragment extends Fragment implements ProductsListener {
-    private FavoriteFragmentBinding binding ;
-    private FavoriteViewModel viewModel ;
+    private FavoriteFragmentBinding binding;
+    private FavoriteViewModel viewModel;
+    private ProductsAdapter addressAdapter ;
 
     @Inject
-    MyHelper helper ;
+    MyHelper helper;
 
     public FavoriteFragment() {
         // Required empty public constructor
@@ -47,16 +49,17 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        if (binding == null){
+        if (binding == null) {
             binding = FavoriteFragmentBinding.inflate(inflater, container, false);
             init();
         }
         return binding.getRoot();
     }
 
-    private void init(){
+    private void init() {
         requestFavorite();
         errorMessage();
+        swipeToRefresh();
     }
 
     private void requestFavorite() {
@@ -77,7 +80,7 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
     }
 
     private void initOrderRec(BaseModel<List<ProductModel>> listBaseModel) {
-        ProductsAdapter addressAdapter = new ProductsAdapter(getActivity(), this);
+        addressAdapter = new ProductsAdapter(getActivity(), this);
         binding.recycler.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
         binding.recycler.setAdapter(addressAdapter);
         addressAdapter.addData(listBaseModel.getItem().getData());
@@ -93,7 +96,10 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
     }
 
     @Override
-    public void onProductClick(int id) {
+    public void onProductClick(ProductModel model) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("ProductModel", model);
+        Navigation.findNavController(requireView()).navigate(R.id.action_favoriteFragment_to_product_details, bundle);
 
     }
 
@@ -106,12 +112,27 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
         getSetFavoriteResponse();
     }
 
-    private void getSetFavoriteResponse(){
+    private void getSetFavoriteResponse() {
         viewModel.getSetFavorite().observe(getViewLifecycleOwner(), new Observer<BaseModel>() {
             @Override
             public void onChanged(BaseModel model) {
                 requestFavorite();
             }
         });
+    }
+
+    private void swipeToRefresh() {
+        binding.swipeRefreshLayout.setOnRefreshListener(() -> {
+            resetList();
+            binding.swipeRefreshLayout.setRefreshing(false);
+        });
+    }
+
+    private void resetList() {
+        requestFavorite();
+        addressAdapter.setFinishedLoading(false);
+        viewModel.clear();
+//        currentPage = 1;
+//        endlessRecyclerViewScrollListener.resetState();
     }
 }

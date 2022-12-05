@@ -94,7 +94,7 @@
                     app:sliderIndicatorRadius="2dp"
                     app:sliderIndicatorSelectedColor="#FFF"
                     app:sliderIndicatorUnselectedColor="#7A7A7A"
-                    app:sliderScrollTimeInSec="1"
+                    app:sliderScrollTimeInSec="4"
                     app:sliderStartAutoCycle="true"
                     tools:background="@tools:sample/avatars" />
 
@@ -105,10 +105,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="-15dp"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp"
                 android:background="@drawable/white_corner_bg"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp">
 
                 <ImageView
                     android:layout_width="50dp"
@@ -118,12 +118,12 @@
                     android:src="@drawable/black_circle" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
                     android:textAllCaps="true"
                     android:textSize="16sp"
-                    android:layout_marginTop="10dp"
                     tools:text="INTO THE ROD SHADES BROWN" />
 
                 <LinearLayout
@@ -134,54 +134,54 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView8"
+                        android:id="@+id/price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="16sp"
                         android:fontFamily="@font/norms_bold"
+                        android:textSize="16sp"
                         tools:text="6,485.00 EGP" />
 
                     <TextView
-                        android:id="@+id/textView9"
+                        android:id="@+id/oldPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        android:layout_weight="1"
                         android:layout_marginStart="12dp"
+                        android:layout_weight="1"
                         android:textColor="@color/textColorDarkGray"
+                        android:textSize="12sp"
                         tools:text="7,203.00 EGP" />
 
                     <ImageView
-                        android:id="@+id/imageView8"
+                        android:id="@+id/addItem"
                         android:layout_width="wrap_content"
-                        android:padding="5dp"
                         android:layout_height="wrap_content"
+                        android:padding="5dp"
                         app:srcCompat="@drawable/ic_add_item" />
 
                     <TextView
-                        android:id="@+id/textView12"
+                        android:id="@+id/productCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        tools:text="0" />
+                        android:text="0" />
 
                     <ImageView
-                        android:id="@+id/imageView9"
+                        android:id="@+id/subtractItem"
                         android:layout_width="wrap_content"
-                        android:padding="5dp"
                         android:layout_height="wrap_content"
+                        android:padding="5dp"
                         app:srcCompat="@drawable/ic_subtract_item" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_marginTop="5dp"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <RatingBar
-                        android:id="@+id/ratingBar"
+                        android:id="@+id/productRate"
                         style="@style/Widget.AppCompat.RatingBar.Small"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -191,7 +191,7 @@
                         android:stepSize="0.1" />
 
                     <TextView
-                        android:id="@+id/textView13"
+                        android:id="@+id/totalReviews"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -217,16 +217,17 @@
                         android:textSize="18sp" />
 
                     <FrameLayout
+                        android:id="@+id/favBtn"
                         android:layout_width="48dp"
-                        android:background="#EEEEEE"
+                        android:layout_height="48dp"
                         android:layout_marginStart="15dp"
-                        android:layout_height="48dp">
+                        android:background="#EEEEEE">
 
                         <ImageView
-                            android:id="@+id/imageView10"
+                            android:id="@+id/favIcon"
                             android:layout_width="wrap_content"
-                            android:layout_gravity="center"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             app:srcCompat="@drawable/favorite_item" />
                     </FrameLayout>
                 </LinearLayout>
@@ -242,50 +243,70 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textSize="16sp"
                         android:fontFamily="@font/norms_medium"
-                        android:text="@string/select_your_size" />
+                        android:text="@string/select_your_size"
+                        android:textSize="16sp" />
 
                     <TextView
-                        android:id="@+id/textView15"
+                        android:id="@+id/size_guide"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textSize="12sp"
-                        android:drawablePadding="10dp"
                         android:drawableStart="@drawable/ic_size_gide"
-                        android:text="@string/size_guide" />
+                        android:drawablePadding="10dp"
+                        android:gravity="center"
+                        android:text="@string/size_guide"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/sizeRec"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/size_item" />
 
                 <TextView
                     android:id="@+id/textView16"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/norms_medium"
+                    android:text="@string/select_color"
+                    android:textSize="16sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/colorRec"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/color_item" />
 
                 <TextView
                     android:id="@+id/textView17"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/norms_medium"
+                    android:text="@string/description"
+                    android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/textView18"
+                    android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/textColorDarkGray"
+                    tools:text="Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam Voluptua." />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/all_reviews_layout"
                     android:orientation="horizontal">
 
                     <TextView
@@ -293,14 +314,49 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="TextView" />
+                        android:fontFamily="@font/norms_medium"
+                        android:text="@string/reviews"
+                        android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/textView19"
-                        android:layout_width="match_parent"
+                        android:id="@+id/all_reviews"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="TextView" />
+                        android:drawablePadding="10dp"
+                        android:text="@string/all_reviews"
+                        app:drawableEndCompat="@drawable/arrow_right" />
                 </LinearLayout>
+
+                <include
+                    layout="@layout/all_reviews_item"
+                    android:layout_width="match_parent"
+                    android:id="@+id/all_reviews_item"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp" />
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/norms_medium"
+                    android:text="@string/you_may_also_like"
+                    android:textSize="16sp" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="-5dp"
+                    android:id="@+id/productsRec"
+                    android:layout_marginBottom="30dp"
+                    app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                    app:spanCount="2"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/favorite_item" />
+
             </LinearLayout>
 
         </LinearLayout>

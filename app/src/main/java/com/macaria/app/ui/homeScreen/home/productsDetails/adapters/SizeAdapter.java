@@ -1,4 +1,4 @@
-package com.macaria.app.ui.homeScreen.home.products.adapter;
+package com.macaria.app.ui.homeScreen.home.productsDetails.adapters;
 
 import static com.macaria.app.utilities.ImageHelper.loadImage;
 
@@ -13,20 +13,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.macaria.app.R;
 import com.macaria.app.databinding.FavoriteItemBinding;
-import com.macaria.app.ui.homeScreen.home.products.models.ProductModel;
-import com.macaria.app.ui.homeScreen.profile.orderHistory.adapters.OrdersProductsListener;
+import com.macaria.app.databinding.SizeItemBinding;
+import com.macaria.app.ui.homeScreen.home.products.adapter.ProductsListener;
+import com.macaria.app.ui.homeScreen.home.products.models.SizeModel;
+import com.macaria.app.ui.homeScreen.home.products.models.SuggestedProducts;
+import com.macaria.app.ui.homeScreen.home.productsDetails.listeners.SizeListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.StoryViewHolder> {
-    private List<ProductModel> data = new ArrayList<>();
+public class SizeAdapter extends RecyclerView.Adapter<SizeAdapter.StoryViewHolder> {
+    private List<SizeModel> data = new ArrayList<>();
     private Context context;
-    private ProductsListener listener;
+    private SizeListener listener;
     private boolean isFinishedLoading;
 
-    public ProductsAdapter(Context context, ProductsListener listener) {
+    public SizeAdapter(Context context, SizeListener listener) {
         this.context = context;
         this.listener = listener;
     }
@@ -34,25 +37,19 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.StoryV
     @NonNull
     @Override
     public StoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new StoryViewHolder(FavoriteItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
+        return new StoryViewHolder(SizeItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull StoryViewHolder holder, @SuppressLint("RecyclerView") int position) {
         try {
-            holder.binding.price.setText(data.get(position).getPrice().concat(" ").concat(context.getString(R.string.egp)));
-            holder.binding.image.setClipToOutline(true);
-            holder.binding.title.setText(data.get(position).getName());
-            loadImage(context, data.get(position).getImage(), R.drawable.profile_holder, holder.binding.image);
-            holder.binding.favorite.setOnClickListener(view -> listener.onFavoriteClick(data.get(position).getId()));
-            holder.itemView.setOnClickListener(view -> listener.onProductClick(data.get(position)));
-            if (data.get(position).getFav())holder.binding.favorite.setImageResource(R.drawable.ic_products_fav_fill);
+            holder.binding.name.setText(data.get(position).getName());
         }catch (Exception e){
             Log.e("crash", "onBindViewHolder: ",e );
         }
     }
 
-    public void addData(List<ProductModel> data) {
+    public void addData(List<SizeModel> data) {
         int lastIndex = this.data.isEmpty() ? 0 : this.data.size() - 1;
         this.data.addAll(data);
         int newLastIndex = this.data.size();
@@ -77,9 +74,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.StoryV
     }
 
     public static class StoryViewHolder extends RecyclerView.ViewHolder {
-        FavoriteItemBinding binding;
+        SizeItemBinding binding;
 
-        public StoryViewHolder(@NonNull FavoriteItemBinding binding) {
+        public StoryViewHolder(@NonNull SizeItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

@@ -50,8 +50,9 @@ public class FavoriteViewModel extends ViewModel {
     }
 
     public void clear(){
-        errorMassage = new MutableLiveData<>(); ;
-        modelMutableLiveData = new MutableLiveData<>(); ;
+        errorMassage = new MutableLiveData<>();
+        setFavorite = new MutableLiveData<>();
+        modelMutableLiveData = new MutableLiveData<>();
     }
 
     public void getFavorite() {

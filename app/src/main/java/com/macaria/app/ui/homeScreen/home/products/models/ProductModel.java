@@ -4,9 +4,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.macaria.app.models.BaseModel;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ProductModel {
+public class ProductModel implements Serializable {
     @SerializedName("id")
     @Expose
     private Integer id;

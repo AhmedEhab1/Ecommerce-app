@@ -44,6 +44,10 @@
     <string name="building_no">Building No</string>
     <string name="enter_phone_number">Please Enter Your Phone Number</string>
     <string name="yes">Yes</string>
+    <string name="by">by: </string>
+    <string name="you_may_also_like">YOU MAY ALSO LIKE</string>
+    <string name="description">DESCRIPTION</string>
+    <string name="select_color">Select Color</string>
     <string name="select_your_size">Select your Size</string>
     <string name="size_guide">Size Guide</string>
     <string name="add_to_cart">Add to Cart</string>
@@ -84,6 +88,9 @@
     <string name="shipping">Shipping</string>
     <string name="taxes">Taxes</string>
     <string name="total">Total</string>
+    <string name="reviews">REVIEWS</string>
+    <string name="reviewsSmall">eviews</string>
+    <string name="all_reviews">All Reviews</string>
     <string name="products">Products</string>
     <string name="leave_comment">Leave Comment</string>
     <string name="comment_title">Comment title</string>

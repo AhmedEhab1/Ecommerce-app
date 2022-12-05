@@ -1,4 +1,4 @@
-package com.macaria.app.ui.homeScreen.home.products.adapter;
+package com.macaria.app.ui.homeScreen.home.productsDetails.adapters;
 
 import static com.macaria.app.utilities.ImageHelper.loadImage;
 
@@ -13,20 +13,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.macaria.app.R;
 import com.macaria.app.databinding.FavoriteItemBinding;
+import com.macaria.app.ui.homeScreen.home.products.adapter.ProductsListener;
 import com.macaria.app.ui.homeScreen.home.products.models.ProductModel;
-import com.macaria.app.ui.homeScreen.profile.orderHistory.adapters.OrdersProductsListener;
+import com.macaria.app.ui.homeScreen.home.products.models.SuggestedProducts;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.StoryViewHolder> {
-    private List<ProductModel> data = new ArrayList<>();
+public class SuggestedProductsAdapter extends RecyclerView.Adapter<SuggestedProductsAdapter.StoryViewHolder> {
+    private List<SuggestedProducts> data = new ArrayList<>();
     private Context context;
     private ProductsListener listener;
     private boolean isFinishedLoading;
 
-    public ProductsAdapter(Context context, ProductsListener listener) {
+    public SuggestedProductsAdapter(Context context, ProductsListener listener) {
         this.context = context;
         this.listener = listener;
     }
@@ -45,14 +46,13 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.StoryV
             holder.binding.title.setText(data.get(position).getName());
             loadImage(context, data.get(position).getImage(), R.drawable.profile_holder, holder.binding.image);
             holder.binding.favorite.setOnClickListener(view -> listener.onFavoriteClick(data.get(position).getId()));
-            holder.itemView.setOnClickListener(view -> listener.onProductClick(data.get(position)));
-            if (data.get(position).getFav())holder.binding.favorite.setImageResource(R.drawable.ic_products_fav_fill);
+            if (data.get(position).getIsFav())holder.binding.favorite.setImageResource(R.drawable.ic_products_fav_fill);
         }catch (Exception e){
             Log.e("crash", "onBindViewHolder: ",e );
         }
     }
 
-    public void addData(List<ProductModel> data) {
+    public void addData(List<SuggestedProducts> data) {
         int lastIndex = this.data.isEmpty() ? 0 : this.data.size() - 1;
         this.data.addAll(data);
         int newLastIndex = this.data.size();

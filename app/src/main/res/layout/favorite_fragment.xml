@@ -76,6 +76,7 @@
 
         <com.macaria.app.customViews.CustomSwipeToRefresh
             android:layout_width="match_parent"
+            android:id="@+id/swipeRefreshLayout"
             android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView

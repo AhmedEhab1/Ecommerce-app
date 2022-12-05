@@ -3,7 +3,9 @@ package com.macaria.app.ui.homeScreen.home.products.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ReviewModel {
+import java.io.Serializable;
+
+public class ReviewModel implements Serializable {
     @SerializedName("id")
     @Expose
     private Integer id;
