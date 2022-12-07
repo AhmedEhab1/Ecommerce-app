@@ -70,18 +70,22 @@ public class ProductDetails extends Fragment implements SuggestedProductsListene
             binding = ProductDetailsFragmentBinding.inflate(inflater, container, false);
         }
         init();
-
         return binding.getRoot();
     }
 
     private void init() {
         viewModel = new ViewModelProvider(this).get(ProductDetailsViewModel.class);
-        binding.icBack.setOnClickListener(view -> back());
-        binding.favBtn.setOnClickListener(view -> setProductFavorite());
+        onViewClicked();
         getProductsData();
         getFavoriteResponse();
         errorMessage();
         productQty();
+    }
+
+    private void onViewClicked(){
+        binding.icBack.setOnClickListener(view -> back());
+        binding.allReviews.setOnClickListener(view -> navigateToAllReviews());
+        binding.favBtn.setOnClickListener(view -> setProductFavorite());
     }
 
     private void setViewData() {
@@ -240,6 +244,12 @@ public class ProductDetails extends Fragment implements SuggestedProductsListene
     private void productQty() {
         binding.addItem.setOnClickListener(view -> binding.productCount.setText(String.valueOf(viewModel.add(Integer.parseInt(binding.productCount.getText().toString())))));
         binding.subtractItem.setOnClickListener(view -> binding.productCount.setText(String.valueOf(viewModel.sub(Integer.parseInt(binding.productCount.getText().toString())))));
+    }
+
+    private void navigateToAllReviews(){
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("model",model);
+        Navigation.findNavController(requireView()).navigate(R.id.action_product_details_to_allReviewsFragment, bundle);
     }
 
 }
