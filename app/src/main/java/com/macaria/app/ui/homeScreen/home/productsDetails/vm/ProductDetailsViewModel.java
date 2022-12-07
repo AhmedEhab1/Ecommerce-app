@@ -1,4 +1,4 @@
-package com.macaria.app.ui.homeScreen.favorite.vm;
+package com.macaria.app.ui.homeScreen.home.productsDetails.vm;
 
 import android.util.Log;
 
@@ -11,9 +11,7 @@ import com.macaria.app.repository.HomeRepository;
 import com.macaria.app.repository.ProfileRepository;
 import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
 import com.macaria.app.ui.homeScreen.home.products.models.ProductModel;
-import com.macaria.app.ui.homeScreen.profile.orderHistory.models.OrderHistoryModel;
-
-import java.util.List;
+import com.macaria.app.ui.homeScreen.profile.orderHistory.models.AddReviewRequest;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
@@ -21,24 +19,26 @@ import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class FavoriteViewModel extends ViewModel {
+public class ProductDetailsViewModel extends ViewModel {
     private HomeRepository repository;
-    private MutableLiveData<BaseModel<List<ProductModel>>> modelMutableLiveData = new MutableLiveData<>();
-    private MutableLiveData<BaseModel> setFavorite = new MutableLiveData<>();
+    private MutableLiveData<BaseModel<ProductModel>> modelMutableLiveData = new MutableLiveData<>();
     private MutableLiveData<String> errorMassage = new MutableLiveData<>();
+    private MutableLiveData<BaseModel> setFavorite = new MutableLiveData<>();
+
 
     @ViewModelInject
-    public FavoriteViewModel(HomeRepository repository) {
+    public ProductDetailsViewModel(HomeRepository repository) {
         this.repository = repository;
     }
 
-    public MutableLiveData<BaseModel<List<ProductModel>>> getModelMutableLiveData() {
+    public MutableLiveData<BaseModel<ProductModel>> getModelMutableLiveData() {
         return modelMutableLiveData;
     }
 
     public MutableLiveData<BaseModel> getSetFavorite() {
         return setFavorite;
     }
+
 
     public MutableLiveData<String> getErrorMassage() {
         return errorMassage;
@@ -49,31 +49,31 @@ public class FavoriteViewModel extends ViewModel {
         errorMassage.setValue(message);
     }
 
-    public void clear(){
+    public void clear() {
         errorMassage = new MutableLiveData<>();
-        setFavorite = new MutableLiveData<>();
+        ;
         modelMutableLiveData = new MutableLiveData<>();
+        ;
     }
 
-    public void getFavorite() {
-        repository.getFavorite()
+    public void getProductsDetails(int id) {
+        repository.getProductsDetails(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<BaseModel<List<ProductModel>>>() {
+                .subscribe(new Observer<BaseModel<ProductModel>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(@NonNull BaseModel<List<ProductModel>> listBaseModel) {
+                    public void onNext(@NonNull BaseModel<ProductModel> listBaseModel) {
                         modelMutableLiveData.setValue(listBaseModel);
                     }
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-                        Log.e("crash", "onError: ", e);
-                        errorMassage.setValue(e.toString());
+
                     }
 
                     @Override
@@ -110,5 +110,20 @@ public class FavoriteViewModel extends ViewModel {
                     }
                 });
     }
+
+    public int add(int num) {
+        int sum = num ;
+        sum = num+1;
+        return sum;
+    }
+
+    public int sub(int num){
+        if (num != 1){
+            num = num-1;
+        }
+        return num;
+    }
+
+
 
 }

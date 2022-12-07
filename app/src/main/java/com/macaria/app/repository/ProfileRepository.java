@@ -82,9 +82,6 @@ public class ProfileRepository {
         return apiService.getOrderHistory();
     }
 
-    public Observable<BaseModel<List<ProductModel>>> getFavorite(){
-        return apiService.getFavorite();
-    }
 
     public Observable<BaseModel<List<FaqModel>>> getFaq(){
         return apiService.getFaq();
@@ -92,10 +89,6 @@ public class ProfileRepository {
 
     public Observable<BaseModel> addReview(AddReviewRequest request){
         return apiService.addReview(request);
-    }
-
-    public Observable<BaseModel> setFavorite(SetFavoriteRequest request){
-        return apiService.setFavorite(request);
     }
 
 }

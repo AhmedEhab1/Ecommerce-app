@@ -120,4 +120,8 @@ public class ProductModel implements Serializable {
     public BaseModel.Item<List<SuggestedProducts>> getSuggestedProducts() {
         return suggestedProducts;
     }
+
+    public void setFav(Boolean fav) {
+        isFav = fav;
+    }
 }

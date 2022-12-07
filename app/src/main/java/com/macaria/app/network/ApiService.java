@@ -106,6 +106,6 @@ public interface ApiService {
     @POST("profile/update")
     Observable<BaseModel<UserModel>> changeAccountInfo(@PartMap HashMap<String, String> map, @Part MultipartBody.Part Image);
 
-    @POST("product/details")
+    @GET("product/details")
     Observable<BaseModel<ProductModel>> getProductDetails(@Query("id") int id);
 }

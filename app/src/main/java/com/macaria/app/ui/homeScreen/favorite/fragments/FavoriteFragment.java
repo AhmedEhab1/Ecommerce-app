@@ -42,6 +42,9 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
     @Inject
     MyHelper helper;
 
+    @Inject
+    SetFavoriteRequest favoriteRequest;
+
     public FavoriteFragment() {
         // Required empty public constructor
     }
@@ -57,14 +60,15 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
     }
 
     private void init() {
+        viewModel = new ViewModelProvider(this).get(FavoriteViewModel.class);
         requestFavorite();
         errorMessage();
         swipeToRefresh();
     }
 
     private void requestFavorite() {
-        viewModel = new ViewModelProvider(this).get(FavoriteViewModel.class);
         helper.showLoading(requireActivity());
+        viewModel.clear();
         viewModel.getFavorite();
         orderResponse();
     }
@@ -75,6 +79,8 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
             public void onChanged(BaseModel<List<ProductModel>> listBaseModel) {
                 helper.dismissLoading();
                 initOrderRec(listBaseModel);
+                binding.swipeRefreshLayout.setRefreshing(false);
+
             }
         });
     }
@@ -99,16 +105,15 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
     public void onProductClick(ProductModel model) {
         Bundle bundle = new Bundle();
         bundle.putSerializable("ProductModel", model);
+        bundle.putString("type", "model");
         Navigation.findNavController(requireView()).navigate(R.id.action_favoriteFragment_to_product_details, bundle);
-
     }
 
     @Override
     public void onFavoriteClick(int id) {
         helper.showLoading(requireActivity());
-        SetFavoriteRequest request = new SetFavoriteRequest();
-        request.setProduct_id(id);
-        viewModel.setFavorite(request);
+        favoriteRequest.setProduct_id(id);
+        viewModel.setFavorite(favoriteRequest);
         getSetFavoriteResponse();
     }
 
@@ -124,14 +129,12 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
     private void swipeToRefresh() {
         binding.swipeRefreshLayout.setOnRefreshListener(() -> {
             resetList();
-            binding.swipeRefreshLayout.setRefreshing(false);
         });
     }
 
     private void resetList() {
         requestFavorite();
         addressAdapter.setFinishedLoading(false);
-        viewModel.clear();
 //        currentPage = 1;
 //        endlessRecyclerViewScrollListener.resetState();
     }

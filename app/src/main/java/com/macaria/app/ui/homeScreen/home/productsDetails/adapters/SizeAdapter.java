@@ -6,9 +6,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.macaria.app.R;
@@ -28,6 +30,8 @@ public class SizeAdapter extends RecyclerView.Adapter<SizeAdapter.StoryViewHolde
     private Context context;
     private SizeListener listener;
     private boolean isFinishedLoading;
+    private int selectedItem = -1 ;
+
 
     public SizeAdapter(Context context, SizeListener listener) {
         this.context = context;
@@ -44,9 +48,26 @@ public class SizeAdapter extends RecyclerView.Adapter<SizeAdapter.StoryViewHolde
     public void onBindViewHolder(@NonNull StoryViewHolder holder, @SuppressLint("RecyclerView") int position) {
         try {
             holder.binding.name.setText(data.get(position).getName());
+            if (selectedItem == position){
+                holder.binding.sizeFrame.setBackgroundResource(R.color.black);
+                holder.binding.name.setTextColor(ContextCompat.getColor(context, R.color.white));
+            }else {
+                holder.binding.sizeFrame.setBackgroundResource(R.drawable.size_item_bg);
+                holder.binding.name.setTextColor(ContextCompat.getColor(context, R.color.black));
+            }
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    selectedItem = position ;
+                    listener.onSizeSelected(data.get(position).getId());
+                    notifyDataSetChanged();
+                }
+            });
         }catch (Exception e){
             Log.e("crash", "onBindViewHolder: ",e );
         }
+
     }
 
     public void addData(List<SizeModel> data) {

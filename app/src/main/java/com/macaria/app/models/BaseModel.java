@@ -3,6 +3,8 @@ package com.macaria.app.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 public class BaseModel<T> {
     @SerializedName("success")
     @Expose
@@ -38,7 +40,7 @@ public class BaseModel<T> {
         this.message = message;
     }
 
-    public static class Item<T> {
+    public static class Item<T> implements Serializable {
         @SerializedName("data")
         @Expose
         private T data;

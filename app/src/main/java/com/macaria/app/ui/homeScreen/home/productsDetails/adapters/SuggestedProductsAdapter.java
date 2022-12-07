@@ -16,6 +16,7 @@ import com.macaria.app.databinding.FavoriteItemBinding;
 import com.macaria.app.ui.homeScreen.home.products.adapter.ProductsListener;
 import com.macaria.app.ui.homeScreen.home.products.models.ProductModel;
 import com.macaria.app.ui.homeScreen.home.products.models.SuggestedProducts;
+import com.macaria.app.ui.homeScreen.home.productsDetails.listeners.SuggestedProductsListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +25,10 @@ import java.util.List;
 public class SuggestedProductsAdapter extends RecyclerView.Adapter<SuggestedProductsAdapter.StoryViewHolder> {
     private List<SuggestedProducts> data = new ArrayList<>();
     private Context context;
-    private ProductsListener listener;
+    private SuggestedProductsListener listener;
     private boolean isFinishedLoading;
 
-    public SuggestedProductsAdapter(Context context, ProductsListener listener) {
+    public SuggestedProductsAdapter(Context context, SuggestedProductsListener listener) {
         this.context = context;
         this.listener = listener;
     }
@@ -45,8 +46,21 @@ public class SuggestedProductsAdapter extends RecyclerView.Adapter<SuggestedProd
             holder.binding.image.setClipToOutline(true);
             holder.binding.title.setText(data.get(position).getName());
             loadImage(context, data.get(position).getImage(), R.drawable.profile_holder, holder.binding.image);
-            holder.binding.favorite.setOnClickListener(view -> listener.onFavoriteClick(data.get(position).getId()));
+            holder.itemView.setOnClickListener(view -> listener.onSuggestedProductsClicked(data.get(position).getId()));
             if (data.get(position).getIsFav())holder.binding.favorite.setImageResource(R.drawable.ic_products_fav_fill);
+
+            holder.binding.favorite.setOnClickListener(view -> {
+                listener.onFavoriteClick(data.get(position).getId());
+                if (data.get(position).getIsFav()){
+                    holder.binding.favorite.setImageResource(R.drawable.ic_products_fav_strok);
+                    data.get(position).setIsFav(false);
+                }
+                else {
+                    holder.binding.favorite.setImageResource(R.drawable.ic_products_fav_fill);
+                    data.get(position).setIsFav(true);
+                }
+            });
+
         }catch (Exception e){
             Log.e("crash", "onBindViewHolder: ",e );
         }

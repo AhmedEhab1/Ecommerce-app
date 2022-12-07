@@ -1,8 +1,10 @@
-package com.macaria.app.ui.homeScreen.home.productsDetails;
+package com.macaria.app.ui.homeScreen.home.productsDetails.fragments;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,6 +18,7 @@ import com.macaria.app.R;
 import com.macaria.app.databinding.FavoriteFragmentBinding;
 import com.macaria.app.databinding.ProductDetailsFragmentBinding;
 import com.macaria.app.models.BaseModel;
+import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
 import com.macaria.app.ui.homeScreen.home.products.adapter.ProductsAdapter;
 import com.macaria.app.ui.homeScreen.home.products.adapter.ProductsListener;
 import com.macaria.app.ui.homeScreen.home.products.models.ColorModel;
@@ -28,6 +31,9 @@ import com.macaria.app.ui.homeScreen.home.productsDetails.adapters.SliderAdapter
 import com.macaria.app.ui.homeScreen.home.productsDetails.adapters.SuggestedProductsAdapter;
 import com.macaria.app.ui.homeScreen.home.productsDetails.listeners.ColorListener;
 import com.macaria.app.ui.homeScreen.home.productsDetails.listeners.SizeListener;
+import com.macaria.app.ui.homeScreen.home.productsDetails.listeners.SuggestedProductsListener;
+import com.macaria.app.ui.homeScreen.home.productsDetails.vm.ProductDetailsViewModel;
+import com.macaria.app.ui.homeScreen.profile.orderHistory.vm.OrderHistoryViewModel;
 import com.macaria.app.utilities.MyHelper;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -41,12 +47,17 @@ import javax.inject.Inject;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class ProductDetails extends Fragment implements ProductsListener, SizeListener, ColorListener , Serializable {
-    private ProductDetailsFragmentBinding binding ;
-    private ProductModel model ;
+public class ProductDetails extends Fragment implements SuggestedProductsListener, SizeListener, ColorListener
+        , Serializable {
+    private ProductDetailsFragmentBinding binding;
+    private ProductModel model;
+    private ProductDetailsViewModel viewModel;
 
     @Inject
-    MyHelper helper ;
+    MyHelper helper;
+
+    @Inject
+    SetFavoriteRequest favoriteRequest;
 
     public ProductDetails() {
         // Required empty public constructor
@@ -55,7 +66,7 @@ public class ProductDetails extends Fragment implements ProductsListener, SizeLi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        if (binding == null){
+        if (binding == null) {
             binding = ProductDetailsFragmentBinding.inflate(inflater, container, false);
         }
         init();
@@ -63,12 +74,17 @@ public class ProductDetails extends Fragment implements ProductsListener, SizeLi
         return binding.getRoot();
     }
 
-    private void init(){
+    private void init() {
+        viewModel = new ViewModelProvider(this).get(ProductDetailsViewModel.class);
         binding.icBack.setOnClickListener(view -> back());
+        binding.favBtn.setOnClickListener(view -> setProductFavorite());
         getProductsData();
+        getFavoriteResponse();
+        errorMessage();
+        productQty();
     }
 
-    private void setViewData(){
+    private void setViewData() {
         setInfoData();
         setReviewData();
         initProductRec(model.getSuggestedProducts().getData());
@@ -77,39 +93,44 @@ public class ProductDetails extends Fragment implements ProductsListener, SizeLi
         initColorRec(model.getColors());
     }
 
-    private void getProductsData(){
-        if (getArguments() != null){
-            model = (ProductModel) getArguments().getSerializable("ProductModel");
-            setViewData();
-        }else {
-            helper.showLoading(requireActivity());
+    private void getProductsData() {
+        if (getArguments() != null) {
+            if (getArguments().getString("type").equals("model")) {
+                model = (ProductModel) getArguments().getSerializable("ProductModel");
+                setViewData();
+            } else {
+                int id = getArguments().getInt("id");
+                helper.showLoading(requireActivity());
+                viewModel.getProductsDetails(id);
+                getProductsResponse();
+            }
         }
     }
 
-    private void setInfoData(){
+    private void setInfoData() {
         binding.title.setText(model.getName());
         binding.description.setText(model.getDescription());
         binding.price.setText(model.getPrice().concat(" ").concat(getString(R.string.egp)));
         binding.oldPrice.setText(model.getOldPrice().concat(" ").concat(getString(R.string.egp)));
         binding.productRate.setRating(model.getRate());
         binding.totalReviews.setText("( ".concat(String.valueOf(model.getReviewCount())).concat(" ").concat(getString(R.string.reviewsSmall)).concat(" )"));
-        if (model.getFav())binding.favIcon.setImageResource(R.drawable.ic_favorite_active);
+        if (model.getFav()) binding.favIcon.setImageResource(R.drawable.ic_favorite_active);
     }
 
-    private void setReviewData(){
+    private void setReviewData() {
         try {
-            if (model.getReviews().size() == 0){
+            if (model.getReviews().size() == 0) {
                 binding.allReviewsLayout.setVisibility(View.GONE);
                 binding.allReviewsItem.getRoot().setVisibility(View.GONE);
-            }else {
+            } else {
                 binding.allReviewsItem.title.setText(model.getReviews().get(0).getTitle());
                 binding.allReviewsItem.description.setText(model.getReviews().get(0).getReview());
                 binding.allReviewsItem.date.setText(model.getReviews().get(0).getCreatedAt());
                 binding.allReviewsItem.byUser.setText(getString(R.string.by).concat(model.getReviews().get(0).getCreatedAt()));
                 binding.allReviewsItem.rate.setRating(model.getReviews().get(0).getRate());
             }
-        }catch (Exception e){
-            Log.e("crash", "setReviewData: ",e );
+        } catch (Exception e) {
+            Log.e("crash", "setReviewData: ", e);
         }
     }
 
@@ -149,13 +170,18 @@ public class ProductDetails extends Fragment implements ProductsListener, SizeLi
     }
 
     @Override
-    public void onProductClick(ProductModel model) {
-
+    public void onSuggestedProductsClicked(int id) {
+        Bundle bundle = new Bundle();
+        bundle.putString("type", "id");
+        bundle.putInt("id", id);
+        Navigation.findNavController(requireView()).navigate(R.id.action_product_details_self, bundle);
     }
 
     @Override
     public void onFavoriteClick(int id) {
-
+        favoriteRequest.setProduct_id(id);
+        helper.showLoading(requireActivity());
+        viewModel.setFavorite(favoriteRequest);
     }
 
     @Override
@@ -167,4 +193,53 @@ public class ProductDetails extends Fragment implements ProductsListener, SizeLi
     public void onColorSelected(int id) {
 
     }
+
+    private void errorMessage() {
+        viewModel.getErrorMassage().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                helper.showErrorDialog(getActivity(), null, s);
+            }
+        });
+    }
+
+    private void getProductsResponse() {
+        viewModel.getModelMutableLiveData().observe(getViewLifecycleOwner(), new Observer<BaseModel<ProductModel>>() {
+            @Override
+            public void onChanged(BaseModel<ProductModel> productModelBaseModel) {
+                helper.dismissLoading();
+                model = productModelBaseModel.getItem().getData();
+                setViewData();
+            }
+        });
+    }
+
+    private void getFavoriteResponse() {
+        viewModel.getSetFavorite().observe(getViewLifecycleOwner(), new Observer<BaseModel>() {
+            @Override
+            public void onChanged(BaseModel model) {
+                helper.dismissLoading();
+            }
+        });
+    }
+
+
+    private void setProductFavorite() {
+        favoriteRequest.setProduct_id(model.getId());
+        helper.showLoading(requireActivity());
+        if (model.getFav()) {
+            binding.favIcon.setImageResource(R.drawable.favorite_item);
+            model.setFav(false);
+        } else {
+            binding.favIcon.setImageResource(R.drawable.ic_favorite_active);
+            model.setFav(true);
+        }
+        viewModel.setFavorite(favoriteRequest);
+    }
+
+    private void productQty() {
+        binding.addItem.setOnClickListener(view -> binding.productCount.setText(String.valueOf(viewModel.add(Integer.parseInt(binding.productCount.getText().toString())))));
+        binding.subtractItem.setOnClickListener(view -> binding.productCount.setText(String.valueOf(viewModel.sub(Integer.parseInt(binding.productCount.getText().toString())))));
+    }
+
 }

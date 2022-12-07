@@ -34,13 +34,14 @@ public class MyHelper {
     }
 
     public void showLoading(Context context) {
+        dismissLoading();
         FragmentActivity activity = (FragmentActivity) (context);
         FragmentManager fm = activity.getSupportFragmentManager();
         loading.show(fm, "fragment_alert");
     }
 
     public void dismissLoading() {
-        loading.dismiss();
+        if (loading.getDialog() !=null)loading.dismiss();
     }
 
     public void showSnackBar(Context context, String message) {
