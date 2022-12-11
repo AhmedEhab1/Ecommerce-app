@@ -11,6 +11,9 @@
         <entry key="app/src/main/res/drawable/edit_text_bg.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/edit_text_border.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/favorite_item.xml" value="0.1475" />
+        <entry key="app/src/main/res/drawable/home_banner_bg.xml" value="0.1475" />
+        <entry key="app/src/main/res/drawable/home_category_bg_strok.xml" value="0.1475" />
+        <entry key="app/src/main/res/drawable/home_category_bg_stroke.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/home_item.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/ic_contact_us_email.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/ic_contact_us_phone.xml" value="0.1475" />
@@ -26,6 +29,7 @@
         <entry key="app/src/main/res/drawable/products_fav_bg.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/profile_item.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/size_item_bg.xml" value="0.1475" />
+        <entry key="app/src/main/res/drawable/white_circle.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/white_corner_bg.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/wieght_circle.xml" value="0.1475" />
         <entry key="app/src/main/res/layout/account_info_fragment.xml" value="0.24895833333333334" />
@@ -52,6 +56,7 @@
         <entry key="app/src/main/res/layout/fragment_error_dialog.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/fragment_home_screen.xml" value="0.14853556485355648" />
         <entry key="app/src/main/res/layout/fragment_loading.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/home_category_item.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/login_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/order_details_fragment.xml" value="0.24895833333333334" />

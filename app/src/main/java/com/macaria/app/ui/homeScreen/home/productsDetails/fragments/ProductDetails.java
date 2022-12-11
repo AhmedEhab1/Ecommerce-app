@@ -72,8 +72,8 @@ public class ProductDetails extends Fragment implements SuggestedProductsListene
                              Bundle savedInstanceState) {
         if (binding == null) {
             binding = ProductDetailsFragmentBinding.inflate(inflater, container, false);
+            init();
         }
-        init();
         return binding.getRoot();
     }
 

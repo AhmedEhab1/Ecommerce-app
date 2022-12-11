@@ -1,22 +1,18 @@
-package com.macaria.app.ui.homeScreen.home.products.models;
+package com.macaria.app.ui.homeScreen.home.homeView.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-
-public class SizeModel implements Serializable {
+public class CategoriesModel {
     @SerializedName("id")
     @Expose
     private Integer id;
     @SerializedName("name")
     @Expose
     private String name;
-
-    public SizeModel(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    @SerializedName("image")
+    @Expose
+    private String image;
 
     public Integer getId() {
         return id;
@@ -34,4 +30,11 @@ public class SizeModel implements Serializable {
         this.name = name;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }
