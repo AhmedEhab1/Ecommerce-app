@@ -1,4 +1,4 @@
-package com.macaria.app.ui.homeScreen.home.allReviews;
+package com.macaria.app.ui.homeScreen.home.productsDetails.allReviews;
 
 import android.os.Bundle;
 
@@ -9,13 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.macaria.app.R;
 import com.macaria.app.databinding.AllReviewsFragmentBinding;
-import com.macaria.app.databinding.ProductDetailsFragmentBinding;
-import com.macaria.app.ui.homeScreen.home.allReviews.adapter.ReviewsAdapter;
+import com.macaria.app.ui.homeScreen.home.productsDetails.allReviews.adapter.ReviewsAdapter;
 import com.macaria.app.ui.homeScreen.home.products.models.ProductModel;
 import com.macaria.app.ui.homeScreen.home.products.models.ReviewModel;
-import com.macaria.app.ui.homeScreen.profile.orderHistory.adapters.OrderHistoryAdapter;
 import com.macaria.app.utilities.MyHelper;
 
 import java.util.List;

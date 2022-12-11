@@ -1,8 +1,11 @@
 package com.macaria.app.ui.homeScreen.home.productsDetails.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -32,6 +35,7 @@ import com.macaria.app.ui.homeScreen.home.productsDetails.adapters.SuggestedProd
 import com.macaria.app.ui.homeScreen.home.productsDetails.listeners.ColorListener;
 import com.macaria.app.ui.homeScreen.home.productsDetails.listeners.SizeListener;
 import com.macaria.app.ui.homeScreen.home.productsDetails.listeners.SuggestedProductsListener;
+import com.macaria.app.ui.homeScreen.home.productsDetails.sizeChart.SizeChartDialog;
 import com.macaria.app.ui.homeScreen.home.productsDetails.vm.ProductDetailsViewModel;
 import com.macaria.app.ui.homeScreen.profile.orderHistory.vm.OrderHistoryViewModel;
 import com.macaria.app.utilities.MyHelper;
@@ -82,10 +86,11 @@ public class ProductDetails extends Fragment implements SuggestedProductsListene
         productQty();
     }
 
-    private void onViewClicked(){
+    private void onViewClicked() {
         binding.icBack.setOnClickListener(view -> back());
         binding.allReviews.setOnClickListener(view -> navigateToAllReviews());
         binding.favBtn.setOnClickListener(view -> setProductFavorite());
+        binding.sizeGuide.setOnClickListener(view -> showSizeChartDialog());
     }
 
     private void setViewData() {
@@ -115,7 +120,8 @@ public class ProductDetails extends Fragment implements SuggestedProductsListene
         binding.title.setText(model.getName());
         binding.description.setText(model.getDescription());
         binding.price.setText(model.getPrice().concat(" ").concat(getString(R.string.egp)));
-        binding.oldPrice.setText(model.getOldPrice().concat(" ").concat(getString(R.string.egp)));
+        if (!model.getOldPrice().equals(""))
+            binding.oldPrice.setText(model.getOldPrice().concat(" ").concat(getString(R.string.egp)));
         binding.productRate.setRating(model.getRate());
         binding.totalReviews.setText("( ".concat(String.valueOf(model.getReviewCount())).concat(" ").concat(getString(R.string.reviewsSmall)).concat(" )"));
         if (model.getFav()) binding.favIcon.setImageResource(R.drawable.ic_favorite_active);
@@ -246,10 +252,20 @@ public class ProductDetails extends Fragment implements SuggestedProductsListene
         binding.subtractItem.setOnClickListener(view -> binding.productCount.setText(String.valueOf(viewModel.sub(Integer.parseInt(binding.productCount.getText().toString())))));
     }
 
-    private void navigateToAllReviews(){
+    private void navigateToAllReviews() {
         Bundle bundle = new Bundle();
-        bundle.putSerializable("model",model);
+        bundle.putSerializable("model", model);
         Navigation.findNavController(requireView()).navigate(R.id.action_product_details_to_allReviewsFragment, bundle);
+    }
+
+    private void showSizeChartDialog() {
+        SizeChartDialog sizeChartDialog = new SizeChartDialog();
+        FragmentActivity activity = (FragmentActivity) (getActivity());
+        Bundle bundle = new Bundle();
+        bundle.putString("image", model.getSizeChart());
+        FragmentManager fm = activity.getSupportFragmentManager();
+        sizeChartDialog.setArguments(bundle);
+        sizeChartDialog.show(fm, "fragment_alert");
     }
 
 }

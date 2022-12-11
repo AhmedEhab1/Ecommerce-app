@@ -1,22 +1,17 @@
-package com.macaria.app.ui.homeScreen.home.allReviews.adapter;
+package com.macaria.app.ui.homeScreen.home.productsDetails.allReviews.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.macaria.app.R;
 import com.macaria.app.databinding.AllReviewsItemBinding;
-import com.macaria.app.databinding.SizeItemBinding;
 import com.macaria.app.ui.homeScreen.home.products.models.ReviewModel;
-import com.macaria.app.ui.homeScreen.home.products.models.SizeModel;
-import com.macaria.app.ui.homeScreen.home.productsDetails.listeners.SizeListener;
 
 import java.util.ArrayList;
 import java.util.List;

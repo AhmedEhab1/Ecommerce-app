@@ -278,7 +278,7 @@
     </fragment>
     <fragment
         android:id="@+id/allReviewsFragment"
-        android:name="com.macaria.app.ui.homeScreen.home.allReviews.AllReviewsFragment"
+        android:name="com.macaria.app.ui.homeScreen.home.productsDetails.allReviews.AllReviewsFragment"
         android:label="all_reviews_fragment"
         tools:layout="@layout/all_reviews_fragment" />
 
