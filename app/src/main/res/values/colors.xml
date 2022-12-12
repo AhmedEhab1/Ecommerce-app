@@ -25,6 +25,7 @@
     <color name="lightGreyColor">#919699</color>
     <color name="orangeColor">#F3AA18</color>
     <color name="greenColor">#2FA84F</color>
+    <color name="categoryColor">#919699</color>
 
 
 </resources>

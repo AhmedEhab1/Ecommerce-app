@@ -6,6 +6,7 @@ import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.macaria.app.data.FavoriteData;
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.repository.HomeRepository;
 import com.macaria.app.repository.ProfileRepository;
@@ -68,6 +69,7 @@ public class FavoriteViewModel extends ViewModel {
                     @Override
                     public void onNext(@NonNull BaseModel<List<ProductModel>> listBaseModel) {
                         modelMutableLiveData.setValue(listBaseModel);
+                        saveFavoriteData(listBaseModel.getItem().getData());
                     }
 
                     @Override
@@ -109,6 +111,9 @@ public class FavoriteViewModel extends ViewModel {
 
                     }
                 });
+    }
+    private void saveFavoriteData(List<ProductModel> models){
+        FavoriteData.getInstance().setFavoriteData(models);
     }
 
 }

@@ -9,6 +9,8 @@ import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
 import com.macaria.app.ui.authorization.login.model.UserModel;
 import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
+import com.macaria.app.ui.homeScreen.home.homeView.models.CategoriesModel;
+import com.macaria.app.ui.homeScreen.home.homeView.models.HomeModel;
 import com.macaria.app.ui.homeScreen.home.products.models.ProductModel;
 import com.macaria.app.ui.homeScreen.profile.contactUs.models.ContactModel;
 import com.macaria.app.ui.homeScreen.profile.contactUs.models.ContactUsRequest;
@@ -68,6 +70,12 @@ public interface ApiService {
 
     @GET("fav")
     Observable<BaseModel<List<ProductModel>>> getFavorite();
+
+    @GET("categories")
+    Observable<BaseModel<List<CategoriesModel>>> getCategories();
+
+    @GET("home")
+    Observable<BaseModel<HomeModel>> getHome(@Query("category_id")int id);
 
     @POST("reviews/store")
     Observable<BaseModel> addReview(@Body AddReviewRequest request);

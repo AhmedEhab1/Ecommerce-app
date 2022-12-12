@@ -1,4 +1,4 @@
-package com.macaria.app.ui.homeScreen.home.homeView.adapters;
+package com.macaria.app.ui.homeScreen.categories.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -12,24 +12,22 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.macaria.app.R;
+import com.macaria.app.databinding.CategoriesBarItemBinding;
 import com.macaria.app.databinding.HomeCategoryItemBinding;
-import com.macaria.app.databinding.SizeItemBinding;
 import com.macaria.app.ui.homeScreen.home.homeView.listeners.CategoriesListener;
 import com.macaria.app.ui.homeScreen.home.homeView.models.CategoriesModel;
-import com.macaria.app.ui.homeScreen.home.products.models.SizeModel;
-import com.macaria.app.ui.homeScreen.home.productsDetails.listeners.SizeListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapter.StoryViewHolder> {
+public class CategoryBarAdapter extends RecyclerView.Adapter<CategoryBarAdapter.StoryViewHolder> {
     private List<CategoriesModel> data = new ArrayList<>();
     private Context context;
     private CategoriesListener listener;
     private boolean isFinishedLoading;
     private int selectedItem = 0 ;
 
-    public HomeCategoryAdapter(Context context, CategoriesListener listener) {
+    public CategoryBarAdapter(Context context, CategoriesListener listener) {
         this.context = context;
         this.listener = listener;
     }
@@ -37,19 +35,19 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
     @NonNull
     @Override
     public StoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new StoryViewHolder(HomeCategoryItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
+        return new StoryViewHolder(CategoriesBarItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull StoryViewHolder holder, @SuppressLint("RecyclerView") int position) {
         try {
-            holder.binding.name.setText(data.get(position).getName());
+            holder.binding.title.setText(data.get(position).getName());
             if (selectedItem == position){
-                holder.binding.sizeFrame.setBackgroundResource(R.drawable.size_item_bg);
-                holder.binding.name.setTextColor(ContextCompat.getColor(context, R.color.black));
+                holder.binding.line.setVisibility(View.VISIBLE);
+                holder.binding.title.setTextColor(ContextCompat.getColor(context, R.color.black));
             }else {
-                holder.binding.sizeFrame.setBackgroundResource(R.drawable.home_category_bg_stroke);
-                holder.binding.name.setTextColor(ContextCompat.getColor(context, R.color.categoryColor));
+                holder.binding.line.setVisibility(View.INVISIBLE);
+                holder.binding.title.setTextColor(ContextCompat.getColor(context, R.color.categoryColor));
             }
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -91,9 +89,9 @@ public class HomeCategoryAdapter extends RecyclerView.Adapter<HomeCategoryAdapte
     }
 
     public static class StoryViewHolder extends RecyclerView.ViewHolder {
-        HomeCategoryItemBinding binding;
+        CategoriesBarItemBinding binding;
 
-        public StoryViewHolder(@NonNull HomeCategoryItemBinding binding) {
+        public StoryViewHolder(@NonNull CategoriesBarItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

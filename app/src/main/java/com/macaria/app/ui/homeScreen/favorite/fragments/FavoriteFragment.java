@@ -7,14 +7,13 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.macaria.app.R;
-import com.macaria.app.databinding.FaqFragmentBinding;
+import com.macaria.app.data.FavoriteData;
 import com.macaria.app.databinding.FavoriteFragmentBinding;
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
@@ -22,9 +21,6 @@ import com.macaria.app.ui.homeScreen.favorite.vm.FavoriteViewModel;
 import com.macaria.app.ui.homeScreen.home.products.adapter.ProductsAdapter;
 import com.macaria.app.ui.homeScreen.home.products.adapter.ProductsListener;
 import com.macaria.app.ui.homeScreen.home.products.models.ProductModel;
-import com.macaria.app.ui.homeScreen.profile.orderHistory.adapters.OrderHistoryAdapter;
-import com.macaria.app.ui.homeScreen.profile.orderHistory.models.OrderHistoryModel;
-import com.macaria.app.ui.homeScreen.profile.orderHistory.vm.OrderHistoryViewModel;
 import com.macaria.app.utilities.MyHelper;
 
 import java.util.List;
@@ -37,7 +33,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class FavoriteFragment extends Fragment implements ProductsListener {
     private FavoriteFragmentBinding binding;
     private FavoriteViewModel viewModel;
-    private ProductsAdapter addressAdapter ;
+    private ProductsAdapter productsAdapter;
 
     @Inject
     MyHelper helper;
@@ -60,7 +56,7 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
     }
 
     private void init() {
-        viewModel = new ViewModelProvider(this).get(FavoriteViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(FavoriteViewModel.class);
         requestFavorite();
         errorMessage();
         swipeToRefresh();
@@ -86,10 +82,10 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
     }
 
     private void initOrderRec(BaseModel<List<ProductModel>> listBaseModel) {
-        addressAdapter = new ProductsAdapter(getActivity(), this);
+        productsAdapter = new ProductsAdapter(getActivity(), this);
         binding.recycler.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
-        binding.recycler.setAdapter(addressAdapter);
-        addressAdapter.addData(listBaseModel.getItem().getData());
+        binding.recycler.setAdapter(productsAdapter);
+        productsAdapter.addData(listBaseModel.getItem().getData());
     }
 
     private void errorMessage() {
@@ -134,8 +130,10 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
 
     private void resetList() {
         requestFavorite();
-        addressAdapter.setFinishedLoading(false);
+        productsAdapter.setFinishedLoading(false);
 //        currentPage = 1;
 //        endlessRecyclerViewScrollListener.resetState();
     }
+
+
 }
