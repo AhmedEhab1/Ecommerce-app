@@ -74,6 +74,12 @@ public interface ApiService {
     @GET("categories")
     Observable<BaseModel<List<CategoriesModel>>> getCategories();
 
+    @GET("categories/sub")
+    Observable<BaseModel<List<CategoriesModel>>> getSubCategories(@Query("category_id") int category_id);
+
+    @GET("categories/subItems")
+    Observable<BaseModel<List<CategoriesModel>>> getSubItem(@Query("sub_category_id") int sub_category_id);
+
     @GET("home")
     Observable<BaseModel<HomeModel>> getHome(@Query("category_id")int id);
 

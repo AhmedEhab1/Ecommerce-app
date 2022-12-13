@@ -7,6 +7,9 @@ public class CategoriesModel {
     @SerializedName("id")
     @Expose
     private Integer id;
+    @SerializedName("items_count")
+    @Expose
+    private Integer items_count;
     @SerializedName("name")
     @Expose
     private String name;
@@ -24,6 +27,10 @@ public class CategoriesModel {
 
     public String getName() {
         return name;
+    }
+
+    public Integer getItems_count() {
+        return items_count;
     }
 
     public void setName(String name) {

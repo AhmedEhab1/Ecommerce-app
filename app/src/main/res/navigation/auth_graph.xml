@@ -179,8 +179,16 @@
     </fragment>
     <fragment
         android:id="@+id/categoriesFragment"
-        android:name="com.macaria.app.ui.homeScreen.categories.CategoriesFragment"
-        tools:layout="@layout/categories_fragment" />
+        android:name="com.macaria.app.ui.homeScreen.categories.fragments.CategoriesFragment"
+        tools:layout="@layout/categories_fragment" >
+        <action
+            android:id="@+id/action_categoriesFragment_to_filterFragment"
+            app:destination="@id/filterFragment"
+            app:enterAnim="@anim/push_left_in"
+            app:exitAnim="@anim/push_left_out"
+            app:popEnterAnim="@anim/push_right_in"
+            app:popExitAnim="@anim/push_right_out"/>
+    </fragment>
 
 
     <fragment
@@ -289,6 +297,11 @@
         android:name="com.macaria.app.ui.homeScreen.home.productsDetails.allReviews.AllReviewsFragment"
         android:label="all_reviews_fragment"
         tools:layout="@layout/all_reviews_fragment" />
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="com.macaria.app.ui.homeScreen.categories.fragments.FilterFragment"
+        android:label="filter_fragment"
+        tools:layout="@layout/filter_fragment" />
 
 
 </navigation>

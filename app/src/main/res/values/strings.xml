@@ -25,6 +25,9 @@
     <string name="logout_message">Are you sure that you want to logout?</string>
     <string name="categories">Categories</string>
     <string name="favorite">Favorite</string>
+    <string name="sort_by">Sort by</string>
+    <string name="result">Result</string>
+    <string name="filter_by">Filter by</string>
     <string name="profile">Profile</string>
     <string name="add_valid_name">Please add a valid name</string>
     <string name="add_valid_email">Please add a valid email</string>

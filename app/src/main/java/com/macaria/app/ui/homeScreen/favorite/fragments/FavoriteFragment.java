@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.macaria.app.R;
-import com.macaria.app.data.FavoriteData;
 import com.macaria.app.databinding.FavoriteFragmentBinding;
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
@@ -63,25 +62,27 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
     }
 
     private void requestFavorite() {
-        helper.showLoading(requireActivity());
-        viewModel.clear();
-        viewModel.getFavorite();
-        orderResponse();
+        if (viewModel.getModelMutableLiveData().getValue() == null){
+            helper.showLoading(requireActivity());
+            viewModel.getFavorite();
+        }
+        productsResponse();
+
     }
 
-    private void orderResponse() {
+    private void productsResponse() {
         viewModel.getModelMutableLiveData().observe(getViewLifecycleOwner(), new Observer<BaseModel<List<ProductModel>>>() {
             @Override
             public void onChanged(BaseModel<List<ProductModel>> listBaseModel) {
                 helper.dismissLoading();
-                initOrderRec(listBaseModel);
+                initProductsRec(listBaseModel);
                 binding.swipeRefreshLayout.setRefreshing(false);
 
             }
         });
     }
 
-    private void initOrderRec(BaseModel<List<ProductModel>> listBaseModel) {
+    private void initProductsRec(BaseModel<List<ProductModel>> listBaseModel) {
         productsAdapter = new ProductsAdapter(getActivity(), this);
         binding.recycler.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
         binding.recycler.setAdapter(productsAdapter);

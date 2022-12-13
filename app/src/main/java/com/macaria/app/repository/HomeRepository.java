@@ -33,6 +33,14 @@ public class HomeRepository {
         return apiService.getCategories();
     }
 
+    public Observable<BaseModel<List<CategoriesModel>>> getSubCategories(int category_id){
+        return apiService.getSubCategories(category_id);
+    }
+
+    public Observable<BaseModel<List<CategoriesModel>>> getSubItem(int subItems){
+        return apiService.getSubItem(subItems);
+    }
+
     public Observable<BaseModel<HomeModel>> getHome(int id){
         return apiService.getHome(id);
     }

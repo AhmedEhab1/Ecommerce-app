@@ -21,7 +21,7 @@ public class ImageHelper {
             try {
                 Glide.with(context)
                         .load( url)
-                        .placeholder(R.drawable.custom_progress_bar)
+                        .placeholder(R.drawable.ic_placeholder)
                         .error(holder)
                         .into(imageView);
             } catch (Exception e) {
