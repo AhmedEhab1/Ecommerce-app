@@ -4,6 +4,8 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.ImageView;
 
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
+
 import com.bumptech.glide.Glide;
 import com.macaria.app.R;
 
@@ -19,9 +21,15 @@ public class ImageHelper {
         imageView.setClipToOutline(true);
         if (url != null && !url.equals("")) {
             try {
+                CircularProgressDrawable drawable = new CircularProgressDrawable(context);
+                drawable.setColorSchemeColors(R.color.colorPrimary, R.color.colorPrimaryDark, R.color.colorAccent);
+                drawable.setCenterRadius(30f);
+                drawable.setStrokeWidth(5f);
+                drawable.start();
+
                 Glide.with(context)
                         .load( url)
-                        .placeholder(R.drawable.ic_placeholder)
+                        .placeholder(drawable)
                         .error(holder)
                         .into(imageView);
             } catch (Exception e) {

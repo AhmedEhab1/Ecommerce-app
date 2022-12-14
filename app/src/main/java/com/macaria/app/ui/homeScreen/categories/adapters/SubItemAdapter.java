@@ -44,7 +44,7 @@ public class SubItemAdapter extends RecyclerView.Adapter<SubItemAdapter.StoryVie
             holder.binding.image.setClipToOutline(true);
             holder.binding.title.setText(data.get(position).getName());
             loadImage(context, data.get(position).getImage(), R.drawable.ic_placeholder, holder.binding.image);
-            holder.itemView.setOnClickListener(view -> listener.onSubItemClicked(data.get(position).getId()));
+            holder.itemView.setOnClickListener(view -> listener.onSubItemClicked(data.get(position).getName(), data.get(position).getId()));
         }catch (Exception e){
             Log.e("crash", "onBindViewHolder: ",e );
         }

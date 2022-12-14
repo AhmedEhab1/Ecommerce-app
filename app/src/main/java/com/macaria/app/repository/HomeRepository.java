@@ -2,12 +2,14 @@ package com.macaria.app.repository;
 
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.network.ApiService;
+import com.macaria.app.ui.homeScreen.categories.models.PagesRequest;
 import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
 import com.macaria.app.ui.homeScreen.home.homeView.models.CategoriesModel;
 import com.macaria.app.ui.homeScreen.home.homeView.models.HomeModel;
 import com.macaria.app.ui.homeScreen.home.products.models.ProductModel;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -27,6 +29,10 @@ public class HomeRepository {
 
     public Observable<BaseModel<List<ProductModel>>> getFavorite(){
         return apiService.getFavorite();
+    }
+
+    public Observable<BaseModel<List<ProductModel>>> getPages(Map<String, Integer>  request){
+        return apiService.getPages(request);
     }
 
     public Observable<BaseModel<List<CategoriesModel>>> getCategories(){

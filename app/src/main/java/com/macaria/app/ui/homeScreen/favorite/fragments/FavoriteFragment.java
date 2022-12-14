@@ -67,7 +67,6 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
             viewModel.getFavorite();
         }
         productsResponse();
-
     }
 
     private void productsResponse() {
@@ -77,7 +76,6 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
                 helper.dismissLoading();
                 initProductsRec(listBaseModel);
                 binding.swipeRefreshLayout.setRefreshing(false);
-
             }
         });
     }

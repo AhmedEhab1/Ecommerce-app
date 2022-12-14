@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -59,6 +60,7 @@ public class CategoriesFragment extends Fragment implements CategoriesListener, 
         initCategoryRec();
         subCategoryResponse();
         subItemResponse();
+        errorMessage();
     }
 
     private void initCategoryRec() {
@@ -105,8 +107,11 @@ public class CategoriesFragment extends Fragment implements CategoriesListener, 
     }
 
     @Override
-    public void onSubItemClicked(int id) {
-
+    public void onSubItemClicked(String title,int id) {
+        Bundle bundle = new Bundle();
+        bundle.putString("title", title);
+        bundle.putInt("category_id", id);
+        Navigation.findNavController(requireView()).navigate(R.id.action_categoriesFragment_to_filterFragment, bundle);
     }
 
     private void subItemResponse(){
@@ -114,6 +119,15 @@ public class CategoriesFragment extends Fragment implements CategoriesListener, 
             @Override
             public void onChanged(BaseModel<List<CategoriesModel>> listBaseModel) {
                 initSubItemRec(listBaseModel.getItem().getData());
+            }
+        });
+    }
+
+    private void errorMessage() {
+        viewModel.getErrorMassage().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                helper.showErrorDialog(getActivity(), null, s);
             }
         });
     }
