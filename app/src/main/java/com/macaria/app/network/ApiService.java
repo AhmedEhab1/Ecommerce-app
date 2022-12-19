@@ -8,6 +8,10 @@ import com.macaria.app.ui.authorization.forgetPassword.model.ForgetPasswordModel
 import com.macaria.app.ui.authorization.login.model.AuthModel;
 import com.macaria.app.ui.authorization.login.model.LoginRequest;
 import com.macaria.app.ui.authorization.login.model.UserModel;
+import com.macaria.app.ui.homeScreen.cart.model.AddToCartRequest;
+import com.macaria.app.ui.homeScreen.cart.model.CartModel;
+import com.macaria.app.ui.homeScreen.cart.model.CartProductsModel;
+import com.macaria.app.ui.homeScreen.cart.model.PromoCodeRequest;
 import com.macaria.app.ui.homeScreen.categories.models.PagesRequest;
 import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
 import com.macaria.app.ui.homeScreen.home.homeView.models.CategoriesModel;
@@ -74,6 +78,9 @@ public interface ApiService {
     @GET("fav")
     Observable<BaseModel<List<ProductModel>>> getFavorite();
 
+    @GET("cart")
+    Observable<BaseModel<CartModel>> getCart();
+
     @GET("products/pages")
     Observable<BaseModel<List<ProductModel>>> getPages(@QueryMap Map<String, Integer> params);
 
@@ -94,6 +101,21 @@ public interface ApiService {
 
     @POST("fav/store")
     Observable<BaseModel> setFavorite(@Body SetFavoriteRequest request);
+
+    @POST("cart/store")
+    Observable<BaseModel<CartProductsModel>> addToCart(@Body AddToCartRequest request);
+
+    @POST("cart/add")
+    Observable<BaseModel<CartProductsModel>> addCartItem(@Body AddToCartRequest request);
+
+    @POST("cart/sub")
+    Observable<BaseModel<CartProductsModel>> subCartItem(@Body AddToCartRequest request);
+
+    @POST("cart/delete")
+    Observable<BaseModel> deleteCartItem(@Body DeleteRequest id);
+
+    @POST("orders/promoCode")
+    Observable<BaseModel> promoCode(@Body PromoCodeRequest id);
 
     @POST("profile/update")
     Observable<BaseModel<UserModel>> changeAccountInfo(@Body CreateAccountRequest request);

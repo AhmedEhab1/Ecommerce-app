@@ -28,7 +28,7 @@ public class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.StoryViewHol
     private Context context;
     private ColorListener listener;
     private boolean isFinishedLoading;
-    private int selectedItem = -1 ;
+    private int selectedItem = 0 ;
 
     public ColorAdapter(Context context, ColorListener listener) {
         this.context = context;

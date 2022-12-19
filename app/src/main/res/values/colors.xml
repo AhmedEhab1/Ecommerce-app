@@ -27,6 +27,7 @@
     <color name="greenColor">#2FA84F</color>
     <color name="categoryColor">#919699</color>
     <color name="subCategoryColor">#F7F9FA</color>
+    <color name="promo_code_color">#006700</color>
 
 
 </resources>

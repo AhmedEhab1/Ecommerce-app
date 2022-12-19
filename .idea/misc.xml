@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/image_circle.xml" value="0.1475" />
+        <entry key="app/src/main/res/drawable/add_sub_cart_bg.xml" value="0.1585" />
         <entry key="app/src/main/res/drawable/black_circle.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/categories_item.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/color_item_bg.xml" value="0.1475" />
@@ -40,6 +41,8 @@
         <entry key="app/src/main/res/layout/all_reviews_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/all_reviews_item.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/back_layout.xml" value="0.24791666666666667" />
+        <entry key="app/src/main/res/layout/cart_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/cart_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/categories_bar_item.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/categories_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/change_password_fragment.xml" value="0.24895833333333334" />

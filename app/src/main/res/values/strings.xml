@@ -16,6 +16,8 @@
     <string name="login2"><u>Login</u></string>
     <string name="change"><u>change</u></string>
     <string name="send">Send</string>
+    <string name="apply">Apply</string>
+    <string name="proceed_to_check_out">Proceed To Check Out</string>
     <string name="home">Home</string>
     <string name="faq">FAQs</string>
     <string name="egypt">Egypt</string>
@@ -27,6 +29,7 @@
     <string name="favorite">Favorite</string>
     <string name="sort_by">Sort by</string>
     <string name="result">Result</string>
+    <string name="tax_included">(Taxes Included)</string>
     <string name="filter_by">Filter by</string>
     <string name="profile">Profile</string>
     <string name="add_valid_name">Please add a valid name</string>
@@ -47,6 +50,7 @@
     <string name="building_no">Building No</string>
     <string name="enter_phone_number">Please Enter Your Phone Number</string>
     <string name="yes">Yes</string>
+    <string name="cart">Cart</string>
     <string name="by">by: </string>
     <string name="you_may_also_like">YOU MAY ALSO LIKE</string>
     <string name="description">DESCRIPTION</string>
@@ -88,11 +92,13 @@
     <string name="qty">Qty</string>
     <string name="size">Size</string>
     <string name="color">Color</string>
+    <string name="color_">Color :</string>
     <string name="search_here">Search here...</string>
     <string name="shipping">Shipping</string>
     <string name="taxes">Taxes</string>
     <string name="total">Total</string>
     <string name="reviews">REVIEWS</string>
+    <string name="promo_code">Promocode</string>
     <string name="best_selling">best selling</string>
     <string name="new_arrivals">New arrivals</string>
     <string name="reviewsSmall">eviews</string>

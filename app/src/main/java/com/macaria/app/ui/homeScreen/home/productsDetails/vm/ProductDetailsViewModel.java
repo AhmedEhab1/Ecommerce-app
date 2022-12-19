@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModel;
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.repository.HomeRepository;
 import com.macaria.app.repository.ProfileRepository;
+import com.macaria.app.ui.homeScreen.cart.model.AddToCartRequest;
+import com.macaria.app.ui.homeScreen.cart.model.CartProductsModel;
 import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
 import com.macaria.app.ui.homeScreen.home.products.models.ProductModel;
 import com.macaria.app.ui.homeScreen.profile.orderHistory.models.AddReviewRequest;
@@ -24,6 +26,7 @@ public class ProductDetailsViewModel extends ViewModel {
     private MutableLiveData<BaseModel<ProductModel>> modelMutableLiveData = new MutableLiveData<>();
     private MutableLiveData<String> errorMassage = new MutableLiveData<>();
     private MutableLiveData<BaseModel> setFavorite = new MutableLiveData<>();
+    private MutableLiveData<BaseModel<CartProductsModel>> addToCart = new MutableLiveData<>();
 
 
     @ViewModelInject
@@ -33,6 +36,10 @@ public class ProductDetailsViewModel extends ViewModel {
 
     public MutableLiveData<BaseModel<ProductModel>> getModelMutableLiveData() {
         return modelMutableLiveData;
+    }
+
+    public MutableLiveData<BaseModel<CartProductsModel>> getAddToCart() {
+        return addToCart;
     }
 
     public MutableLiveData<BaseModel> getSetFavorite() {
@@ -51,9 +58,7 @@ public class ProductDetailsViewModel extends ViewModel {
 
     public void clear() {
         errorMassage = new MutableLiveData<>();
-        ;
         modelMutableLiveData = new MutableLiveData<>();
-        ;
     }
 
     public void getProductsDetails(int id) {
@@ -125,5 +130,33 @@ public class ProductDetailsViewModel extends ViewModel {
     }
 
 
+    public void addToCart(AddToCartRequest request) {
+        addToCart = new MutableLiveData<>();
+        repository.addToCart(request)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<BaseModel<CartProductsModel>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull BaseModel<CartProductsModel> model) {
+                        addToCart.setValue(model);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Log.e("crash", "onError: ", e);
+                        errorMassage.setValue(e.toString());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
 
 }

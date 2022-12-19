@@ -21,6 +21,8 @@ import com.macaria.app.R;
 import com.macaria.app.databinding.FavoriteFragmentBinding;
 import com.macaria.app.databinding.ProductDetailsFragmentBinding;
 import com.macaria.app.models.BaseModel;
+import com.macaria.app.ui.homeScreen.cart.model.AddToCartRequest;
+import com.macaria.app.ui.homeScreen.cart.model.CartProductsModel;
 import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
 import com.macaria.app.ui.homeScreen.home.products.adapter.ProductsAdapter;
 import com.macaria.app.ui.homeScreen.home.products.adapter.ProductsListener;
@@ -56,6 +58,7 @@ public class ProductDetails extends Fragment implements SuggestedProductsListene
     private ProductDetailsFragmentBinding binding;
     private ProductModel model;
     private ProductDetailsViewModel viewModel;
+    private int size_id = 0, color_id = 0;
 
     @Inject
     MyHelper helper;
@@ -84,6 +87,7 @@ public class ProductDetails extends Fragment implements SuggestedProductsListene
         getFavoriteResponse();
         errorMessage();
         productQty();
+        addToCart();
     }
 
     private void onViewClicked() {
@@ -156,6 +160,7 @@ public class ProductDetails extends Fragment implements SuggestedProductsListene
         binding.sizeRec.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         binding.sizeRec.setAdapter(addressAdapter);
         addressAdapter.addData(model);
+        size_id = model.get(0).getId();
     }
 
     private void initColorRec(List<ColorModel> model) {
@@ -163,6 +168,8 @@ public class ProductDetails extends Fragment implements SuggestedProductsListene
         binding.colorRec.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         binding.colorRec.setAdapter(addressAdapter);
         addressAdapter.addData(model);
+        color_id = model.get(0).getId();
+
     }
 
     private void initSliderRec(List<String> model) {
@@ -196,12 +203,12 @@ public class ProductDetails extends Fragment implements SuggestedProductsListene
 
     @Override
     public void onSizeSelected(int id) {
-
+        size_id = id;
     }
 
     @Override
     public void onColorSelected(int id) {
-
+        color_id = id;
     }
 
     private void errorMessage() {
@@ -266,6 +273,29 @@ public class ProductDetails extends Fragment implements SuggestedProductsListene
         FragmentManager fm = activity.getSupportFragmentManager();
         sizeChartDialog.setArguments(bundle);
         sizeChartDialog.show(fm, "fragment_alert");
+    }
+
+    private void addToCart(){
+        binding.addToCart.setOnClickListener(view -> {
+            helper.showLoading(requireActivity());
+            AddToCartRequest request = new AddToCartRequest();
+            request.setProduct_id(model.getId());
+            request.setSize_id(size_id);
+            request.setColor_id(color_id);
+            request.setQty(Integer.parseInt(binding.productCount.getText().toString()));
+            viewModel.addToCart(request);
+            addToCartResponse();
+        });
+    }
+
+    private void addToCartResponse(){
+        viewModel.getAddToCart().observe(getViewLifecycleOwner(), new Observer<BaseModel<CartProductsModel>>() {
+            @Override
+            public void onChanged(BaseModel<CartProductsModel> model) {
+                helper.dismissLoading();
+                Navigation.findNavController(requireView()).navigate(R.id.action_product_details_to_cartFragment);
+            }
+        });
     }
 
 }
