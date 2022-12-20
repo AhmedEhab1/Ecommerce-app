@@ -227,6 +227,13 @@
             app:exitAnim="@anim/push_up_out"
             app:popEnterAnim="@anim/push_down_in"
             app:popExitAnim="@anim/push_down_out" />
+        <action
+            android:id="@+id/action_savedAddressesFragment_to_paymentMethodFragment"
+            app:destination="@id/paymentMethodFragment"
+            app:enterAnim="@anim/push_up_in"
+            app:exitAnim="@anim/push_up_out"
+            app:popEnterAnim="@anim/push_down_in"
+            app:popExitAnim="@anim/push_down_out"/>
     </fragment>
     <fragment
         android:id="@+id/addAddressFragment"
@@ -318,13 +325,30 @@
         tools:layout="@layout/filter_fragment" >
         <action
             android:id="@+id/action_filterFragment_to_product_details"
-            app:destination="@id/product_details" />
+            app:destination="@id/product_details"
+            app:enterAnim="@anim/push_left_in"
+            app:exitAnim="@anim/push_left_out"
+            app:popEnterAnim="@anim/push_right_in"
+            app:popExitAnim="@anim/push_right_out"/>
     </fragment>
 
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.macaria.app.ui.homeScreen.cart.fragments.CartFragment"
         android:label="cart_fragment"
-        tools:layout="@layout/cart_fragment" />
+        tools:layout="@layout/cart_fragment" >
+        <action
+            android:id="@+id/action_cartFragment_to_savedAddressesFragment"
+            app:destination="@id/savedAddressesFragment"
+            app:enterAnim="@anim/push_left_in"
+            app:exitAnim="@anim/push_left_out"
+            app:popEnterAnim="@anim/push_right_in"
+            app:popExitAnim="@anim/push_right_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/paymentMethodFragment"
+        android:name="com.macaria.app.PaymentMethodFragment"
+        android:label="payment_method_fragment"
+        tools:layout="@layout/payment_method_fragment" />
 
 </navigation>

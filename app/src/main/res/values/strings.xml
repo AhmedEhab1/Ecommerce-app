@@ -29,6 +29,8 @@
     <string name="favorite">Favorite</string>
     <string name="sort_by">Sort by</string>
     <string name="result">Result</string>
+    <string name="payment_text">Select the Payment Method You Want to Use.</string>
+    <string name="cart_address_text">Where Would You Like Us To Send It ?</string>
     <string name="tax_included">(Taxes Included)</string>
     <string name="filter_by">Filter by</string>
     <string name="profile">Profile</string>
@@ -85,6 +87,9 @@
     <string name="placed_on">Placed On</string>
     <string name="total_price">Total Price</string>
     <string name="payment">Payment</string>
+    <string name="payment_with_paymob">Pay with Paymob</string>
+    <string name="cash_on_delivery">Cash on delivery</string>
+    <string name="payment_method">Payment Method</string>
     <string name="details"><u>details</u></string>
     <string name="reorder"><u>Reorder</u></string>
     <string name="status">Status</string>

@@ -7,6 +7,7 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -64,6 +65,7 @@ public class CartFragment extends Fragment implements CartProductListener {
     private void init() {
         helper.showLoading(requireActivity());
         viewModel = new ViewModelProvider(requireActivity()).get(CartViewModel.class);
+        binding.checkOut.setOnClickListener(view -> proceedCheckOut());
         getData();
         onItemSwiped();
         getCartModel();
@@ -176,5 +178,11 @@ public class CartFragment extends Fragment implements CartProductListener {
                 helper.dismissLoading();
             }
         });
+    }
+
+    private void proceedCheckOut(){
+        Bundle args = new Bundle();
+        args.putString("key","cart");
+        Navigation.findNavController(requireView()).navigate(R.id.action_cartFragment_to_savedAddressesFragment, args);
     }
 }

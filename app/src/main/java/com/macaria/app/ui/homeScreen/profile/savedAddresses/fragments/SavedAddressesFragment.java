@@ -56,6 +56,7 @@ public class SavedAddressesFragment extends Fragment implements AddressListener 
         viewModel.getAddress();
         getAddressResponse();
         deleteAddressResponse();
+        cartAddress();
         errorMessage();
         binding.addAddress.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_savedAddressesFragment_to_addAddressFragment));
     }
@@ -93,6 +94,15 @@ public class SavedAddressesFragment extends Fragment implements AddressListener 
     }
 
     @Override
+    public void onAddressClicked(int id) {
+        if (getArguments() != null) {
+            Bundle args = new Bundle();
+            args.putInt("address_id",id);
+            Navigation.findNavController(requireView()).navigate(R.id.action_savedAddressesFragment_to_paymentMethodFragment, args);
+        }
+    }
+
+    @Override
     public void onEditAddress(AddressModel model) {
         Bundle args = new Bundle();
         args.putSerializable("addressModel", model);
@@ -108,4 +118,7 @@ public class SavedAddressesFragment extends Fragment implements AddressListener 
         });
     }
 
+    private void cartAddress(){
+        if (getArguments() != null)binding.cartAddress.setVisibility(View.VISIBLE);
+    }
 }
