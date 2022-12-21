@@ -4,10 +4,12 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.ui.homeScreen.home.products.models.ProductModel;
+import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddressModel;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class CartModel {
+public class CartModel implements Serializable {
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -43,7 +45,7 @@ public class CartModel {
     private String paymentType;
     @SerializedName("address")
     @Expose
-    private Object address;
+    private AddressModel address;
     @SerializedName("orderDetails")
     @Expose
     private BaseModel.Item<List<CartProductsModel>>  cartProductsModel;
@@ -136,11 +138,11 @@ public class CartModel {
         this.paymentType = paymentType;
     }
 
-    public Object getAddress() {
+    public AddressModel getAddress() {
         return address;
     }
 
-    public void setAddress(Object address) {
+    public void setAddress(AddressModel address) {
         this.address = address;
     }
 

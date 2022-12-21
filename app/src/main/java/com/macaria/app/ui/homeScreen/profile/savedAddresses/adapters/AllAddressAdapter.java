@@ -45,7 +45,7 @@ public class AllAddressAdapter extends RecyclerView.Adapter<AllAddressAdapter.St
             notifyDataSetChanged();
         });
         holder.binding.editAddress.setOnClickListener(view -> listener.onEditAddress(data.get(position)));
-        holder.itemView.setOnClickListener(view -> listener.onAddressClicked(data.get(position).getId()));
+        holder.itemView.setOnClickListener(view -> listener.onAddressClicked(data.get(position).getId(), data.get(position)));
     }
 
     public void addData(List<AddressModel> data) {

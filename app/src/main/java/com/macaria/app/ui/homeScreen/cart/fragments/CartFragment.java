@@ -183,6 +183,7 @@ public class CartFragment extends Fragment implements CartProductListener {
     private void proceedCheckOut(){
         Bundle args = new Bundle();
         args.putString("key","cart");
+        args.putSerializable("cartModel", model);
         Navigation.findNavController(requireView()).navigate(R.id.action_cartFragment_to_savedAddressesFragment, args);
     }
 }

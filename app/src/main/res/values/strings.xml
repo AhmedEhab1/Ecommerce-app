@@ -20,6 +20,7 @@
     <string name="proceed_to_check_out">Proceed To Check Out</string>
     <string name="home">Home</string>
     <string name="faq">FAQs</string>
+    <string name="order_summery">Order Summery</string>
     <string name="egypt">Egypt</string>
     <string name="contact_us_body">We’re happy to answer any questions you have or provide you with an estimate. Just send us a message in the form below with any questions you may have.</string>
     <string name="change_password">Change Password</string>
@@ -29,6 +30,7 @@
     <string name="favorite">Favorite</string>
     <string name="sort_by">Sort by</string>
     <string name="result">Result</string>
+    <string name="subtotal">Subtotal</string>
     <string name="payment_text">Select the Payment Method You Want to Use.</string>
     <string name="cart_address_text">Where Would You Like Us To Send It ?</string>
     <string name="tax_included">(Taxes Included)</string>
@@ -102,11 +104,13 @@
     <string name="shipping">Shipping</string>
     <string name="taxes">Taxes</string>
     <string name="total">Total</string>
+    <string name="item_count">Item Count</string>
     <string name="reviews">REVIEWS</string>
     <string name="promo_code">Promocode</string>
     <string name="best_selling">best selling</string>
     <string name="new_arrivals">New arrivals</string>
-    <string name="reviewsSmall">eviews</string>
+    <string name="reviewsSmall">reviews</string>
+    <string name="shipping_method">Shipping Method</string>
     <string name="all_reviews">All Reviews</string>
     <string name="products">Products</string>
     <string name="leave_comment">Leave Comment</string>

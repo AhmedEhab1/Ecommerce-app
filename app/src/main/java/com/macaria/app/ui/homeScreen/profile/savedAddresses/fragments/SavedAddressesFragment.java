@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import com.macaria.app.R;
 import com.macaria.app.databinding.SavedAddressesFragmentBinding;
 import com.macaria.app.models.BaseModel;
+import com.macaria.app.ui.homeScreen.cart.model.CartModel;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.adapters.AddressListener;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.adapters.AllAddressAdapter;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.AddressModel;
@@ -34,6 +35,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class SavedAddressesFragment extends Fragment implements AddressListener {
     private SavedAddressesFragmentBinding binding;
     private SavedAddressViewModel viewModel;
+    private CartModel cartModel ;
 
     @Inject
     MyHelper helper;
@@ -94,10 +96,12 @@ public class SavedAddressesFragment extends Fragment implements AddressListener 
     }
 
     @Override
-    public void onAddressClicked(int id) {
+    public void onAddressClicked(int id, AddressModel model) {
         if (getArguments() != null) {
             Bundle args = new Bundle();
             args.putInt("address_id",id);
+            cartModel.setAddress(model);
+            args.putSerializable("cartModel", cartModel);
             Navigation.findNavController(requireView()).navigate(R.id.action_savedAddressesFragment_to_paymentMethodFragment, args);
         }
     }
@@ -119,6 +123,9 @@ public class SavedAddressesFragment extends Fragment implements AddressListener 
     }
 
     private void cartAddress(){
-        if (getArguments() != null)binding.cartAddress.setVisibility(View.VISIBLE);
+        if (getArguments() != null){
+            binding.cartAddress.setVisibility(View.VISIBLE);
+            cartModel = (CartModel) getArguments().getSerializable("cartModel");
+        }
     }
 }

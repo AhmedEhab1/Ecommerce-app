@@ -3,7 +3,9 @@ package com.macaria.app.ui.homeScreen.cart.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class CartProductsModel {
+import java.io.Serializable;
+
+public class CartProductsModel implements Serializable {
     @SerializedName("id")
     @Expose
     private Integer id;

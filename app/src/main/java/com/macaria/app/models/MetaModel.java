@@ -3,7 +3,9 @@ package com.macaria.app.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class MetaModel {
+import java.io.Serializable;
+
+public class MetaModel implements Serializable {
     @SerializedName("pagination")
     @Expose
     private Pagination pagination;

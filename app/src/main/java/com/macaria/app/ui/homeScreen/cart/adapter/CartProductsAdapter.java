@@ -7,6 +7,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,10 @@ public class CartProductsAdapter extends RecyclerView.Adapter<CartProductsAdapte
         this.listener = listener;
     }
 
+    public CartProductsAdapter(Context context) {
+        this.context = context;
+    }
+
     @NonNull
     @Override
     public StoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -57,6 +62,8 @@ public class CartProductsAdapter extends RecyclerView.Adapter<CartProductsAdapte
             request.setSize_id(model.getSizeId());
             holder.binding.add.setOnClickListener(view -> listener.onAddItemClicked(request));
             holder.binding.sub.setOnClickListener(view -> listener.onSubItemClicked(request));
+
+            if (listener == null)holder.binding.addSubCartBg.setVisibility(View.GONE);
         }catch (Exception e){
             Log.e("crash", "onBindViewHolder: ",e );
         }
