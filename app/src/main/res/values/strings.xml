@@ -17,6 +17,7 @@
     <string name="change"><u>change</u></string>
     <string name="send">Send</string>
     <string name="apply">Apply</string>
+    <string name="confirm_payment">Confirm Payment</string>
     <string name="proceed_to_check_out">Proceed To Check Out</string>
     <string name="home">Home</string>
     <string name="faq">FAQs</string>
@@ -120,5 +121,8 @@
     <string name="review_item"><u>Review item</u></string>
     <string name="delivery_address">Delivery Address</string>
     <string name="sub_total">Sub Total</string>
+    <string name="order_completed_txt1">Thanks for shopping from Macaria website</string>
+    <string name="order_completed_txt2">Your Order Completed Successfully</string>
+    <string name="order_completed_txt3"><u>Track your order</u></string>
 
 </resources>

@@ -6,6 +6,7 @@ import com.macaria.app.ui.homeScreen.cart.model.AddToCartRequest;
 import com.macaria.app.ui.homeScreen.cart.model.CartModel;
 import com.macaria.app.ui.homeScreen.cart.model.CartProductsModel;
 import com.macaria.app.ui.homeScreen.cart.model.PromoCodeRequest;
+import com.macaria.app.ui.homeScreen.cart.model.StoreOrderRequest;
 import com.macaria.app.ui.homeScreen.categories.models.PagesRequest;
 import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
 import com.macaria.app.ui.homeScreen.home.homeView.models.CategoriesModel;
@@ -86,5 +87,9 @@ public class HomeRepository {
         PromoCodeRequest request = new PromoCodeRequest();
         request.setPromo_code(id);
         return apiService.promoCode(request);
+    }
+
+    public Observable<BaseModel<CartModel>> storeOrder(StoreOrderRequest request){
+        return apiService.storeOrder(request);
     }
 }

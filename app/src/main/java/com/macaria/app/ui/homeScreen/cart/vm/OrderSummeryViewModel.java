@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModel;
 import com.macaria.app.data.FavoriteData;
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.repository.HomeRepository;
+import com.macaria.app.ui.homeScreen.cart.model.CartModel;
+import com.macaria.app.ui.homeScreen.cart.model.StoreOrderRequest;
 import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
 import com.macaria.app.ui.homeScreen.home.products.models.ProductModel;
 
@@ -22,8 +24,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class OrderSummeryViewModel extends ViewModel {
     private HomeRepository repository;
-    private MutableLiveData<BaseModel<List<ProductModel>>> modelMutableLiveData = new MutableLiveData<>();
-    private MutableLiveData<BaseModel> setFavorite = new MutableLiveData<>();
+    private MutableLiveData<BaseModel<CartModel>> modelMutableLiveData = new MutableLiveData<>();
     private MutableLiveData<String> errorMassage = new MutableLiveData<>();
 
     @ViewModelInject
@@ -31,13 +32,10 @@ public class OrderSummeryViewModel extends ViewModel {
         this.repository = repository;
     }
 
-    public MutableLiveData<BaseModel<List<ProductModel>>> getModelMutableLiveData() {
+    public MutableLiveData<BaseModel<CartModel>> getModelMutableLiveData() {
         return modelMutableLiveData;
     }
 
-    public MutableLiveData<BaseModel> getSetFavorite() {
-        return setFavorite;
-    }
 
     public MutableLiveData<String> getErrorMassage() {
         return errorMassage;
@@ -50,24 +48,22 @@ public class OrderSummeryViewModel extends ViewModel {
 
     public void clear(){
         errorMassage = new MutableLiveData<>();
-        setFavorite = new MutableLiveData<>();
         modelMutableLiveData = new MutableLiveData<>();
     }
 
-    public void getFavorite() {
-        repository.getFavorite()
+    public void storeOrder(StoreOrderRequest request) {
+        repository.storeOrder(request)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<BaseModel<List<ProductModel>>>() {
+                .subscribe(new Observer<BaseModel<CartModel>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(@NonNull BaseModel<List<ProductModel>> listBaseModel) {
-                        modelMutableLiveData.setValue(listBaseModel);
-                        saveFavoriteData(listBaseModel.getItem().getData());
+                    public void onNext(@NonNull BaseModel<CartModel> model) {
+                        modelMutableLiveData.setValue(model);
                     }
 
                     @Override

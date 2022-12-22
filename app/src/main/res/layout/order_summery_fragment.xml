@@ -233,7 +233,7 @@
 
 
                 <Button
-                    android:id="@+id/checkOut"
+                    android:id="@+id/confirmPayment"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:layout_marginStart="15dp"
@@ -241,7 +241,7 @@
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
                     android:background="@color/black"
-                    android:text="@string/proceed_to_check_out"
+                    android:text="@string/confirm_payment"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="18sp" />

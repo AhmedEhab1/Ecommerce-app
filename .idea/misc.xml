@@ -64,6 +64,7 @@
         <entry key="app/src/main/res/layout/home_category_item.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/login_fragment.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/order_compeleted_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/order_details_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/order_history_bg.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/order_history_fragment.xml" value="0.24895833333333334" />

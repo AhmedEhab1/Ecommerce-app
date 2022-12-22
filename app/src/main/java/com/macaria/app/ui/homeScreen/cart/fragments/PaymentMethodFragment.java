@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import com.macaria.app.R;
 import com.macaria.app.databinding.PaymentMethodFragmentBinding;
 import com.macaria.app.ui.homeScreen.cart.model.CartModel;
+import com.macaria.app.ui.homeScreen.cart.vm.OrderSummeryViewModel;
 import com.macaria.app.utilities.MyHelper;
 
 import javax.inject.Inject;
@@ -29,6 +30,7 @@ public class PaymentMethodFragment extends Fragment {
     private PaymentMethodFragmentBinding binding ;
     private CartModel cartModel ;
     private boolean invoiceState = false ;
+    private OrderSummeryViewModel viewModel ;
 
     @Inject
     MyHelper helper ;

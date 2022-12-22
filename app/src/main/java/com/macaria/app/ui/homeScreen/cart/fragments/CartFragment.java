@@ -117,8 +117,10 @@ public class CartFragment extends Fragment implements CartProductListener {
             public void onChanged(BaseModel<CartModel> cartModelBaseModel) {
                 helper.dismissLoading();
                 model = cartModelBaseModel.getItem().getData();
-                binding.totalPrice.setText(model.getTotalPrice().concat(" ").concat(getString(R.string.egp)));
-                initRec(model.getCartProductsModel());
+                if (model !=null ){
+                    binding.totalPrice.setText(model.getTotalPrice().concat(" ").concat(getString(R.string.egp)));
+                    initRec(model.getCartProductsModel());
+                }
             }
         });
     }

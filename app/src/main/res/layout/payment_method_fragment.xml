@@ -79,7 +79,7 @@
 
 
     <LinearLayout
-        android:id="@+id/addPromoCode"
+        android:id="@+id/paymob"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
