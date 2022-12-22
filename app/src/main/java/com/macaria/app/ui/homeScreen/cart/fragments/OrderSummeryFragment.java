@@ -62,6 +62,7 @@ public class OrderSummeryFragment extends Fragment {
         setAddressModel();
         initRec();
         confirmPayment();
+        errorMessage();
     }
 
     private void setAddressModel() {
@@ -105,6 +106,15 @@ public class OrderSummeryFragment extends Fragment {
                 Bundle args = new Bundle();
                 args.putSerializable("cartModel", model.getItem().getData());
                 Navigation.findNavController(requireView()).navigate(R.id.action_orderSummeryFragment_to_orderCompletedFragment, args);
+            }
+        });
+    }
+
+    private void errorMessage() {
+        viewModel.getErrorMassage().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                helper.showErrorDialog(getActivity(), null, s);
             }
         });
     }

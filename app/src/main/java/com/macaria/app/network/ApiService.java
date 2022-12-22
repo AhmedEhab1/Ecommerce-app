@@ -11,6 +11,7 @@ import com.macaria.app.ui.authorization.login.model.UserModel;
 import com.macaria.app.ui.homeScreen.cart.model.AddToCartRequest;
 import com.macaria.app.ui.homeScreen.cart.model.CartModel;
 import com.macaria.app.ui.homeScreen.cart.model.CartProductsModel;
+import com.macaria.app.ui.homeScreen.cart.model.PaymentTokenModel;
 import com.macaria.app.ui.homeScreen.cart.model.PromoCodeRequest;
 import com.macaria.app.ui.homeScreen.cart.model.StoreOrderRequest;
 import com.macaria.app.ui.homeScreen.categories.models.PagesRequest;
@@ -117,6 +118,9 @@ public interface ApiService {
 
     @POST("orders/promoCode")
     Observable<BaseModel> promoCode(@Body PromoCodeRequest id);
+
+    @GET("payment")
+    Observable<BaseModel<PaymentTokenModel>> getPaymentToken(@Query("type") String type);
 
     @POST("orders/store")
     Observable<BaseModel<CartModel>> storeOrder(@Body StoreOrderRequest request);

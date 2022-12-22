@@ -10,6 +10,7 @@ import com.macaria.app.data.FavoriteData;
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.repository.HomeRepository;
 import com.macaria.app.ui.homeScreen.cart.model.CartModel;
+import com.macaria.app.ui.homeScreen.cart.model.PaymentTokenModel;
 import com.macaria.app.ui.homeScreen.cart.model.StoreOrderRequest;
 import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
 import com.macaria.app.ui.homeScreen.home.products.models.ProductModel;
@@ -25,6 +26,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class OrderSummeryViewModel extends ViewModel {
     private HomeRepository repository;
     private MutableLiveData<BaseModel<CartModel>> modelMutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<BaseModel<PaymentTokenModel>> paymentMutableLiveData = new MutableLiveData<>();
     private MutableLiveData<String> errorMassage = new MutableLiveData<>();
 
     @ViewModelInject
@@ -37,6 +39,10 @@ public class OrderSummeryViewModel extends ViewModel {
     }
 
 
+    public MutableLiveData<BaseModel<PaymentTokenModel>> getPaymentMutableLiveData() {
+        return paymentMutableLiveData;
+    }
+
     public MutableLiveData<String> getErrorMassage() {
         return errorMassage;
     }
@@ -46,7 +52,7 @@ public class OrderSummeryViewModel extends ViewModel {
         errorMassage.setValue(message);
     }
 
-    public void clear(){
+    public void clear() {
         errorMassage = new MutableLiveData<>();
         modelMutableLiveData = new MutableLiveData<>();
     }
@@ -79,6 +85,33 @@ public class OrderSummeryViewModel extends ViewModel {
                 });
     }
 
+    public void getPaymentToken() {
+        repository.getPaymentToken()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<BaseModel<PaymentTokenModel>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull BaseModel<PaymentTokenModel> model) {
+                        paymentMutableLiveData.setValue(model);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Log.e("crash", "onError: ", e);
+                        errorMassage.setValue(e.toString());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
 
 
 }

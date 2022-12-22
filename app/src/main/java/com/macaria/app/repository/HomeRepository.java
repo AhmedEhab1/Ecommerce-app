@@ -5,6 +5,7 @@ import com.macaria.app.network.ApiService;
 import com.macaria.app.ui.homeScreen.cart.model.AddToCartRequest;
 import com.macaria.app.ui.homeScreen.cart.model.CartModel;
 import com.macaria.app.ui.homeScreen.cart.model.CartProductsModel;
+import com.macaria.app.ui.homeScreen.cart.model.PaymentTokenModel;
 import com.macaria.app.ui.homeScreen.cart.model.PromoCodeRequest;
 import com.macaria.app.ui.homeScreen.cart.model.StoreOrderRequest;
 import com.macaria.app.ui.homeScreen.categories.models.PagesRequest;
@@ -91,5 +92,9 @@ public class HomeRepository {
 
     public Observable<BaseModel<CartModel>> storeOrder(StoreOrderRequest request){
         return apiService.storeOrder(request);
+    }
+
+    public Observable<BaseModel<PaymentTokenModel>> getPaymentToken(){
+        return apiService.getPaymentToken("api");
     }
 }
