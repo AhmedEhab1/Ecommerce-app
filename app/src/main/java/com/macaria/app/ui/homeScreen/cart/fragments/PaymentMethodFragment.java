@@ -71,7 +71,6 @@ public class PaymentMethodFragment extends Fragment {
         onCashClicked();
         errorMessage();
         binding.paymob.setOnClickListener(view -> getToken());
-
     }
 
     private void getAddress(){
@@ -132,22 +131,16 @@ public class PaymentMethodFragment extends Fragment {
         });
     }
 
-
-
     private void payMobSDK(){
         Intent pay_intent = new Intent(getActivity(), PayActivity.class);
         putNormalExtras(pay_intent);
         //this key is used to set the theme color(Actionbar, statusBar, button).
         pay_intent.putExtra(PayActivityIntentKeys.SAVE_CARD_DEFAULT, false);
-
         pay_intent.putExtra(PayActivityIntentKeys.THEME_COLOR,getResources().getColor(R.color.colorPrimary));
-
         // this key is to wether display the Actionbar or not.
         pay_intent.putExtra("ActionBar",false);
-
         // this key is used to define the language. takes for ex ("ar", "en") as inputs.
         pay_intent.putExtra("language","en");
-
         startActivityForResult(pay_intent, ACCEPT_PAYMENT_REQUEST);
         Intent secure_intent = new Intent(requireActivity(), ThreeDSecureWebViewActivty.class);
         secure_intent.putExtra("ActionBar",true);
@@ -191,11 +184,8 @@ public class PaymentMethodFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         Bundle extras = data.getExtras();
-
         if (requestCode == ACCEPT_PAYMENT_REQUEST) {
-
             if (resultCode == IntentConstants.USER_CANCELED) {
                 // User canceled and did no payment request was fired
                 ToastMaker.displayShortToast(requireActivity(), "User canceled!!");
@@ -207,7 +197,6 @@ public class PaymentMethodFragment extends Fragment {
                 ToastMaker.displayShortToast(requireActivity(), "Reason == " + extras.getString(IntentConstants.TRANSACTION_ERROR_REASON));
             } else if (resultCode == IntentConstants.TRANSACTION_REJECTED) {
                 // User attempted to pay but their transaction was rejected
-
                 // Use the static keys declared in PayResponseKeys to extract the fields you want
                 ToastMaker.displayShortToast(requireActivity(), extras.getString(PayResponseKeys.DATA_MESSAGE));
             } else if (resultCode == IntentConstants.TRANSACTION_REJECTED_PARSING_ISSUE) {
@@ -221,23 +210,19 @@ public class PaymentMethodFragment extends Fragment {
             } else if (resultCode == IntentConstants.TRANSACTION_SUCCESSFUL_PARSING_ISSUE) {
                 // User finished their payment successfully. An error occured while reading the returned JSON.
                 ToastMaker.displayShortToast(requireActivity(), "TRANSACTION_SUCCESSFUL - Parsing Issue");
-
                 // ToastMaker.displayShortToast(this, extras.getString(IntentConstants.RAW_PAY_RESPONSE));
             } else if (resultCode == IntentConstants.TRANSACTION_SUCCESSFUL_CARD_SAVED) {
                 // User finished their payment successfully and card was saved.
-
                 // Use the static keys declared in PayResponseKeys to extract the fields you want
                 // Use the static keys declared in SaveCardResponseKeys to extract the fields you want
                 ToastMaker.displayShortToast(requireActivity(), "Token == " + extras.getString(SaveCardResponseKeys.TOKEN));
             } else if (resultCode == IntentConstants.USER_CANCELED_3D_SECURE_VERIFICATION) {
                 ToastMaker.displayShortToast(requireActivity(), "User canceled 3-d scure verification!!");
-
                 // Note that a payment process was attempted. You can extract the original returned values
                 // Use the static keys declared in PayResponseKeys to extract the fields you want
                 ToastMaker.displayShortToast(requireActivity(), extras.getString(PayResponseKeys.PENDING));
             } else if (resultCode == IntentConstants.USER_CANCELED_3D_SECURE_VERIFICATION_PARSING_ISSUE) {
                 ToastMaker.displayShortToast(requireActivity(), "User canceled 3-d scure verification - Parsing Issue!!");
-
                 // Note that a payment process was attempted.
                 // User finished their payment successfully. An error occured while reading the returned JSON.
                 ToastMaker.displayShortToast(requireActivity(), extras.getString(IntentConstants.RAW_PAY_RESPONSE));

@@ -128,6 +128,13 @@
             app:exitAnim="@anim/push_left_out"
             app:popEnterAnim="@anim/push_right_in"
             app:popExitAnim="@anim/push_right_out"/>
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment"
+            app:enterAnim="@anim/push_left_in"
+            app:exitAnim="@anim/push_left_out"
+            app:popEnterAnim="@anim/push_right_in"
+            app:popExitAnim="@anim/push_right_out"/>
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -392,5 +399,10 @@
             app:popEnterAnim="@anim/push_right_in"
             app:popExitAnim="@anim/push_right_out"/>
     </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.macaria.app.ui.homeScreen.home.search.SearchFragment"
+        android:label="search_fragment"
+        tools:layout="@layout/search_fragment" />
 
 </navigation>

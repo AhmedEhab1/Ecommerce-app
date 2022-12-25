@@ -89,6 +89,9 @@ public interface ApiService {
     @GET("categories")
     Observable<BaseModel<List<CategoriesModel>>> getCategories();
 
+    @GET("categories/trend")
+    Observable<BaseModel<List<CategoriesModel>>> getCategoriesTrend();
+
     @GET("categories/sub")
     Observable<BaseModel<List<CategoriesModel>>> getSubCategories(@Query("category_id") int category_id);
 

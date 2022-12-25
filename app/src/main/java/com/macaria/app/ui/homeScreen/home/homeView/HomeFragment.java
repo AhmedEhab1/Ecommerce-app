@@ -77,6 +77,7 @@ public class HomeFragment extends Fragment implements CategoriesListener, Produc
         setHomeData();
         initCategoryRec();
         viewCart();
+        searchView();
     }
 
     private void setHomeData() {
@@ -171,6 +172,12 @@ public class HomeFragment extends Fragment implements CategoriesListener, Produc
     private void viewCart(){
         binding.cart.setOnClickListener(view -> {
             Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_cartFragment);
+        });
+    }
+
+    private void searchView(){
+        binding.searchBtn.setOnClickListener(view -> {
+            Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_searchFragment);
         });
     }
 

@@ -50,6 +50,10 @@ public class HomeRepository {
         return apiService.getCategories();
     }
 
+    public Observable<BaseModel<List<CategoriesModel>>> getCategoriesTrend(){
+        return apiService.getCategoriesTrend();
+    }
+
     public Observable<BaseModel<List<CategoriesModel>>> getSubCategories(int category_id){
         return apiService.getSubCategories(category_id);
     }
