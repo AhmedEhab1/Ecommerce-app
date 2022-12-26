@@ -18,7 +18,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.macaria.app.R;
 import com.macaria.app.databinding.ResetPasswordDialogBinding;
 
-
 public class ResetPasswordDialog {
     private ResetPasswordDialogBinding binding;
     private BottomSheetDialog dialog;

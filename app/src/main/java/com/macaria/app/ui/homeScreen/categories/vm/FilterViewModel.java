@@ -58,7 +58,7 @@ public class FilterViewModel extends ViewModel {
         productsMutableLiveData = new MutableLiveData<>();
     }
 
-    public void getPages(Map<String, Integer>  request) {
+    public void getPages(Map<String,  Object>  request) {
         repository.getPages(request)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

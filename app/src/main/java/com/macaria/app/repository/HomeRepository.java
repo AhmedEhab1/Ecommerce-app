@@ -42,7 +42,7 @@ public class HomeRepository {
         return apiService.getCart();
     }
 
-    public Observable<BaseModel<List<ProductModel>>> getPages(Map<String, Integer>  request){
+    public Observable<BaseModel<List<ProductModel>>> getPages(Map<String, Object>  request){
         return apiService.getPages(request);
     }
 

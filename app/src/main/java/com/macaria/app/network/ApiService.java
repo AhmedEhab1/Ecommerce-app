@@ -84,7 +84,7 @@ public interface ApiService {
     Observable<BaseModel<CartModel>> getCart();
 
     @GET("products/pages")
-    Observable<BaseModel<List<ProductModel>>> getPages(@QueryMap Map<String, Integer> params);
+    Observable<BaseModel<List<ProductModel>>> getPages(@QueryMap Map<String, Object> params);
 
     @GET("categories")
     Observable<BaseModel<List<CategoriesModel>>> getCategories();

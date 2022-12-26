@@ -32,12 +32,14 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/search"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:drawableStart="@drawable/search_icon"
                 android:ems="10"
+                android:textAlignment="viewStart"
+                android:imeOptions="actionSearch"
                 android:textSize="12sp"
                 android:layout_marginStart="15dp"
                 android:drawablePadding="10dp"

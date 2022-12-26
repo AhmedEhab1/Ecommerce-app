@@ -2,11 +2,13 @@ package com.macaria.app.ui.homeScreen.categories.fragments;
 
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +17,12 @@ import android.view.ViewGroup;
 import com.macaria.app.R;
 import com.macaria.app.databinding.FilterFragmentBinding;
 import com.macaria.app.models.BaseModel;
+import com.macaria.app.ui.authorization.forgetPassword.fragments.ResetPasswordDialog;
 import com.macaria.app.ui.homeScreen.categories.models.PagesRequest;
 import com.macaria.app.ui.homeScreen.categories.vm.FilterViewModel;
 import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
 import com.macaria.app.ui.homeScreen.home.products.adapter.ProductsAdapter;
+import com.macaria.app.ui.homeScreen.home.products.adapter.ProductsHorizontalAdapter;
 import com.macaria.app.ui.homeScreen.home.products.adapter.ProductsListener;
 import com.macaria.app.ui.homeScreen.home.products.models.ProductModel;
 import com.macaria.app.utilities.MyHelper;
@@ -32,14 +36,20 @@ import javax.inject.Inject;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class FilterFragment extends Fragment implements ProductsListener {
-    private FilterFragmentBinding binding ;
-    private int category_id ;
-    private FilterViewModel viewModel ;
+public class FilterFragment extends Fragment implements ProductsListener, SortByListener {
+    private FilterFragmentBinding binding;
+    private int category_id;
+    private FilterViewModel viewModel;
     private PagesRequest request = new PagesRequest();
+    private String title;
+    private BaseModel<List<ProductModel>> productsList;
+    private boolean vertical = true;
+    private SortByDialog sortByDialog;
+    private Map<String, Object> params = new HashMap<String, Object>();
+
 
     @Inject
-    MyHelper helper ;
+    MyHelper helper;
 
     @Inject
     SetFavoriteRequest favoriteRequest;
@@ -53,51 +63,80 @@ public class FilterFragment extends Fragment implements ProductsListener {
                              Bundle savedInstanceState) {
         binding = FilterFragmentBinding.inflate(inflater, container, false);
         init();
-
         return binding.getRoot();
     }
 
-    private void init(){
+    private void init() {
         viewModel = new ViewModelProvider(requireActivity()).get(FilterViewModel.class);
         getData();
         errorMessage();
         pagesResponse();
+        onViewClicked();
     }
 
-    private void getData(){
-        if (getArguments() != null){
+    private void onViewClicked() {
+        binding.sortBy.setOnClickListener(view -> showSortByDialog());
+        binding.result.setOnClickListener(view -> changeLayoutManger());
+    }
+
+    private void getData() {
+        if (getArguments() != null) {
             category_id = getArguments().getInt("category_id");
-            String title = getArguments().getString("title") ;
+            title = getArguments().getString("title");
             binding.title.setText(title);
-            if (viewModel.getProductsMutableLiveData().getValue() == null){
-                requestData();
-            }
+            requestData();
+//            if (viewModel.getProductsMutableLiveData().getValue() == null){
+//                requestData();
+//            }
         }
     }
 
-    private void requestData(){
+    private void requestData() {
         helper.showLoading(requireActivity());
         request.setCategory_id(category_id);
-        Map<String, Integer> params = new HashMap<String, Integer>();
-        params.put("category_id", category_id);
+        if (category_id == 0) {
+            params.put("name", title);
+        } else params.put("category_id", category_id);
         viewModel.getPages(params);
     }
 
-    private void pagesResponse(){
+    private void pagesResponse() {
         viewModel.getProductsMutableLiveData().observe(getViewLifecycleOwner(), new Observer<BaseModel<List<ProductModel>>>() {
             @Override
             public void onChanged(BaseModel<List<ProductModel>> listBaseModel) {
                 helper.dismissLoading();
-                initProductsRec(listBaseModel);
+                productsList = listBaseModel;
+                initProductsRec();
             }
         });
     }
 
-    private void initProductsRec(BaseModel<List<ProductModel>> listBaseModel) {
+    private void initProductsRec() {
         ProductsAdapter productsAdapter = new ProductsAdapter(getActivity(), this);
         binding.recycler.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
         binding.recycler.setAdapter(productsAdapter);
-        productsAdapter.addData(listBaseModel.getItem().getData());
+        productsAdapter.addData(productsList.getItem().getData());
+        vertical = true;
+    }
+
+    private void initProductsHorizontalRec() {
+        ProductsHorizontalAdapter productsAdapter = new ProductsHorizontalAdapter(getActivity(), this);
+        binding.recycler.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false));
+        binding.recycler.setAdapter(productsAdapter);
+        productsAdapter.addData(productsList.getItem().getData());
+        vertical = false;
+    }
+
+    private void changeLayoutManger() {
+        if (vertical) {
+            binding.result.setCompoundDrawablesWithIntrinsicBounds(null, null,
+                    ContextCompat.getDrawable(requireActivity(), R.drawable.ic_result_grid), null);
+            initProductsHorizontalRec();
+        } else {
+            binding.result.setCompoundDrawablesWithIntrinsicBounds(null, null,
+                    ContextCompat.getDrawable(requireActivity(), R.drawable.ic_result), null);
+            initProductsRec();
+        }
     }
 
     private void errorMessage() {
@@ -132,5 +171,18 @@ public class FilterFragment extends Fragment implements ProductsListener {
                 helper.dismissLoading();
             }
         });
+    }
+
+    private void showSortByDialog() {
+        sortByDialog = new SortByDialog(getActivity(), this);
+        sortByDialog.show();
+    }
+
+    @Override
+    public void sortBy(String sortBy) {
+        sortByDialog.dismiss();
+        params.put("sort_by", sortBy);
+        helper.showLoading(requireActivity());
+        viewModel.getPages(params);
     }
 }

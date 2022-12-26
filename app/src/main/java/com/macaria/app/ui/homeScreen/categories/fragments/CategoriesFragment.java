@@ -48,10 +48,8 @@ public class CategoriesFragment extends Fragment implements CategoriesListener, 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        if (binding == null) {
             binding = CategoriesFragmentBinding.inflate(inflater, container, false);
             init();
-        }
         return binding.getRoot();
     }
 

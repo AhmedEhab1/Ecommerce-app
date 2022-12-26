@@ -38,7 +38,7 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendAdapter.StoryViewHol
     @Override
     public void onBindViewHolder(@NonNull StoryViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.binding.title.setText(data.get(position).getName());
-        holder.itemView.setOnClickListener(view -> listener.onCategoryTrendClicked(data.get(position).getId()));
+        holder.itemView.setOnClickListener(view -> listener.onCategoryTrendClicked(data.get(position).getName(), data.get(position).getId()));
     }
 
     public void addData(List<CategoriesModel> data) {

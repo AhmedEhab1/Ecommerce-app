@@ -22,6 +22,8 @@
         <entry key="app/src/main/res/drawable/ic_favorite_add_review.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/ic_line_view.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/ic_products_fav_fill.xml" value="0.1475" />
+        <entry key="app/src/main/res/drawable/ic_products_fav_strok.xml" value="0.1345" />
+        <entry key="app/src/main/res/drawable/ic_result.xml" value="0.1345" />
         <entry key="app/src/main/res/drawable/image_circle.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/load_icon.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/order_history_bg.xml" value="0.1475" />
@@ -55,6 +57,7 @@
         <entry key="app/src/main/res/layout/faq_item.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/favorite_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/favorite_item.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/favorite_item_horizontal.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/filter_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/forget_password_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/fragment_back.xml" value="0.24895833333333334" />
@@ -81,6 +84,7 @@
         <entry key="app/src/main/res/layout/size_item.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/slider_item.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/sloder_item.xml" value="0.24791666666666667" />
+        <entry key="app/src/main/res/layout/sort_by.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/spinner_dropdown_item.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/spinner_item.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/splash_fragment.xml" value="0.24895833333333334" />
