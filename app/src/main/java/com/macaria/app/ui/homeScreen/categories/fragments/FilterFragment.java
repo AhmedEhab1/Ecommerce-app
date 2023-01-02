@@ -45,8 +45,8 @@ public class FilterFragment extends Fragment implements ProductsListener, SortBy
     private BaseModel<List<ProductModel>> productsList;
     private boolean vertical = true;
     private SortByDialog sortByDialog;
+    private FilterDialog filterDialog;
     private Map<String, Object> params = new HashMap<String, Object>();
-
 
     @Inject
     MyHelper helper;
@@ -68,6 +68,8 @@ public class FilterFragment extends Fragment implements ProductsListener, SortBy
 
     private void init() {
         viewModel = new ViewModelProvider(requireActivity()).get(FilterViewModel.class);
+        filterDialog = new FilterDialog(getActivity(), this);
+        sortByDialog = new SortByDialog(getActivity(), this);
         getData();
         errorMessage();
         pagesResponse();
@@ -76,6 +78,7 @@ public class FilterFragment extends Fragment implements ProductsListener, SortBy
 
     private void onViewClicked() {
         binding.sortBy.setOnClickListener(view -> showSortByDialog());
+        binding.filterBy.setOnClickListener(view -> showFilterDialog());
         binding.result.setOnClickListener(view -> changeLayoutManger());
     }
 
@@ -174,8 +177,11 @@ public class FilterFragment extends Fragment implements ProductsListener, SortBy
     }
 
     private void showSortByDialog() {
-        sortByDialog = new SortByDialog(getActivity(), this);
         sortByDialog.show();
+    }
+
+    private void showFilterDialog() {
+        filterDialog.show();
     }
 
     @Override

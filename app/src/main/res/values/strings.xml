@@ -47,6 +47,7 @@
     <string name="confirm_new_password">Confirm new password</string>
     <string name="phone_number">Phone Number*</string>
     <string name="password">Password</string>
+    <string name="from">From</string>
     <string name="error">Error</string>
     <string name="cancel">Cancel</string>
     <string name="address">Address</string>
@@ -56,6 +57,7 @@
     <string name="building_no">Building No</string>
     <string name="enter_phone_number">Please Enter Your Phone Number</string>
     <string name="yes">Yes</string>
+    <string name="style">Style</string>
     <string name="cart">Cart</string>
     <string name="by">by: </string>
     <string name="you_may_also_like">YOU MAY ALSO LIKE</string>
@@ -100,6 +102,7 @@
     <string name="egp">EGP</string>
     <string name="qty">Qty</string>
     <string name="size">Size</string>
+    <string name="price">Price</string>
     <string name="color">Color</string>
     <string name="color_">Color :</string>
     <string name="search_here">Search here...</string>

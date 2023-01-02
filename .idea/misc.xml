@@ -16,6 +16,7 @@
         <entry key="app/src/main/res/drawable/home_category_bg_strok.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/home_category_bg_stroke.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/home_item.xml" value="0.1475" />
+        <entry key="app/src/main/res/drawable/ic_add_address.xml" value="0.1345" />
         <entry key="app/src/main/res/drawable/ic_contact_us_email.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/ic_contact_us_phone.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/ic_favorite.xml" value="0.1475" />
@@ -58,7 +59,10 @@
         <entry key="app/src/main/res/layout/favorite_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/favorite_item.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/favorite_item_horizontal.xml" value="0.24791666666666667" />
+        <entry key="app/src/main/res/layout/filter_color_item.xml" value="0.24791666666666667" />
+        <entry key="app/src/main/res/layout/filter_dialog.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/filter_fragment.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/filter_style_item.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/forget_password_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/fragment_back.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/fragment_error_dialog.xml" value="0.24895833333333334" />
