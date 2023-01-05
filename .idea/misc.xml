@@ -28,6 +28,7 @@
         <entry key="app/src/main/res/drawable/image_circle.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/load_icon.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/order_history_bg.xml" value="0.1475" />
+        <entry key="app/src/main/res/drawable/price_bg.xml" value="0.1345" />
         <entry key="app/src/main/res/drawable/product_image_bg.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/products_back_icon.xml" value="0.1475" />
         <entry key="app/src/main/res/drawable/products_fav_bg.xml" value="0.1475" />
@@ -60,7 +61,7 @@
         <entry key="app/src/main/res/layout/favorite_item.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/favorite_item_horizontal.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/filter_color_item.xml" value="0.24791666666666667" />
-        <entry key="app/src/main/res/layout/filter_dialog.xml" value="0.24895833333333334" />
+        <entry key="app/src/main/res/layout/filter_dialog.xml" value="0.25" />
         <entry key="app/src/main/res/layout/filter_fragment.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/filter_style_item.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/forget_password_fragment.xml" value="0.24895833333333334" />

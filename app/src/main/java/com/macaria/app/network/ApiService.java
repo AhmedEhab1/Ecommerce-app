@@ -18,7 +18,9 @@ import com.macaria.app.ui.homeScreen.categories.models.PagesRequest;
 import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
 import com.macaria.app.ui.homeScreen.home.homeView.models.CategoriesModel;
 import com.macaria.app.ui.homeScreen.home.homeView.models.HomeModel;
+import com.macaria.app.ui.homeScreen.home.products.models.ColorModel;
 import com.macaria.app.ui.homeScreen.home.products.models.ProductModel;
+import com.macaria.app.ui.homeScreen.home.products.models.SizeModel;
 import com.macaria.app.ui.homeScreen.profile.contactUs.models.ContactModel;
 import com.macaria.app.ui.homeScreen.profile.contactUs.models.ContactUsRequest;
 import com.macaria.app.ui.homeScreen.profile.faq.models.FaqModel;
@@ -145,6 +147,12 @@ public interface ApiService {
 
     @GET("faqs")
     Observable<BaseModel<List<FaqModel>>> getFaq();
+
+    @GET("list/colors")
+    Observable<BaseModel<List<ColorModel>>> getColors();
+
+    @GET("list/sizes")
+    Observable<BaseModel<List<SizeModel>>> getSizes();
 
     @POST("profile/address/delete")
     Observable<BaseModel> deleteAddress(@Body DeleteRequest id);

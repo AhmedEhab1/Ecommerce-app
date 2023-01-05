@@ -63,7 +63,9 @@ public class CartProductsAdapter extends RecyclerView.Adapter<CartProductsAdapte
             holder.binding.add.setOnClickListener(view -> listener.onAddItemClicked(request));
             holder.binding.sub.setOnClickListener(view -> listener.onSubItemClicked(request));
 
-            if (listener == null)holder.binding.addSubCartBg.setVisibility(View.GONE);
+            if (listener == null){
+                holder.binding.addSubCartBg.setVisibility(View.GONE);
+            }else holder.binding.addSubCartBg.setVisibility(View.VISIBLE);
         }catch (Exception e){
             Log.e("crash", "onBindViewHolder: ",e );
         }

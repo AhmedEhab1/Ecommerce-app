@@ -10,6 +10,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,7 @@ import javax.inject.Inject;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class FilterFragment extends Fragment implements ProductsListener, SortByListener {
+public class FilterFragment extends Fragment implements ProductsListener, SortByListener , FilterListener{
     private FilterFragmentBinding binding;
     private int category_id;
     private FilterViewModel viewModel;
@@ -70,6 +71,8 @@ public class FilterFragment extends Fragment implements ProductsListener, SortBy
         viewModel = new ViewModelProvider(requireActivity()).get(FilterViewModel.class);
         filterDialog = new FilterDialog(getActivity(), this);
         sortByDialog = new SortByDialog(getActivity(), this);
+        viewModel.getColors();
+        viewModel.getSizes();
         getData();
         errorMessage();
         pagesResponse();
@@ -188,6 +191,13 @@ public class FilterFragment extends Fragment implements ProductsListener, SortBy
     public void sortBy(String sortBy) {
         sortByDialog.dismiss();
         params.put("sort_by", sortBy);
+        helper.showLoading(requireActivity());
+        viewModel.getPages(params);
+    }
+
+    @Override
+    public void onViewResultClicked(Map<String, Object> params) {
+        filterDialog.dismiss();
         helper.showLoading(requireActivity());
         viewModel.getPages(params);
     }

@@ -89,13 +89,14 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
+                        android:id="@+id/add_sub_cart_bg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:id="@+id/add_sub_cart_bg"
-                        android:visibility="gone"
                         android:background="@drawable/add_sub_cart_bg"
-                        android:orientation="horizontal">
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        tools:visibility="visiblea">
 
                         <ImageView
                             android:id="@+id/add"

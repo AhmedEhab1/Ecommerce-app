@@ -8,11 +8,15 @@ import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.macaria.app.data.HomeData;
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.repository.HomeRepository;
 import com.macaria.app.ui.homeScreen.categories.models.PagesRequest;
 import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
+import com.macaria.app.ui.homeScreen.home.homeView.models.CategoriesModel;
+import com.macaria.app.ui.homeScreen.home.products.models.ColorModel;
 import com.macaria.app.ui.homeScreen.home.products.models.ProductModel;
+import com.macaria.app.ui.homeScreen.home.products.models.SizeModel;
 
 import java.util.List;
 import java.util.Map;
@@ -88,6 +92,62 @@ public class FilterViewModel extends ViewModel {
                     public void onError(@NonNull Throwable e) {
                         Log.e("crash", "onError: ", e);
                         errorMassage.setValue(e.toString());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getColors() {
+        repository.getColors()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<BaseModel<List<ColorModel>>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull BaseModel<List<ColorModel>> listBaseModel) {
+                        HomeData.getInstance().setColorModels(listBaseModel.getItem().getData());
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Log.e("crash", "onError: ", e);
+                    //    errorMassage.setValue(e.toString());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    public void getSizes() {
+        repository.getSizes()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<BaseModel<List<SizeModel>>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull BaseModel<List<SizeModel>> listBaseModel) {
+                        HomeData.getInstance().setSizeModels(listBaseModel.getItem().getData());
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Log.e("crash", "onError: ", e);
+                    //    errorMassage.setValue(e.toString());
                     }
 
                     @Override

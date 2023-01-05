@@ -55,10 +55,8 @@ public class CartFragment extends Fragment implements CartProductListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        if (binding == null) {
             binding = CartFragmentBinding.inflate(inflater, container, false);
             init();
-        }
         return binding.getRoot();
     }
 
@@ -129,6 +127,7 @@ public class CartFragment extends Fragment implements CartProductListener {
         CartProductsAdapter adapter = new CartProductsAdapter(getActivity(), this);
         binding.recycler.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false));
         binding.recycler.setAdapter(adapter);
+        binding.recycler.setNestedScrollingEnabled(true);
         adapter.addData(listBaseModel.getData());
     }
 
@@ -174,10 +173,15 @@ public class CartFragment extends Fragment implements CartProductListener {
         viewModel.getPromoCodeMutableLiveData().observe(getViewLifecycleOwner(), new Observer<BaseModel>() {
             @Override
             public void onChanged(BaseModel baseModel) {
-                binding.addPromoCode.setVisibility(View.GONE);
-                binding.promoCodeSuccess.setVisibility(View.VISIBLE);
-                binding.promoCodeText.setText(model.getCartProductsModel().getData().get(0).getPercentage());
                 helper.dismissLoading();
+                if (baseModel.getSuccess()){
+                    binding.addPromoCode.setVisibility(View.GONE);
+                    binding.promoCodeSuccess.setVisibility(View.VISIBLE);
+                    binding.promoCodeText.setText(model.getCartProductsModel().getData().get(0).getPercentage());
+                }else {
+                    helper.showToast(getActivity(),baseModel.getMessage());
+                }
+
             }
         });
     }

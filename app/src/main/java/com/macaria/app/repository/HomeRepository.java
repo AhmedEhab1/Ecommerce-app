@@ -12,7 +12,9 @@ import com.macaria.app.ui.homeScreen.categories.models.PagesRequest;
 import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
 import com.macaria.app.ui.homeScreen.home.homeView.models.CategoriesModel;
 import com.macaria.app.ui.homeScreen.home.homeView.models.HomeModel;
+import com.macaria.app.ui.homeScreen.home.products.models.ColorModel;
 import com.macaria.app.ui.homeScreen.home.products.models.ProductModel;
+import com.macaria.app.ui.homeScreen.home.products.models.SizeModel;
 import com.macaria.app.ui.homeScreen.profile.savedAddresses.models.DeleteRequest;
 
 import java.util.List;
@@ -48,6 +50,13 @@ public class HomeRepository {
 
     public Observable<BaseModel<List<CategoriesModel>>> getCategories(){
         return apiService.getCategories();
+    }
+    public Observable<BaseModel<List<ColorModel>>> getColors(){
+        return apiService.getColors();
+    }
+
+    public Observable<BaseModel<List<SizeModel>>> getSizes(){
+        return apiService.getSizes();
     }
 
     public Observable<BaseModel<List<CategoriesModel>>> getCategoriesTrend(){
