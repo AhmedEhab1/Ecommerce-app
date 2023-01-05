@@ -1,4 +1,4 @@
-package com.macaria.app.utilities.backFragments;
+package com.macaria.app.ui.general;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,13 +8,14 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.macaria.app.databinding.CloseFragmentBinding;
+import com.macaria.app.R;
+import com.macaria.app.databinding.CartIconFragmentBinding;
 import com.macaria.app.databinding.FragmentBackBinding;
 
-public class CloseFragment extends Fragment {
-    CloseFragmentBinding binding ;
+public class CartIconFragment extends Fragment {
+    private CartIconFragmentBinding binding ;
 
-    public CloseFragment() {
+    public CartIconFragment() {
         // Required empty public constructor
     }
 
@@ -23,15 +24,15 @@ public class CloseFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        binding = CloseFragmentBinding.inflate(inflater, container, false);
+        binding = CartIconFragmentBinding.inflate(inflater, container, false);
         init();
         return binding.getRoot();
 
     }
 
     private void init(){
-        binding.icBack.setOnClickListener(view -> {
-            Navigation.findNavController(requireView()).popBackStack();
+        binding.itemView.setOnClickListener(view -> {
+            Navigation.findNavController(requireView()).navigate(R.id.action_global_cartFragment);
         });
     }
 }

@@ -19,6 +19,7 @@ import com.macaria.app.R;
 import com.macaria.app.databinding.FilterFragmentBinding;
 import com.macaria.app.models.BaseModel;
 import com.macaria.app.ui.authorization.forgetPassword.fragments.ResetPasswordDialog;
+import com.macaria.app.ui.homeScreen.cart.fragments.CartFragment;
 import com.macaria.app.ui.homeScreen.categories.models.PagesRequest;
 import com.macaria.app.ui.homeScreen.categories.vm.FilterViewModel;
 import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;

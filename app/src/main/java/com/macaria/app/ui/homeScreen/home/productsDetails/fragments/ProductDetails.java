@@ -95,6 +95,8 @@ public class ProductDetails extends Fragment implements SuggestedProductsListene
         binding.allReviews.setOnClickListener(view -> navigateToAllReviews());
         binding.favBtn.setOnClickListener(view -> setProductFavorite());
         binding.sizeGuide.setOnClickListener(view -> showSizeChartDialog());
+        binding.cart.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_global_cartFragment));
+
     }
 
     private void setViewData() {

@@ -39,38 +39,13 @@
                     android:textAlignment="viewStart"
                     android:textSize="22sp" />
 
-                <FrameLayout
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/cart"
+                    class="com.macaria.app.ui.general.CartIconFragment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-
-                    >
-
-                    <FrameLayout
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginBottom="7dp"
-                        android:background="@drawable/black_circle">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-
-                    </FrameLayout>
-
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:src="@drawable/ic_shopping_cart" />
-                </FrameLayout>
-
+                    tools:layout="@layout/cart_icon_fragment" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

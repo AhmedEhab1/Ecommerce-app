@@ -46,6 +46,7 @@
         <entry key="app/src/main/res/layout/all_reviews_item.xml" value="0.24895833333333334" />
         <entry key="app/src/main/res/layout/back_layout.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/cart_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/cart_icon_fragment.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/cart_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/categories_bar_item.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/categories_fragment.xml" value="0.24895833333333334" />

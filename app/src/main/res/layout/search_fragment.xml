@@ -13,9 +13,9 @@
         android:background="@color/white"
         tools:context=".ui.homeScreen.home.search.SearchFragment">
 
-        <fragment
+        <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerView2"
-            class="com.macaria.app.utilities.backFragments.BackFragment"
+            class="com.macaria.app.ui.general.backFragments.BackFragment"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"

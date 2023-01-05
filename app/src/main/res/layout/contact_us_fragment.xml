@@ -26,9 +26,9 @@
                 android:gravity="center|start"
                 android:orientation="horizontal">
 
-                <fragment
+                <androidx.fragment.app.FragmentContainerView
                     android:id="@+id/fragmentContainerView2"
-                    class="com.macaria.app.utilities.backFragments.CloseFragment"
+                    class="com.macaria.app.ui.general.backFragments.CloseFragment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="6dp"

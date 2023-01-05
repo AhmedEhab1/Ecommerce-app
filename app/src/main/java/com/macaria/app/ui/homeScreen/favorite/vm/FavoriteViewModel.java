@@ -57,6 +57,7 @@ public class FavoriteViewModel extends ViewModel {
     }
 
     public void getFavorite() {
+        clear();
         repository.getFavorite()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

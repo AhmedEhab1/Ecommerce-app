@@ -10,7 +10,7 @@
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:context=".utilities.backFragments.BackFragment">
+        tools:context=".ui.general.backFragments.BackFragment">
 
         <ImageView
             android:id="@+id/ic_back"

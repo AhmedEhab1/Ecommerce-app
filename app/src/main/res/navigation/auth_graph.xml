@@ -407,6 +407,6 @@
         <action
             android:id="@+id/action_searchFragment_to_filterFragment"
             app:destination="@id/filterFragment" />
-    </fragment>
+    </fragment><action android:id="@+id/action_global_cartFragment" app:destination="@id/cartFragment"/>
 
 </navigation>
