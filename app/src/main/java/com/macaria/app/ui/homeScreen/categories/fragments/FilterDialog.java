@@ -19,6 +19,8 @@ import com.macaria.app.databinding.FilterDialogBinding;
 import com.macaria.app.ui.homeScreen.categories.adapters.FilterCategoryAdapter;
 import com.macaria.app.ui.homeScreen.categories.adapters.FilterColorAdapter;
 import com.macaria.app.ui.homeScreen.categories.adapters.FilterSizeAdapter;
+import com.macaria.app.ui.homeScreen.categories.listeners.FilterDialogListener;
+import com.macaria.app.ui.homeScreen.categories.listeners.FilterListener;
 
 import java.util.HashMap;
 import java.util.Map;

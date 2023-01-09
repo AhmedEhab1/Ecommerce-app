@@ -21,6 +21,7 @@ import com.macaria.app.R;
 
 import com.macaria.app.databinding.CartFragmentBinding;
 import com.macaria.app.models.BaseModel;
+import com.macaria.app.ui.general.backFragments.BackFragment;
 import com.macaria.app.ui.homeScreen.cart.adapter.CartProductListener;
 import com.macaria.app.ui.homeScreen.cart.adapter.CartProductsAdapter;
 import com.macaria.app.ui.homeScreen.cart.model.AddToCartRequest;
@@ -64,6 +65,7 @@ public class CartFragment extends Fragment implements CartProductListener {
         helper.showLoading(requireActivity());
         viewModel = new ViewModelProvider(requireActivity()).get(CartViewModel.class);
         binding.checkOut.setOnClickListener(view -> proceedCheckOut());
+        binding.keepShopping.setOnClickListener(view -> Navigation.findNavController(requireView()).popBackStack());
         getData();
         onItemSwiped();
         getCartModel();
@@ -119,8 +121,19 @@ public class CartFragment extends Fragment implements CartProductListener {
                     binding.totalPrice.setText(model.getTotalPrice().concat(" ").concat(getString(R.string.egp)));
                     initRec(model.getCartProductsModel());
                 }
+                cartDataVisible();
             }
         });
+    }
+
+    private void cartDataVisible(){
+        if (model.getCartProductsModel().getData().size() == 0){
+            binding.emptyCart.setVisibility(View.VISIBLE);
+            binding.cartData.setVisibility(View.GONE);
+        }else {
+            binding.emptyCart.setVisibility(View.GONE);
+            binding.cartData.setVisibility(View.VISIBLE);
+        }
     }
 
     private void initRec(BaseModel.Item<List<CartProductsModel>> listBaseModel) {

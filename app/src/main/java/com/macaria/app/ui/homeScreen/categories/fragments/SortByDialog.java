@@ -1,18 +1,15 @@
 package com.macaria.app.ui.homeScreen.categories.fragments;
 
 import android.content.Context;
-import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
-import com.goodiebag.pinview.Pinview;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.macaria.app.R;
-import com.macaria.app.databinding.ResetPasswordDialogBinding;
 import com.macaria.app.databinding.SortByBinding;
-import com.macaria.app.ui.authorization.forgetPassword.fragments.ResetPasswordListener;
+import com.macaria.app.ui.homeScreen.categories.listeners.SortByListener;
 
 public class SortByDialog {
     private SortByBinding binding;

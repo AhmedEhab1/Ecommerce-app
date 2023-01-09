@@ -1,4 +1,4 @@
-package com.macaria.app.ui.homeScreen.categories.fragments;
+package com.macaria.app.ui.homeScreen.categories.listeners;
 
 import java.util.Map;
 

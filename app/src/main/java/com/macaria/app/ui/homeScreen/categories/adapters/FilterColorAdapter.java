@@ -13,11 +13,9 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.macaria.app.R;
-import com.macaria.app.databinding.ColorItemBinding;
 import com.macaria.app.databinding.FilterColorItemBinding;
-import com.macaria.app.ui.homeScreen.categories.fragments.FilterDialogListener;
+import com.macaria.app.ui.homeScreen.categories.listeners.FilterDialogListener;
 import com.macaria.app.ui.homeScreen.home.products.models.ColorModel;
-import com.macaria.app.ui.homeScreen.home.productsDetails.listeners.ColorListener;
 
 import java.util.ArrayList;
 import java.util.List;

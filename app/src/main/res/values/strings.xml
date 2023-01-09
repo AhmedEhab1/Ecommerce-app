@@ -121,6 +121,8 @@
     <string name="shipping_method">Shipping Method</string>
     <string name="all_reviews">All Reviews</string>
     <string name="products">Products</string>
+    <string name="keep_shopping">Keep Shopping</string>
+    <string name="your_cart_is_empty">Your Cart Is Empty.</string>
     <string name="empty_wishlist">Your Wishlist Is Empty.</string>
     <string name="explore_products">Explore Products</string>
     <string name="newest_items">Newest Items</string>

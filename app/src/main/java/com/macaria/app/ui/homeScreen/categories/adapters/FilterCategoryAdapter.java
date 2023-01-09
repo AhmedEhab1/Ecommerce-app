@@ -13,8 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.macaria.app.R;
 import com.macaria.app.databinding.FilterStyleItemBinding;
-import com.macaria.app.databinding.SubCategoryItemBinding;
-import com.macaria.app.ui.homeScreen.categories.fragments.FilterDialogListener;
+import com.macaria.app.ui.homeScreen.categories.listeners.FilterDialogListener;
 import com.macaria.app.ui.homeScreen.home.homeView.models.CategoriesModel;
 
 import java.util.ArrayList;

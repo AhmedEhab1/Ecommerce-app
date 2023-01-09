@@ -59,12 +59,14 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
         requestFavorite();
         errorMessage();
         swipeToRefresh();
+        exploreProducts();
     }
 
     private void requestFavorite() {
         if (viewModel.getModelMutableLiveData().getValue() == null){
             helper.showLoading(requireActivity());
             viewModel.getFavorite();
+            if (productsAdapter != null)productsAdapter.clear();
         }
         productsResponse();
     }
@@ -81,6 +83,9 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
     }
 
     private void initProductsRec(BaseModel<List<ProductModel>> listBaseModel) {
+        if (listBaseModel.getItem().getData().size() == 0){
+            binding.emptyProducts.setVisibility(View.VISIBLE);
+        }else binding.emptyProducts.setVisibility(View.GONE);
         productsAdapter = new ProductsAdapter(getActivity(), this);
         binding.recycler.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
         binding.recycler.setAdapter(productsAdapter);
@@ -104,6 +109,15 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
         Navigation.findNavController(requireView()).navigate(R.id.action_favoriteFragment_to_product_details, bundle);
     }
 
+    private void exploreProducts(){
+        binding.exploreProducts.setOnClickListener(view -> {
+            Bundle bundle = new Bundle();
+            bundle.putInt("category_id", 0);
+            bundle.putString("title", "");
+            Navigation.findNavController(requireView()).navigate(R.id.action_favoriteFragment_to_filterFragment, bundle);
+        });
+    }
+
     @Override
     public void onFavoriteClick(int id) {
         helper.showLoading(requireActivity());
@@ -122,14 +136,16 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
     }
 
     private void swipeToRefresh() {
-        binding.swipeRefreshLayout.setOnRefreshListener(() -> {
-            resetList();
-        });
+        binding.swipeRefreshLayout.setOnRefreshListener(this::resetList);
     }
 
     private void resetList() {
-        requestFavorite();
-        productsAdapter.setFinishedLoading(false);
+        helper.showLoading(requireActivity());
+        viewModel.getFavorite();
+        if (productsAdapter != null)productsAdapter.clear();
+        productsResponse();
+
+        //        productsAdapter.setFinishedLoading(false);
 //        currentPage = 1;
 //        endlessRecyclerViewScrollListener.resetState();
     }

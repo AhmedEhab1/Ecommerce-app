@@ -10,7 +10,6 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +17,8 @@ import android.view.ViewGroup;
 import com.macaria.app.R;
 import com.macaria.app.databinding.FilterFragmentBinding;
 import com.macaria.app.models.BaseModel;
-import com.macaria.app.ui.authorization.forgetPassword.fragments.ResetPasswordDialog;
-import com.macaria.app.ui.homeScreen.cart.fragments.CartFragment;
+import com.macaria.app.ui.homeScreen.categories.listeners.FilterListener;
+import com.macaria.app.ui.homeScreen.categories.listeners.SortByListener;
 import com.macaria.app.ui.homeScreen.categories.models.PagesRequest;
 import com.macaria.app.ui.homeScreen.categories.vm.FilterViewModel;
 import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
@@ -38,7 +37,7 @@ import javax.inject.Inject;
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class FilterFragment extends Fragment implements ProductsListener, SortByListener , FilterListener{
+public class FilterFragment extends Fragment implements ProductsListener, SortByListener, FilterListener {
     private FilterFragmentBinding binding;
     private int category_id;
     private FilterViewModel viewModel;
