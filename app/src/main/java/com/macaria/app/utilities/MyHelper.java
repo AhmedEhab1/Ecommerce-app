@@ -10,11 +10,11 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.macaria.app.data.Constants;
 import com.macaria.app.utilities.errorDialog.ErrorDialog;
 
 public class MyHelper {
     Loading loading = new Loading();
-
 
     public void showErrorDialog(Context context, String title, String body) {
         if (loading.getDialog() != null) loading.dismiss();
@@ -58,6 +58,10 @@ public class MyHelper {
 
     public void showToast(Context context, String message){
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public boolean isUserLogin(){
+        return (!Constants.TOKEN.equals(""));
     }
 
 }
