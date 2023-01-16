@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import com.macaria.app.R;
 import com.macaria.app.databinding.FavoriteFragmentBinding;
 import com.macaria.app.models.BaseModel;
+import com.macaria.app.ui.authorization.AuthData;
 import com.macaria.app.ui.homeScreen.favorite.models.SetFavoriteRequest;
 import com.macaria.app.ui.homeScreen.favorite.vm.FavoriteViewModel;
 import com.macaria.app.ui.homeScreen.home.products.adapter.ProductsAdapter;
@@ -56,17 +57,14 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
 
     private void init() {
         viewModel = new ViewModelProvider(requireActivity()).get(FavoriteViewModel.class);
-        requestFavorite();
-        errorMessage();
-        swipeToRefresh();
-        exploreProducts();
+        dataVisibility();
     }
 
     private void requestFavorite() {
-        if (viewModel.getModelMutableLiveData().getValue() == null){
+        if (viewModel.getModelMutableLiveData().getValue() == null) {
             helper.showLoading(requireActivity());
             viewModel.getFavorite();
-            if (productsAdapter != null)productsAdapter.clear();
+            if (productsAdapter != null) productsAdapter.clear();
         }
         productsResponse();
     }
@@ -83,13 +81,28 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
     }
 
     private void initProductsRec(BaseModel<List<ProductModel>> listBaseModel) {
-        if (listBaseModel.getItem().getData().size() == 0){
+        if (listBaseModel.getItem().getData().size() == 0) {
             binding.emptyProducts.setVisibility(View.VISIBLE);
-        }else binding.emptyProducts.setVisibility(View.GONE);
+            binding.exploreProducts.setVisibility(View.VISIBLE);
+        } else binding.emptyProducts.setVisibility(View.GONE);
         productsAdapter = new ProductsAdapter(getActivity(), this);
         binding.recycler.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
         binding.recycler.setAdapter(productsAdapter);
         productsAdapter.addData(listBaseModel.getItem().getData());
+    }
+
+    private void dataVisibility() {
+        AuthData authData = new AuthData(requireActivity());
+        if (authData.getUserData().getToken().equals("")) {
+            binding.emptyProducts.setVisibility(View.VISIBLE);
+            binding.loginRegister.setVisibility(View.VISIBLE);
+            binding.loginRegister.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_global_login));
+        } else {
+            requestFavorite();
+            errorMessage();
+            swipeToRefresh();
+            exploreProducts();
+        }
     }
 
     private void errorMessage() {
@@ -109,7 +122,7 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
         Navigation.findNavController(requireView()).navigate(R.id.action_favoriteFragment_to_product_details, bundle);
     }
 
-    private void exploreProducts(){
+    private void exploreProducts() {
         binding.exploreProducts.setOnClickListener(view -> {
             Bundle bundle = new Bundle();
             bundle.putInt("category_id", 0);
@@ -142,7 +155,7 @@ public class FavoriteFragment extends Fragment implements ProductsListener {
     private void resetList() {
         helper.showLoading(requireActivity());
         viewModel.getFavorite();
-        if (productsAdapter != null)productsAdapter.clear();
+        if (productsAdapter != null) productsAdapter.clear();
         productsResponse();
 
         //        productsAdapter.setFinishedLoading(false);

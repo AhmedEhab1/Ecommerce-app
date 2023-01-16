@@ -171,7 +171,6 @@ public class ProductDetails extends Fragment implements SuggestedProductsListene
         binding.colorRec.setAdapter(addressAdapter);
         addressAdapter.addData(model);
         color_id = model.get(0).getId();
-
     }
 
     private void initSliderRec(List<String> model) {

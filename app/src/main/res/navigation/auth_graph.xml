@@ -410,6 +410,18 @@
         <action
             android:id="@+id/action_searchFragment_to_filterFragment"
             app:destination="@id/filterFragment" />
-    </fragment><action android:id="@+id/action_global_cartFragment" app:destination="@id/cartFragment"/>
+    </fragment>
+    <action android:id="@+id/action_global_cartFragment"
+        app:destination="@id/cartFragment"
+        app:enterAnim="@anim/push_left_in"
+        app:exitAnim="@anim/push_left_out"
+        app:popEnterAnim="@anim/push_right_in"
+        app:popExitAnim="@anim/push_right_out"/>
+    <action android:id="@+id/action_global_login"
+        app:destination="@id/loginFragment"
+        app:enterAnim="@anim/push_left_in"
+        app:exitAnim="@anim/push_left_out"
+        app:popEnterAnim="@anim/push_right_in"
+        app:popExitAnim="@anim/push_right_out"/>
 
 </navigation>

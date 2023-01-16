@@ -15,10 +15,13 @@ import androidx.transition.TransitionManager;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
 import com.bumptech.glide.Glide;
+import com.macaria.app.data.Constants;
 import com.macaria.app.databinding.ActivityMainBinding;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements NavController.OnD
     }
 
     private void init() {
+        saveDeviceID();
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.splashFragment)
                 .build();
@@ -72,5 +76,11 @@ public class MainActivity extends AppCompatActivity implements NavController.OnD
         transition.addTarget(binding.navLayout);
         TransitionManager.beginDelayedTransition(binding.navLayout, transition);
         binding.navLayout.setVisibility(show ? View.VISIBLE : View.GONE);
+    }
+
+    private void saveDeviceID(){
+        String androidId = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        Constants.DEVICE_ID = androidId ;
+        Log.d("DEVICE_ID", "saveDeviceID: "+androidId);
     }
 }

@@ -113,16 +113,16 @@ public interface ApiService {
     Observable<BaseModel<CartProductsModel>> addToCart(@Body AddToCartRequest request);
 
     @POST("cart/add")
-    Observable<BaseModel<CartProductsModel>> addCartItem(@Body AddToCartRequest request);
+    Observable<BaseModel<CartModel>> addCartItem(@Body AddToCartRequest request);
 
     @POST("cart/sub")
-    Observable<BaseModel<CartProductsModel>> subCartItem(@Body AddToCartRequest request);
+    Observable<BaseModel<CartModel>> subCartItem(@Body AddToCartRequest request);
 
     @POST("cart/delete")
-    Observable<BaseModel> deleteCartItem(@Body DeleteRequest id);
+    Observable<BaseModel<CartModel>> deleteCartItem(@Body DeleteRequest id);
 
     @POST("orders/promoCode")
-    Observable<BaseModel> promoCode(@Body PromoCodeRequest id);
+    Observable<BaseModel<CartModel>> promoCode(@Body PromoCodeRequest id);
 
     @GET("payment")
     Observable<BaseModel<PaymentTokenModel>> getPaymentToken(@Query("type") String type);

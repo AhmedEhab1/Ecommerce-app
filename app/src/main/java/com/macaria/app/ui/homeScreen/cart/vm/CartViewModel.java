@@ -29,9 +29,9 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 public class CartViewModel extends ViewModel {
     private HomeRepository repository;
     private MutableLiveData<BaseModel<CartModel>> modelMutableLiveData = new MutableLiveData<>();
-    private MutableLiveData<BaseModel<CartProductsModel>> addOrSubMutableLiveData = new MutableLiveData<>();
-    private MutableLiveData<BaseModel> deleteItemMutableLiveData = new MutableLiveData<>();
-    private MutableLiveData<BaseModel> promoCodeMutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<BaseModel<CartModel>> addOrSubMutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<BaseModel<CartModel>> deleteItemMutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<BaseModel<CartModel>> promoCodeMutableLiveData = new MutableLiveData<>();
     private MutableLiveData<String> errorMassage = new MutableLiveData<>();
 
     @ViewModelInject
@@ -52,11 +52,11 @@ public class CartViewModel extends ViewModel {
         errorMassage.setValue(message);
     }
 
-    public MutableLiveData<BaseModel> getDeleteItemMutableLiveData() {
+    public MutableLiveData<BaseModel<CartModel>> getDeleteItemMutableLiveData() {
         return deleteItemMutableLiveData;
     }
 
-    public MutableLiveData<BaseModel> getPromoCodeMutableLiveData() {
+    public MutableLiveData<BaseModel<CartModel>> getPromoCodeMutableLiveData() {
         return promoCodeMutableLiveData;
     }
 
@@ -65,7 +65,7 @@ public class CartViewModel extends ViewModel {
         modelMutableLiveData = new MutableLiveData<>();
     }
 
-    public MutableLiveData<BaseModel<CartProductsModel>> getAddOrSubMutableLiveData() {
+    public MutableLiveData<BaseModel<CartModel>> getAddOrSubMutableLiveData() {
         return addOrSubMutableLiveData;
     }
 
@@ -130,7 +130,8 @@ public class CartViewModel extends ViewModel {
                         });
     }
 
-    public void promoCode(int request) {
+    public void promoCode(String request) {
+        promoCodeMutableLiveData = new MutableLiveData<>();
         repository.promoCode(request)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -56,7 +56,6 @@ public class CartProductsAdapter extends RecyclerView.Adapter<CartProductsAdapte
             holder.binding.productNumber.setText(model.getQty());
             loadImage(context, model.getImage(), R.drawable.ic_placeholder, holder.binding.image);
             holder.binding.size.setText(context.getString(R.string.size).concat(" : ").concat(model.getSize()));
-            holder.binding.color.setCardBackgroundColor(Color.parseColor(model.getColor()));
             AddToCartRequest request = new AddToCartRequest();
             request.setProduct_id(model.getItemId());
             request.setSize_id(model.getSizeId());
@@ -66,6 +65,9 @@ public class CartProductsAdapter extends RecyclerView.Adapter<CartProductsAdapte
             if (listener == null){
                 holder.binding.addSubCartBg.setVisibility(View.GONE);
             }else holder.binding.addSubCartBg.setVisibility(View.VISIBLE);
+
+            holder.binding.color.setCardBackgroundColor(Color.parseColor(model.getColor()));
+
         }catch (Exception e){
             Log.e("crash", "onBindViewHolder: ",e );
         }

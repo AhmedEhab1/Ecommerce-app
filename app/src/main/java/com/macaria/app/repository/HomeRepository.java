@@ -83,21 +83,21 @@ public class HomeRepository {
         return apiService.addToCart(request);
     }
 
-    public Observable<BaseModel<CartProductsModel>> addCartItem(AddToCartRequest request){
+    public Observable<BaseModel<CartModel>> addCartItem(AddToCartRequest request){
         return apiService.addCartItem(request);
     }
 
-    public Observable<BaseModel<CartProductsModel>> subCartItem(AddToCartRequest request){
+    public Observable<BaseModel<CartModel>> subCartItem(AddToCartRequest request){
         return apiService.subCartItem(request);
     }
 
-    public Observable<BaseModel> deleteCartItem(int id){
+    public Observable<BaseModel<CartModel>> deleteCartItem(int id){
         DeleteRequest request = new DeleteRequest();
         request.setId(id);
         return apiService.deleteCartItem(request);
     }
 
-    public Observable<BaseModel> promoCode(int id){
+    public Observable<BaseModel<CartModel>> promoCode(String id){
         PromoCodeRequest request = new PromoCodeRequest();
         request.setPromo_code(id);
         return apiService.promoCode(request);

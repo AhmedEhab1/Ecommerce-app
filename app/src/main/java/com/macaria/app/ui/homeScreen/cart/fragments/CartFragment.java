@@ -57,8 +57,8 @@ public class CartFragment extends Fragment implements CartProductListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-            binding = CartFragmentBinding.inflate(inflater, container, false);
-            init();
+        binding = CartFragmentBinding.inflate(inflater, container, false);
+        init();
         return binding.getRoot();
     }
 
@@ -116,24 +116,33 @@ public class CartFragment extends Fragment implements CartProductListener {
         viewModel.getModelMutableLiveData().observe(getViewLifecycleOwner(), new Observer<BaseModel<CartModel>>() {
             @Override
             public void onChanged(BaseModel<CartModel> cartModelBaseModel) {
-                helper.dismissLoading();
-                model = cartModelBaseModel.getItem().getData();
-                if (model !=null ){
-                    binding.totalPrice.setText(model.getTotalPrice().concat(" ").concat(getString(R.string.egp)));
-                    initRec(model.getCartProductsModel());
-                }
-                cartDataVisible();
+                cartsResponse(cartModelBaseModel);
             }
         });
     }
 
-    private void cartDataVisible(){
-        if (model.getCartProductsModel().getData().size() == 0){
+    private void cartsResponse(BaseModel<CartModel> cartModelBaseModel) {
+        helper.dismissLoading();
+        model = cartModelBaseModel.getItem().getData();
+        if (model != null) {
+            binding.totalPrice.setText(model.getTotalPrice().concat(" ").concat(getString(R.string.egp)));
+            initRec(model.getCartProductsModel());
+        }
+        cartDataVisible();
+    }
+
+    private void cartDataVisible() {
+        if (model != null) {
+            if (model.getCartProductsModel().getData().size() == 0) {
+                binding.emptyCart.setVisibility(View.VISIBLE);
+                binding.cartData.setVisibility(View.GONE);
+            }    else {
+                binding.emptyCart.setVisibility(View.GONE);
+                binding.cartData.setVisibility(View.VISIBLE);
+            }
+        } else {
             binding.emptyCart.setVisibility(View.VISIBLE);
             binding.cartData.setVisibility(View.GONE);
-        }else {
-            binding.emptyCart.setVisibility(View.GONE);
-            binding.cartData.setVisibility(View.VISIBLE);
         }
     }
 
@@ -146,10 +155,10 @@ public class CartFragment extends Fragment implements CartProductListener {
     }
 
     private void addOrSubItemResponse() {
-        viewModel.getAddOrSubMutableLiveData().observe(getViewLifecycleOwner(), new Observer<BaseModel<CartProductsModel>>() {
+        viewModel.getAddOrSubMutableLiveData().observe(getViewLifecycleOwner(), new Observer<BaseModel<CartModel>>() {
             @Override
-            public void onChanged(BaseModel<CartProductsModel> cartProductsModelBaseModel) {
-                getData();
+            public void onChanged(BaseModel<CartModel> cartModelBaseModel) {
+                cartsResponse(cartModelBaseModel);
             }
         });
     }
@@ -167,42 +176,41 @@ public class CartFragment extends Fragment implements CartProductListener {
     }
 
     private void deleteItemResponse() {
-        viewModel.getDeleteItemMutableLiveData().observe(getViewLifecycleOwner(), new Observer<BaseModel>() {
+        viewModel.getDeleteItemMutableLiveData().observe(getViewLifecycleOwner(), new Observer<BaseModel<CartModel>>() {
             @Override
-            public void onChanged(BaseModel model) {
-                getData();
+            public void onChanged(BaseModel<CartModel> cartModelBaseModel) {
+                cartsResponse(cartModelBaseModel);
             }
         });
     }
 
-    private void addPromoCode(){
+    private void addPromoCode() {
         binding.applyPromoCode.setOnClickListener(view -> {
             helper.showLoading(requireActivity());
-            viewModel.promoCode(model.getId());
+            viewModel.promoCode(binding.promoCodeEditText.getText().toString());
             promoCodeResponse();
         });
     }
 
-    private void promoCodeResponse(){
-        viewModel.getPromoCodeMutableLiveData().observe(getViewLifecycleOwner(), new Observer<BaseModel>() {
+    private void promoCodeResponse() {
+        viewModel.getPromoCodeMutableLiveData().observe(getViewLifecycleOwner(), new Observer<BaseModel<CartModel>>() {
             @Override
-            public void onChanged(BaseModel baseModel) {
+            public void onChanged(BaseModel<CartModel> baseModel) {
                 helper.dismissLoading();
-                if (baseModel.getSuccess()){
+                if (baseModel.getSuccess()) {
                     binding.addPromoCode.setVisibility(View.GONE);
                     binding.promoCodeSuccess.setVisibility(View.VISIBLE);
                     binding.promoCodeText.setText(model.getCartProductsModel().getData().get(0).getPercentage());
-                }else {
-                    helper.showToast(getActivity(),baseModel.getMessage());
+                } else {
+                    helper.showToast(getActivity(), baseModel.getMessage());
                 }
-
             }
         });
     }
 
-    private void proceedCheckOut(){
+    private void proceedCheckOut() {
         Bundle args = new Bundle();
-        args.putString("key","cart");
+        args.putString("key", "cart");
         args.putSerializable("cartModel", model);
         Navigation.findNavController(requireView()).navigate(R.id.action_cartFragment_to_savedAddressesFragment, args);
     }

@@ -38,6 +38,7 @@ public class RetrofitModule {
                             .addHeader("Content-Type", "application/json")
                             .addHeader("Accept", "application/json")
                             .addHeader("Authorization", "bearer ".concat(Constants.TOKEN))
+                            .addHeader("device_id", Constants.DEVICE_ID)
                             .build();
                     return chain.proceed(request);
                 })
