@@ -91,7 +91,7 @@ public class FilterViewModel extends ViewModel {
                     @Override
                     public void onError(@NonNull Throwable e) {
                         Log.e("crash", "onError: ", e);
-                        errorMassage.setValue(e.toString());
+                        errorMassage.setValue(isHttpException(e));
                     }
 
                     @Override

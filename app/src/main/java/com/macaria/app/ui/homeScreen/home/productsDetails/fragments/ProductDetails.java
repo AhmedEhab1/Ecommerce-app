@@ -243,16 +243,18 @@ public class ProductDetails extends Fragment implements SuggestedProductsListene
 
 
     private void setProductFavorite() {
-        favoriteRequest.setProduct_id(model.getId());
-        helper.showLoading(requireActivity());
-        if (model.getFav()) {
-            binding.favIcon.setImageResource(R.drawable.favorite_item);
-            model.setFav(false);
-        } else {
-            binding.favIcon.setImageResource(R.drawable.ic_favorite_active);
-            model.setFav(true);
+        if (helper.isUserLogin()){
+            favoriteRequest.setProduct_id(model.getId());
+            helper.showLoading(requireActivity());
+            if (model.getFav()) {
+                binding.favIcon.setImageResource(R.drawable.favorite_item);
+                model.setFav(false);
+            } else {
+                binding.favIcon.setImageResource(R.drawable.ic_favorite_active);
+                model.setFav(true);
+            }
+            viewModel.setFavorite(favoriteRequest);
         }
-        viewModel.setFavorite(favoriteRequest);
     }
 
     private void productQty() {

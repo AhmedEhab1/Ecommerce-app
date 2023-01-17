@@ -96,6 +96,14 @@
                         tools:text="laurel.mendoza@mail.com" />
 
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/userData"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/account_info"
                         android:layout_width="match_parent"
@@ -117,58 +125,52 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="#E8E8E8" />
+
+                    <TextView
+                        android:id="@+id/orders_history"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="25dp"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|start"
+                        android:paddingBottom="10dp"
+                        android:text="@string/orders_history"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/textColor"
+                        android:textSize="15sp"
+                        app:drawableEndCompat="@drawable/forward_arrow"
+                        app:drawableStartCompat="@drawable/ic_order" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E8E8E8" />
+
+                    <TextView
+                        android:id="@+id/saved_addresses"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="25dp"
+                        android:drawablePadding="10dp"
+                        android:gravity="center|start"
+                        android:paddingBottom="10dp"
+                        android:text="@string/saved_addresses"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/textColor"
+                        android:textSize="15sp"
+                        app:drawableEndCompat="@drawable/forward_arrow"
+                        app:drawableStartCompat="@drawable/ic_saved_address" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#E8E8E8" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"></LinearLayout>
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="25dp"
-                    android:id="@+id/orders_history"
-                    android:drawablePadding="10dp"
-                    android:gravity="center|start"
-                    android:paddingBottom="10dp"
-                    android:text="@string/orders_history"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/textColor"
-                    android:textSize="15sp"
-                    app:drawableEndCompat="@drawable/forward_arrow"
-                    app:drawableStartCompat="@drawable/ic_order" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#E8E8E8" />
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="25dp"
-                    android:id="@+id/saved_addresses"
-                    android:drawablePadding="10dp"
-                    android:gravity="center|start"
-                    android:paddingBottom="10dp"
-                    android:text="@string/saved_addresses"
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/textColor"
-                    android:textSize="15sp"
-                    app:drawableEndCompat="@drawable/forward_arrow"
-                    app:drawableStartCompat="@drawable/ic_saved_address" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#E8E8E8" />
 
                 <ImageView
                     android:id="@+id/imageView4"
@@ -306,6 +308,24 @@
                     android:textSize="15sp"
                     app:drawableEndCompat="@drawable/forward_arrow"
                     app:drawableStartCompat="@drawable/ic_logout" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/login"
+                    android:layout_marginEnd="25dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center|start"
+                    android:paddingBottom="10dp"
+                    android:visibility="gone"
+                    android:text="@string/login"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/textColor"
+                    android:textSize="15sp"
+                    app:drawableEndCompat="@drawable/forward_arrow"
+                    app:drawableStartCompat="@drawable/profile_login_icon" />
 
                 <View
                     android:layout_width="match_parent"

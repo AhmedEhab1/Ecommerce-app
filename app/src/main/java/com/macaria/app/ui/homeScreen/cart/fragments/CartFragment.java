@@ -209,9 +209,13 @@ public class CartFragment extends Fragment implements CartProductListener {
     }
 
     private void proceedCheckOut() {
-        Bundle args = new Bundle();
-        args.putString("key", "cart");
-        args.putSerializable("cartModel", model);
-        Navigation.findNavController(requireView()).navigate(R.id.action_cartFragment_to_savedAddressesFragment, args);
+        if (helper.isUserLogin()){
+            Bundle args = new Bundle();
+            args.putString("key", "cart");
+            args.putSerializable("cartModel", model);
+            Navigation.findNavController(requireView()).navigate(R.id.action_cartFragment_to_savedAddressesFragment, args);
+        }else {
+           Navigation.findNavController(requireView()).navigate(R.id.action_global_login);
+        }
     }
 }

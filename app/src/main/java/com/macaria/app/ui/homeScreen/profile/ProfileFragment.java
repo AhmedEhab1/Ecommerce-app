@@ -60,6 +60,7 @@ public class ProfileFragment extends Fragment implements ErrorDialogListener {
         setUserData();
         onViewClicked();
         getWebViewLinks();
+        gustView();
     }
 
     private void setUserData() {
@@ -145,6 +146,19 @@ public class ProfileFragment extends Fragment implements ErrorDialogListener {
                 termsConditions();
             }
         });
+    }
+
+    private void gustView(){
+        if (!helper.isUserLogin()){
+            binding.userData.setVisibility(View.GONE);
+            binding.logout.setVisibility(View.GONE);
+            binding.userEmail.setVisibility(View.GONE);
+            binding.userName.setVisibility(View.GONE);
+            binding.login.setVisibility(View.VISIBLE);
+            binding.profileImage.setImageResource(R.drawable.gust_profile_image);
+            binding.login.setOnClickListener(view -> Navigation.findNavController(requireView()).navigate(R.id.action_global_login));
+
+        }
     }
 
 }

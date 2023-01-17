@@ -1,5 +1,7 @@
 package com.macaria.app.ui.homeScreen.home.productsDetails.vm;
 
+import static com.macaria.app.utilities.JsonHelper.isHttpException;
+
 import android.util.Log;
 
 import androidx.hilt.lifecycle.ViewModelInject;
@@ -78,7 +80,7 @@ public class ProductDetailsViewModel extends ViewModel {
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-
+                        errorMassage.setValue(isHttpException(e));
                     }
 
                     @Override
@@ -106,7 +108,7 @@ public class ProductDetailsViewModel extends ViewModel {
                     @Override
                     public void onError(@NonNull Throwable e) {
                         Log.e("crash", "onError: ", e);
-                        errorMassage.setValue(e.toString());
+                        errorMassage.setValue(isHttpException(e));
                     }
 
                     @Override
@@ -117,14 +119,14 @@ public class ProductDetailsViewModel extends ViewModel {
     }
 
     public int add(int num) {
-        int sum = num ;
-        sum = num+1;
+        int sum = num;
+        sum = num + 1;
         return sum;
     }
 
-    public int sub(int num){
-        if (num != 1){
-            num = num-1;
+    public int sub(int num) {
+        if (num != 1) {
+            num = num - 1;
         }
         return num;
     }
@@ -149,7 +151,7 @@ public class ProductDetailsViewModel extends ViewModel {
                     @Override
                     public void onError(@NonNull Throwable e) {
                         Log.e("crash", "onError: ", e);
-                        errorMassage.setValue(e.toString());
+                        errorMassage.setValue(isHttpException(e));
                     }
 
                     @Override
